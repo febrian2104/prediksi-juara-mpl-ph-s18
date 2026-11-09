@@ -1,0 +1,118 @@
+{
+  "data_quality": {
+    "raw_match_rows": 787,
+    "canonical_match_rows": 787,
+    "historical_training_rows_before_s18": 723,
+    "s18_regular_rows": 56,
+    "s18_playoff_rows": 8,
+    "s18_roster_rows": 66,
+    "duplicate_match_ids": 0,
+    "invalid_scores": 0,
+    "missing_team_ids": 0,
+    "unknown_team_codes": [],
+    "s18_standings_match_official": true,
+    "status": "pass"
+  },
+  "feature_audit": {
+    "rows": 787,
+    "seasons": [
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "duplicate_match_ids": 0,
+    "history_after_match_count": 0,
+    "feature_columns": [
+      "elo_diff",
+      "form_3_diff",
+      "form_5_diff",
+      "game_diff_5_diff",
+      "sos_5_diff",
+      "h2h_diff",
+      "season_matches_diff"
+    ],
+    "roster_features_used": false,
+    "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap."
+  },
+  "production_model": {
+    "model_name": "elo_baseline",
+    "feature_columns": [
+      "elo_diff"
+    ],
+    "training_seasons": [
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "training_rows_original": 723,
+    "selection_method": "lowest walk-forward log loss, then Brier score",
+    "s18_used_for_selection_or_training": false
+  },
+  "walk_forward_metrics": [
+    {
+      "model": "elo_baseline",
+      "rows": 512,
+      "accuracy": 0.6640625,
+      "log_loss": 0.6152890975878913,
+      "brier_score": 0.21314126167309444,
+      "expected_calibration_error": 0.06533899105281137
+    },
+    {
+      "model": "logistic_regression",
+      "rows": 512,
+      "accuracy": 0.65625,
+      "log_loss": 0.6166409637431953,
+      "brier_score": 0.21395117272768738,
+      "expected_calibration_error": 0.04992835420907434
+    },
+    {
+      "model": "random_forest",
+      "rows": 512,
+      "accuracy": 0.650390625,
+      "log_loss": 0.6296240103272357,
+      "brier_score": 0.22042055888723477,
+      "expected_calibration_error": 0.0661985487518208
+    },
+    {
+      "model": "xgboost",
+      "rows": 512,
+      "accuracy": 0.640625,
+      "log_loss": 0.6343496575996459,
+      "brier_score": 0.2219889633875906,
+      "expected_calibration_error": 0.06622223858721554
+    }
+  ],
+  "s18_evaluation": {
+    "scope": "reconstructed_pre_match_predictions",
+    "honesty_note": "Prediksi dibuat 9 November 2026 dengan rekonstruksi state sebelum laga; bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan.",
+    "all_s18": {
+      "rows": 64,
+      "accuracy": 0.828125,
+      "log_loss": 0.505405567192984,
+      "brier_score": 0.16349252825616378
+    },
+    "regular_season": {
+      "rows": 56,
+      "accuracy": 0.8571428571428571,
+      "log_loss": 0.482295925337609,
+      "brier_score": 0.15289255913084784
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "raw_match_rows": 787,
+  "canonical_match_rows": 787,
+  "historical_training_rows_before_s18": 723,
+  "s18_regular_rows": 56,
+  "s18_playoff_rows": 8,
+  "s18_roster_rows": 66,
+  "duplicate_match_ids": 0,
+  "invalid_scores": 0,
+  "missing_team_ids": 0,
+  "unknown_team_codes": [],
+  "s18_standings_match_official": true,
+  "status": "pass"
+}

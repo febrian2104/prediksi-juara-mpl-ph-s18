@@ -1,0 +1,9 @@
+rank,team_code,match_points,match_wins,match_losses,game_wins,game_losses,net_game_wins,h2h_match_wins,h2h_net_game_wins,official_name
+1,TLPH,12,12,2,25,6,19,0,0,Team Liquid PH
+2,FLCN,12,12,2,26,10,16,0,0,Team Falcons PH
+3,ONIC,9,9,5,21,14,7,1,1,ONIC Philippines
+4,RORA,9,9,5,20,13,7,1,-1,Aurora Gaming PH
+5,OMG,7,7,7,15,18,-3,0,0,Smart Omega
+6,TNC,4,4,10,14,22,-8,0,0,TNC Pro Team
+7,APBR,3,3,11,10,23,-13,0,0,AP BREN
+8,TWIS,0,0,14,3,28,-25,0,0,Twisted Minds PH

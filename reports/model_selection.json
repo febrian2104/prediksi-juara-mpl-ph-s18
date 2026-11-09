@@ -1,0 +1,22 @@
+{
+  "model_name": "elo_baseline",
+  "feature_columns": [
+    "elo_diff"
+  ],
+  "training_seasons": [
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "training_rows_original": 723,
+  "selection_method": "lowest walk-forward log loss, then Brier score",
+  "s18_used_for_selection_or_training": false
+}

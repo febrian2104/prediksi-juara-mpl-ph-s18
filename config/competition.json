@@ -1,0 +1,42 @@
+{
+  "competition": "MPL Philippines",
+  "season": 18,
+  "data_cutoff": "2026-11-09",
+  "timezone": "Asia/Manila",
+  "regular_season": {
+    "team_count": 8,
+    "round_robin_cycles": 2,
+    "best_of": 3,
+    "matches_per_team": 14,
+    "playoff_team_count": 6,
+    "points": {"match_win": 1, "match_loss": 0},
+    "ranking_order": [
+      "match_points_desc",
+      "net_game_wins_desc",
+      "head_to_head_match_wins_desc",
+      "head_to_head_net_game_wins_desc",
+      "official_bo1_tiebreak_if_required"
+    ]
+  },
+  "playoffs": {
+    "format": "hybrid_elimination",
+    "matches": [
+      {"id": "M1", "round": "play_in", "best_of": 5, "team_a": "seed_3", "team_b": "seed_6"},
+      {"id": "M2", "round": "play_in", "best_of": 5, "team_a": "seed_4", "team_b": "seed_5"},
+      {"id": "M3", "round": "upper_semifinal", "best_of": 5, "team_a": "winner_M1", "team_b": "seed_2"},
+      {"id": "M4", "round": "upper_semifinal", "best_of": 5, "team_a": "winner_M2", "team_b": "seed_1"},
+      {"id": "M5", "round": "lower_semifinal", "best_of": 5, "team_a": "loser_M3", "team_b": "loser_M4"},
+      {"id": "M6", "round": "upper_final", "best_of": 5, "team_a": "winner_M3", "team_b": "winner_M4"},
+      {"id": "M7", "round": "lower_final", "best_of": 7, "team_a": "winner_M5", "team_b": "loser_M6"},
+      {"id": "M8", "round": "grand_final", "best_of": 7, "team_a": "winner_M6", "team_b": "winner_M7"}
+    ]
+  },
+  "official_sources": {
+    "rules": "https://ph-mpl.com/rules",
+    "schedule_results": "https://ph-mpl.com/schedule",
+    "standings": "https://ph-mpl.com/data",
+    "teams": "https://ph-mpl.com/teams",
+    "champion": "https://en.moonton.com/news/391.html"
+  }
+}
+

@@ -1,0 +1,34 @@
+[
+  {
+    "severity": "warning",
+    "scope": "season_5",
+    "issue": "official_archive_has_no_machine_readable_match_cards",
+    "detail": "Halaman arsip resmi S5 tidak memuat kartu hasil yang dapat diaudit.",
+    "action": "season_excluded_from_training",
+    "source_url": "https://ph-mpl.com/s5"
+  },
+  {
+    "severity": "warning",
+    "scope": "season_8",
+    "issue": "official_archive_has_no_machine_readable_match_cards",
+    "detail": "Halaman arsip resmi S8 tidak memuat kartu hasil yang dapat diaudit.",
+    "action": "season_excluded_from_training",
+    "source_url": "https://ph-mpl.com/s8"
+  },
+  {
+    "severity": "info",
+    "scope": "roster_features",
+    "issue": "dated_historical_rosters_unavailable_in_collected_official_archives",
+    "detail": "Roster S18 tersedia, tetapi roster bertanggal lintas musim belum lengkap.",
+    "action": "roster_feature_excluded_from_initial_model",
+    "source_url": "https://ph-mpl.com/teams"
+  },
+  {
+    "severity": "warning",
+    "scope": "season_6",
+    "issue": "historical_match_not_parseable",
+    "detail": "Card 32: Week 4 - 13 Sep · 7:30 PM; score=2:-2 EN PH",
+    "action": "excluded_from_canonical_dataset",
+    "source_url": "https://ph-mpl.com/s6"
+  }
+]

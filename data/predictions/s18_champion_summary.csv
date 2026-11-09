@@ -1,0 +1,3 @@
+prediction_window,predicted_champion_code,predicted_champion_name,predicted_probability,actual_champion_code,actual_champion_name,prediction_correct,prediction_origin
+preseason,TLPH,Team Liquid PH,0.5796,RORA,Aurora Gaming PH,False,reconstructed
+preplayoff,TLPH,Team Liquid PH,0.5582,RORA,Aurora Gaming PH,False,reconstructed

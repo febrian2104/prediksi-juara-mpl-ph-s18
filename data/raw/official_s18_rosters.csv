@@ -1,0 +1,67 @@
+season,team_code,official_team_name,ign,role,is_coach,effective_from,effective_to,source_url
+18,APBR,AP BREN,Escalera,roam,False,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,JamesPangks.,jungle,False,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,LanceCy,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,shizou,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,Allen,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,JIMPINKMAN,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,Bitoy,coach,True,2026-08-21,,https://ph-mpl.com/team/apbr
+18,APBR,AP BREN,Yobabz,coach,True,2026-08-21,,https://ph-mpl.com/team/apbr
+18,RORA,Aurora Gaming PH,Domengkite,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,Koyl,jungle,False,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,Light,roam,False,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,Nathzz,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,Yecs,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,Yue,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,DEX STAR,coach,True,2026-08-21,,https://ph-mpl.com/team/rora
+18,RORA,Aurora Gaming PH,Master the Basics,coach,True,2026-08-21,,https://ph-mpl.com/team/rora
+18,ONIC,ONIC Philippines,Brusko,roam,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,Dann,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,K1NGKONG,jungle,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,Kirk,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,Savero,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,SUPER FRINCE,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,SUPER YOSHI,roam,False,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,HAZE,coach,True,2026-08-21,,https://ph-mpl.com/team/onic
+18,ONIC,ONIC Philippines,Pheww,coach,True,2026-08-21,,https://ph-mpl.com/team/onic
+18,OMG,Smart Omega,Louis,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,Cull,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,Minguin,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,Perkziva,roam,False,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,Peuder,roam,False,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,Raizen,jungle,False,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,LEMBOT,coach,True,2026-08-21,,https://ph-mpl.com/team/omg
+18,OMG,Smart Omega,Wurahhhh,coach,True,2026-08-21,,https://ph-mpl.com/team/omg
+18,FLCN,Team Falcons PH,Ferdz,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,Flap,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,Hadji,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,Kyle,jungle,False,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,Owgwen,roam,False,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,SUPER MARCO,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,Ducky,coach,True,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,Moody,coach,True,2026-08-21,,https://ph-mpl.com/team/flcn
+18,FLCN,Team Falcons PH,VR3N,coach,True,2026-08-21,,https://ph-mpl.com/team/flcn
+18,TLPH,Team Liquid PH,Daiki,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,Jaypee,roam,False,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,KarlTzy,jungle,False,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,SanFord,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,Sanji,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,Teddy,goldlane,False,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,Aeon,coach,True,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TLPH,Team Liquid PH,SN4P,coach,True,2026-08-21,,https://ph-mpl.com/team/tlph
+18,TNC,TNC Pro Team,Jowm,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,Ryota.,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,Vin,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,Yeyeniya,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,Zaida,jungle,False,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,Zehn,roam,False,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,E2MAX,coach,True,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TNC,TNC Pro Team,FindingHito,coach,True,2026-08-21,,https://ph-mpl.com/team/tnc
+18,TWIS,Twisted Minds PH,Bennyqt,gold_lane,False,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Kurtt,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Lansu,exp_lane,False,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Sensui,jungle,False,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Sionnn,mid_lane,False,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Tracyyy,roam,False,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Coach Eson,coach,True,2026-08-21,,https://ph-mpl.com/team/twis
+18,TWIS,Twisted Minds PH,Lyrick,coach,True,2026-08-21,,https://ph-mpl.com/team/twis
