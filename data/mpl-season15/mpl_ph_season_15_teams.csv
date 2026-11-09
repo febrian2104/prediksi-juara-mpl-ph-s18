@@ -1,0 +1,9 @@
+season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
+15,ap_bren,AP BREN,https://ph-mpl.com/s15,APBR,,,True,https://ph-mpl.com/s15
+15,aurora_gaming_ph,Aurora Gaming PH,https://ph-mpl.com/s15,RORA,,,True,https://ph-mpl.com/s15
+15,onic_philippines,ONIC Philippines,https://ph-mpl.com/s15,ONIC,,,True,https://ph-mpl.com/s15
+15,smart_omega,Smart Omega,https://ph-mpl.com/s15,OMG,,,True,https://ph-mpl.com/s15
+15,team_falcons_ph,Team Falcons PH,https://ph-mpl.com/s15,FLCN,,,True,https://ph-mpl.com/s15
+15,team_liquid_ph,Team Liquid PH,https://ph-mpl.com/s15,TLPH,,,True,https://ph-mpl.com/s15
+15,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s15,TNC,,,True,https://ph-mpl.com/s15
+15,twisted_minds_ph,Twisted Minds PH,https://ph-mpl.com/s15,TWIS,,,True,https://ph-mpl.com/s15

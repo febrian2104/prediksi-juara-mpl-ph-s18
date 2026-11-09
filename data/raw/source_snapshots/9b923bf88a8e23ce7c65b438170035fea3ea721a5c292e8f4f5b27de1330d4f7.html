@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US" class="notranslate" translate="no">
+
+
+
+
+<head>
+    <meta name="google" content="notranslate" />
+    <link rel="icon" href="https://id-mpl.com/mpl_id_s8.ico" type="image/x-icon">
+
+
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src='https://www.googletagmanager.com/gtag/js?id=G-W9YXC2L2W8'></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-W9YXC2L2W8');
+                </script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="https://id-mpl.com/mpl_id_s8.ico" type="image/x-icon">
+
+
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" type="text/css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/dt-1.10.24/fc-3.3.2/fh-3.1.8/r-2.2.7/datatables.min.css" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/ext/jquery.scrollbar.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/ext/mediaelementplayer.min.css" type="text/css" />
+
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/style.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/dark.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/swiper.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/font-icons.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/animate.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/magnific-popup.css" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/packages/line-awesome/css/line-awesome.min.css" type="text/css" />
+
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/fonts.css?1792647527" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/colors.css?1792647527" type="text/css" />
+
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/custom-seo.css?1792647527" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/custom.css?1792647527" type="text/css" />
+<link rel="stylesheet" href="https://id-mpl.com/css-v1.6/custom-s17.css?1792647527" type="text/css" />
+
+
+
+
+
+<!-- GOOGLE ANALYTICS -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var impressionElements = document.querySelectorAll('[data-ga-impression]');
+
+      impressionElements.forEach(function(element) {
+        var impressionName = element.getAttribute('data-ga-impression');
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              console.log("Element is in view:", impressionName);
+     // gtag() function is the function for inputting the impression to google analytics.
+
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'view_section', {
+                  'event_category': 'Section View',
+                  'event_label': impressionName
+                });
+              }
+              observer.unobserve(entry.target);
+            }
+          });
+        });
+        observer.observe(element);
+      });
+    });
+</script>
+        <style>
+        .error_number {
+            font-size: 100px;
+            font-weight: 600;
+            line-height: 70px;
+        }
+
+        .error_number small {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .error_number hr {
+            margin-top: 30px;
+            margin-bottom: 0;
+            width: 0px;
+        }
+        .error_image {
+            max-width: 200px;
+        }
+
+        .error_title {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .error_description {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .content-wrap {
+            padding: 0px;
+            min-height: calc(100vh - 290px);
+        }
+
+        .title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .outer-mpl_image {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .mpl_image {
+            max-height: 400px;
+        }
+
+        /* lg: desktop */
+        @media (min-width: 992px) {
+            .error_number {
+                font-size: 156px;
+                font-weight: 600;
+                line-height: 100px;
+            }
+            .error_number small {
+                font-size: 56px;
+                font-weight: 700;
+            }
+            .error_number hr {
+                margin-top: 60px;
+                margin-bottom: 0;
+                width: 0px;
+            }
+            .error_image {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
+            .error_title {
+                /* margin-top: 20px; */
+                font-size: 36px;
+                font-weight: 400;
+            }
+
+            #content {
+                margin-top: 81px;
+            }
+            .title {
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            .mpl_image {
+                max-height: 250px;
+            }
+
+        }
+
+    </style>
+<style>
+/* xs: phone - portrait */
+/* default */
+
+.top-links-sub-menu, .top-links-section {
+    width: 80px;
+}
+
+/* sm: phone - landscape */
+@media (min-width: 576px) {
+}
+/* md: tablet */
+@media (min-width: 768px) {
+}
+/* lg: desktop */
+@media (min-width: 992px) {
+    #top-bar.transparent-topbar {
+        background: rgba(255, 255, 255, 0.5);
+    }
+}
+/* xl: wide */
+@media (min-width: 1200px) {
+}
+/* super wide */
+@media (min-width: 1440px) {
+}
+</style>
+<style>
+/* xs: phone - portrait */
+/* default */
+
+.menu-link {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+}
+.menu-link.menu-m7 {
+    line-height: 1;
+}
+.menu-link .small {
+    font-size: 0.675rem;
+    font-weight: 400;
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 1;
+}
+.menu-link img {
+    width: 100%;
+    height: 20px;
+    margin-right: 5px;
+    object-fit: contain;
+}
+
+.menu-link.menu-m7 img {
+    height: 17px;
+    margin-bottom: 2px;
+}
+
+#logo .mplid {
+    /* display: none; */
+    color: #ffffff;
+    padding-left: 10px;
+}
+
+#header-wrap {
+    background-color: var(--color2);
+}
+.svg-trigger path {
+    stroke: #fff;
+}
+
+.menu-item .sub-menu-trigger,
+.sub-menu-container .menu-item > .menu-link {
+    color: #ffffff;
+}
+.header-size-md #header-wrap #logo img {
+    height: 30px;
+    margin-left: 10px;
+}
+
+.fs-14 {
+    font-size: 14px !important
+}
+
+.logo-m7 {
+    height: 40px;
+}
+
+.m7-text-image {
+    height: 40px;
+}
+
+/* sm: phone - landscape */
+@media (min-width: 576px) {
+}
+/* md: tablet */
+@media (min-width: 768px) {
+}
+/* lg: desktop */
+@media (min-width: 992px) {
+
+    .sub-menu-container .menu-item > .menu-link {
+        color: #000000;
+    }
+
+    .menu-link {
+        color: #ffffff;
+        font-size: .875rem;
+    }
+    #header.transparent-header.floating-header {
+        margin-top: 0px;
+    }
+    .transparent-header.floating-header .container {
+        /* background-color: rgba(255, 255, 255, 0.85); */
+        background-color: transparent;
+    }
+
+    #logo .mplid {
+        color: #ffffff;
+        display: block;
+        font-size: 3rem;
+        min-width: 140px;
+        text-transform: uppercase;
+        padding-left: 20px;
+    }
+    .header-size-md.sticky-header-shrink #header-wrap #logo img,
+    .header-size-md #header-wrap #logo img {
+        height: 45px;
+    }
+
+    .logo-m7 {
+        height: 55px !important;
+    }
+
+    .m7-text-image {
+        height: 45px;
+    }
+
+        #header.transparent-header, #header.transparent-header:not(.sticky-header) #header-wrap,
+    .sticky-header #header-wrap {
+        background-color: var(--color2);
+    }
+    
+    .header-wrap-clone {
+        height: 0px !important;
+    }
+
+    .menu-link {
+        font-weight: 400;
+        padding: 39px 4px;
+    }
+
+    .top-links-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .top-links-item > a {
+        color: #ffffff;
+        transition: all 0.25s ease;
+    }
+    .top-links-item > a:hover {
+        /* color: #000000; */
+    }
+    .top-links-sub-menu {
+        left: auto;
+        right: 0px;
+        width: 60px;
+    }
+    .top-links-sub-menu .top-links-item > a {
+        color: #000000;
+    }
+    .top-links-item i {
+        display: none;
+    }
+}
+/* xl: wide */
+@media (min-width: 1200px) {
+}
+/* super wide */
+@media (min-width: 1440px) {
+    .menu-link {
+        padding: 39px 8px;
+    }
+}
+</style>
+<style>
+
+/* xs: phone - portrait */
+/* default */
+
+#footer #top-social {
+    line-height: 1;
+}
+#footer #top-social a {
+    color: #ffffff;
+}
+#footer #top-social li {
+    border-left: none;
+}
+
+#footer .footer-red {
+    background-color: var(--color2);
+}
+#footer .footer-red > div {
+    height: 60px;
+    width: 100%;
+}
+
+#footer #gotoTop {
+    display: block;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-right: 20px;
+    padding: 3px 20px;
+}
+
+#footer #top-social li .ts-icon {
+    height: 34px;
+    line-height: 34px;
+}
+
+/* sm: phone - landscape */
+@media (min-width: 576px) {
+}
+/* md: tablet */
+@media (min-width: 768px) {
+}
+/* lg: desktop */
+@media (min-width: 992px) {
+    #footer #top-social {
+        margin-left: 20px;
+        line-height: 1.5;
+    }
+    #footer .footer-red > div {
+        height: 100px;
+    }
+    #footer #goToTop {
+        margin-right: 100px;
+        padding: 8px 22px;
+    }
+    #footer #top-social li .ts-icon {
+        height: 44px;
+        line-height: 44px;
+    }
+}
+/* xl: wide */
+@media (min-width: 1200px) {
+}
+/* super wide */
+@media (min-width: 1440px) {
+}
+</style>
+</head>
+
+<body class="stretched">
+    <div id="wrapper" class="clearfix">
+        <!-- Top Bar
+============================================= -->
+<div id="top-bar" class="transparent-topbar d-lg-none">
+    <div class="container clearfix">
+
+        <div class="row justify-content-between">
+            <div class="col-8 col-md-auto">
+
+                <!-- Top Social
+                ============================================= -->
+                
+
+                <ul id="top-social">
+                                                            <li>
+                        <a href="https://www.facebook.com/mpl.id.official/?ref=bookmarks" class="si-facebook" target="_blank">
+                            <span class="ts-icon">
+                                                                    <i class="icon-facebook"></i>
+                                                            </span>
+                            
+                        </a>
+                    </li>
+                                                            <li>
+                        <a href="https://www.instagram.com/mpl.id.official/?hl=en" class="si-instagram" target="_blank">
+                            <span class="ts-icon">
+                                                                    <i class="icon-instagram"></i>
+                                                            </span>
+                            
+                        </a>
+                    </li>
+                                                            <li>
+                        <a href="https://www.youtube.com/channel/UC1dGHGJTXU_dkiR8tW3qQgg" class="si-youtube" target="_blank">
+                            <span class="ts-icon">
+                                                                    <i class="icon-youtube"></i>
+                                                            </span>
+                            
+                        </a>
+                    </li>
+                                                            <li>
+                        <a href="https://twitter.com/mplidofficial" class="si-twitter" target="_blank">
+                            <span class="ts-icon">
+                                                                    <i class="icon-twitter"></i>
+                                                            </span>
+                            
+                        </a>
+                    </li>
+                                                            <li>
+                        <a href="https://www.tiktok.com/tag/mplditiktok?lang=en" class="si-tiktok" target="_blank">
+                            <span class="ts-icon">
+                                                                    <i class="icon-tiktok"></i>
+                                                            </span>
+                            
+                        </a>
+                    </li>
+                                    </ul><!-- #top-social end -->
+
+            </div>
+
+            <div class="col-4 col-md-auto">
+
+                <!-- Top Links
+                ============================================= -->
+                <div class="top-links">
+                    <ul class="top-links-container">
+                        <li class="top-links-item">
+                                                        <a href="#">
+                                <img src="https://id-mpl.com/images/langs/id.png" style="width: 12px; height: 12px;" alt="">ID
+                            </a>
+                            <ul class="top-links-sub-menu">
+                                                                <li class="top-links-item">
+                                    <a href="https://id-mpl.com/2018/ph">
+                                        <img src="https://id-mpl.com/images/langs/id.png" style="width: 12px; height: 12px;" alt="">ID
+                                    </a>
+                                </li>
+                                                                <li class="top-links-item">
+                                    <a href="https://id-mpl.com/en/2018/ph">
+                                        <img src="https://id-mpl.com/images/langs/en.png" style="width: 12px; height: 12px;" alt="">EN
+                                    </a>
+                                </li>
+                                                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- .top-links end -->
+
+            </div>
+        </div>
+
+    </div>
+</div><!-- #top-bar end -->
+
+
+<!-- Header
+============================================= -->
+<header id="header" class="floating-header header-size-md" data-sticky-shrink="false">
+    <div id="header-wrap">
+        <div class="container">
+            <div class="header-row">
+
+                <!-- Logo
+                ============================================= -->
+                <div id="logo">
+                    
+                    <a href="https://id-mpl.com/home" class="w-auto">
+                        
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="https://id-mpl.com/images/s14/logo/LOGO_MPL-ID-NEW-2024-400.webp"  alt="MPL logo">
+                            <img src="https://id-mpl.com/images/s14/logo/weownthis-white.webp"  alt="MPL logo" class="ms-0">
+                        </div>
+                            
+                        
+                    </a>
+                    
+                    <div class="mplid font-primary">
+                        MPL Indonesia
+                    </div>
+                </div>
+                <!-- #logo end -->
+
+                <div class="header-misc">
+                </div>
+
+                <div id="primary-menu-trigger">
+                    <svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+                </div>
+
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav class="primary-menu with-arrows">
+
+                    <ul class="menu-container">
+                        <li class="menu-item current">
+                            <a class="menu-link" href="https://id-mpl.com">
+                            
+                                <div>Home</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item ">
+                            <a class="menu-link" href="https://id-mpl.com/teams">
+                                <div>Tim</div>
+                            </a>
+                        </li>
+
+                        
+
+                        <li class="menu-item ">
+                            <a class="menu-link" href="https://id-mpl.com/schedule">
+                                <div>Jadwal</div>
+                            </a>
+                        </li>
+
+                        
+                        <li class="menu-item ">
+                            <a class="menu-link" href="https://id-mpl.com/ticket">
+                                <div>Tiket</div>
+                            </a>
+                        </li>
+                        
+
+                        
+                        
+                        
+
+                        
+                        
+
+                        
+
+                        <li class="menu-item  d-lg-none d-xl-block">
+                            <a class="menu-link" href="https://id-mpl.com/statistics">
+                                <div>Statistik</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item ">
+                            <a class="menu-link" href="https://id-mpl.com/news">
+                                <div>Berita</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item ">
+                            <a class="menu-link" href="https://id-mpl.com/theawards">
+                                <div>The Awards</div>
+                            </a>
+                        </li>
+
+                        
+
+                        
+
+                        
+
+                        
+                        
+                        
+
+                        <li class="menu-item  d-lg-none d-xl-block">
+                            <a class="menu-link" href="https://id-mpl.com/mpljourney">
+                                <div>Mpl Journey</div>
+                            </a>
+                        </li>
+
+                        
+
+                        
+
+                        
+                    </ul>
+
+                </nav><!-- #primary-menu end -->
+
+                                                <!-- Top Links
+                ============================================= -->
+                <div class="top-links d-none d-xl-block">
+                    <ul class="top-links-container">
+                        <li class="top-links-item">
+                                                        <a href="#">
+                                <img src="https://id-mpl.com/images/langs/id.png" style="width: 12px; height: 12px;" alt="">ID
+                            </a>
+                            <ul class="top-links-sub-menu">
+                                                                <li class="top-links-item">
+                                    <a href="https://id-mpl.com/2018/ph">
+                                        <img src="https://id-mpl.com/images/langs/id.png" style="width: 12px; height: 12px;" alt="">ID
+                                    </a>
+                                </li>
+                                                                <li class="top-links-item">
+                                    <a href="https://id-mpl.com/en/2018/ph">
+                                        <img src="https://id-mpl.com/images/langs/en.png" style="width: 12px; height: 12px;" alt="">EN
+                                    </a>
+                                </li>
+                                                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- .top-links end -->
+                
+            </div>
+        </div>
+    </div>
+    <div class="header-wrap-clone"></div>
+</header><!-- #header end -->
+            <section id="content">
+
+        <div class="content-wrap bg-barong pt-0">
+
+            <div class="container pt-lg-4">
+
+                <h4 class="text-center">
+                    ERROR 404
+                </h4>
+
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="error_title text-muted">
+                              Page not found
+                        </div>
+
+                        <div class="pb-xxl-5"></div>
+                    </div>
+                    
+                        
+
+                        
+
+                    
+                    <div class="col-lg-6 offset-lg-3">
+                                                <div class="mt-lg-3 text-center">
+                            <img src="https://id-mpl.com/images/error/404-400.png" alt="404" class="error_image" />
+                        </div>
+                                                
+                    </div>
+                </div>
+
+                <div class="pb-4"></div>
+            </div>
+
+        </div>
+
+    </section>
+        
+
+
+
+<!-- Footer
+============================================= -->
+<footer id="footer" class="border-0 bg-white">
+
+    <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights" style="
+            /* background: url('demos/seo/images/hero/footer.svg') no-repeat top center; */
+            background-color: transparent;
+            background-size: cover;
+            padding-top: 0px;
+            padding-bottom: 20px;
+            /* border-top: solid 3px rgba(var(--color1rgb), 0.1); */
+    ">
+
+        <div class="footer-red">
+
+            <div class="container d-flex flex-row justify-content-between align-items-center">
+                <div>
+
+                    
+                    <ul id="top-social">
+                                                                        <li>
+                            <a href="https://www.facebook.com/mpl.id.official/?ref=bookmarks" class="si-facebook" target="_blank">
+                                <span class="ts-icon">
+                                                                            <i class="icon-facebook"></i>
+                                                                    </span>
+                                
+                            </a>
+                        </li>
+                                                                        <li>
+                            <a href="https://www.instagram.com/mpl.id.official/?hl=en" class="si-instagram" target="_blank">
+                                <span class="ts-icon">
+                                                                            <i class="icon-instagram"></i>
+                                                                    </span>
+                                
+                            </a>
+                        </li>
+                                                                        <li>
+                            <a href="https://www.youtube.com/channel/UC1dGHGJTXU_dkiR8tW3qQgg" class="si-youtube" target="_blank">
+                                <span class="ts-icon">
+                                                                            <i class="icon-youtube"></i>
+                                                                    </span>
+                                
+                            </a>
+                        </li>
+                                                                        <li>
+                            <a href="https://twitter.com/mplidofficial" class="si-twitter" target="_blank">
+                                <span class="ts-icon">
+                                                                            <img src="https://id-mpl.com/images/_v1_6/icons/new-x-14.png" alt="" style="max-width: 16px; margin-top: -5px;" class="hovercolor" />
+                                                                    </span>
+                                
+                            </a>
+                        </li>
+                                                                        <li>
+                            <a href="https://www.tiktok.com/tag/mplditiktok?lang=en" class="si-tiktok" target="_blank">
+                                <span class="ts-icon">
+                                                                            <i class="icon-tiktok"></i>
+                                                                    </span>
+                                
+                            </a>
+                        </li>
+                                            </ul><!-- #top-social end -->
+                </div>
+
+                <div class="d-flex flex-row justify-content-center align-items-end">
+                                        <div>
+                        <button class="button d-lg-none" id="gotoTop" style="
+                            float: right;
+                            font-size: 0.85rem;
+                            width: auto;
+                            height: auto;
+                            z-index: 1;
+                        ">
+                            <i class="icon-angle-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container clearfix">
+
+            <div class="row justify-content-between">
+                <div class="col-12 col-lg-auto text-center text-lg-start pt-4">
+                    Copyrights &copy; 2026 Moonton. All Rights Reserved
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div><!-- #copyrights end -->
+</footer><!-- #footer end -->
+    </div>
+
+	<!-- Go To Top
+	============================================= -->
+	
+
+    <script src="https://id-mpl.com/js-v1.6/jquery.js"></script>
+<script src="https://id-mpl.com/js-v1.6/plugins.min.js"></script>
+<script src="https://id-mpl.com/js-v1.6/functions.js"></script>
+
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.24/fc-3.3.2/fh-3.1.8/r-2.2.7/datatables.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js" type="text/javascript"></script>
+
+<script src="https://id-mpl.com/js-v1.6/ext/intersection-observer.js" type="text/javascript" ></script>
+<script src="https://id-mpl.com/js-v1.6/ext/lazyload.min.js" type="text/javascript" ></script>
+
+<script src="https://id-mpl.com/js-v1.6/ext/jquery.scrollbar.min.js" type="text/javascript" ></script>
+<script src="https://id-mpl.com/js-v1.6/ext/clipboard.min.js" type="text/javascript" ></script>
+<script src="https://id-mpl.com/js-v1.6/ext/mediaelement-and-player.min.js" type="text/javascript" ></script>
+
+<script src="" type="text/javascript"></script>
+<script src="https://id-mpl.com/js-v1.6/tilt.jquery.js?1792647529"></script>
+
+<script>
+    $(function() {
+        AOS.init();
+    });
+
+    AOS.refresh();
+</script>
+    </body>
+
+</html>

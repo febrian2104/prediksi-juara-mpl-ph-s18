@@ -12,10 +12,7 @@ PREDICTIONS = ROOT / "data" / "predictions"
 
 
 @st.cache_data(show_spinner=False)
-def _csv(name: str, *, dates: tuple[str, ...] = ()) -> pd.DataFrame:
-    path = PREDICTIONS / name
-    if not path.exists():
-        raise FileNotFoundError(f"Artefak dashboard tidak ditemukan: {path.name}")
+def _cached_csv(path: str, dates: tuple[str, ...], signature: tuple[int, int]) -> pd.DataFrame:
     frame = pd.read_csv(path)
     for column in dates:
         if column in frame:
@@ -23,7 +20,14 @@ def _csv(name: str, *, dates: tuple[str, ...] = ()) -> pd.DataFrame:
     return frame
 
 
-@st.cache_data(show_spinner=False)
+def _csv(name: str, *, dates: tuple[str, ...] = ()) -> pd.DataFrame:
+    path = PREDICTIONS / name
+    if not path.exists():
+        raise FileNotFoundError(f"Artefak dashboard tidak ditemukan: {path.name}")
+    info = path.stat()
+    return _cached_csv(str(path), dates, (info.st_mtime_ns, info.st_size))
+
+
 def _evaluation() -> dict:
     return json.loads((ROOT / "reports" / "s18_evaluation.json").read_text(encoding="utf-8"))
 
@@ -40,6 +44,30 @@ def _header(title: str, subtitle: str) -> None:
 
 def _percent(value: float) -> str:
     return f"{100 * value:.1f}%"
+
+
+def playoff_bracket_dot(playoff: pd.DataFrame) -> str:
+    competition = json.loads((ROOT / "config/competition.json").read_text())
+    rows = playoff.set_index("bracket_match_id")
+    lines = [
+        "digraph bracket { rankdir=LR; bgcolor=transparent;",
+        'node [shape=box, style="rounded,filled", fillcolor="#eff6ff", fontname="Arial"];',
+        'edge [fontname="Arial", fontsize=10];',
+    ]
+    for match in competition["playoffs"]["matches"]:
+        row = rows.loc[match["id"]]
+        label = (
+            f"{match['id']} · BO{match['best_of']}\n"
+            f"{row.team_a_name}  {row.team_a_score}\n{row.team_b_name}  {row.team_b_score}"
+        )
+        lines.append(f"{match['id']} [label={json.dumps(label, ensure_ascii=False)}];")
+        for reference in (match["team_a"], match["team_b"]):
+            if reference.startswith(("winner_", "loser_")):
+                outcome, previous = reference.split("_", 1)
+                style = 'label="Menang"' if outcome == "winner" else 'label="Kalah", style=dashed'
+                lines.append(f"{previous} -> {match['id']} [{style}];")
+    lines.append("}")
+    return "\n".join(lines)
 
 
 def page_regular_season() -> None:
@@ -159,6 +187,11 @@ def page_playoff() -> None:
     )
 
     st.subheader("Bagan dan hasil")
+    st.graphviz_chart(playoff_bracket_dot(playoff), width="stretch")
+    st.caption(
+        "Bagan menampilkan jalur dan hasil aktual. Peluang di tabel dihitung sebelum playoff "
+        "untuk pasangan tim yang akhirnya bertemu; peluang ini bersifat kondisional pada pasangan."
+    )
     round_names = {
         "M1": "Play-in: Seed 3 vs 6",
         "M2": "Play-in: Seed 4 vs 5",
@@ -258,6 +291,72 @@ def page_results() -> None:
         width="stretch",
     )
     st.caption(evaluation["honesty_note"])
+    with st.expander("Kalibrasi probabilitas"):
+        predictions = _csv("s18_match_predictions.csv")
+        regular_predictions = predictions.loc[predictions["stage"].eq("regular_season")].copy()
+        regular_predictions["bin"] = pd.cut(
+            regular_predictions["team_a_win_probability"],
+            bins=[i / 10 for i in range(11)],
+            include_lowest=True,
+        )
+        calibration = (
+            regular_predictions.groupby("bin", observed=True)
+            .agg(
+                predicted=("team_a_win_probability", "mean"),
+                observed=("team_a_win", "mean"),
+                rows=("team_a_win", "size"),
+            )
+            .reset_index(drop=True)
+        )
+        line = (
+            alt.Chart(pd.DataFrame({"x": [0, 1], "y": [0, 1]}))
+            .mark_line(color="gray", strokeDash=[4, 4])
+            .encode(x="x:Q", y="y:Q")
+        )
+        points = (
+            alt.Chart(calibration)
+            .mark_line(point=True)
+            .encode(
+                x=alt.X(
+                    "predicted:Q", title="Probabilitas prediksi", scale=alt.Scale(domain=[0, 1])
+                ),
+                y=alt.Y(
+                    "observed:Q", title="Proporsi kemenangan aktual", scale=alt.Scale(domain=[0, 1])
+                ),
+                tooltip=[alt.Tooltip("rows:Q", title="Jumlah laga")],
+            )
+        )
+        st.altair_chart(line + points, width="stretch")
+        st.caption(
+            "Semakin dekat ke garis diagonal, semakin baik kalibrasinya. "
+            "Sampel S18 hanya 56 laga regular season."
+        )
+    with st.expander("Status data Season 1–18 dan riwayat prediksi"):
+        coverage = pd.read_csv(ROOT / "reports/season_coverage.csv")
+        st.dataframe(
+            coverage[
+                ["season", "collected_match_rows", "model_eligible_rows", "coverage_status"]
+            ].rename(
+                columns={
+                    "season": "Season",
+                    "collected_match_rows": "Laga terkumpul",
+                    "model_eligible_rows": "Laga layak model",
+                    "coverage_status": "Status cakupan",
+                }
+            ),
+            hide_index=True,
+            width="stretch",
+        )
+        live_count = len(list((PREDICTIONS / "live").glob("*/*.json")))
+        st.caption(
+            f"Snapshot pra-laga yang benar-benar disimpan: {live_count}. "
+            "S1–S5 masih parsial dan belum masuk model. Roster bertanggal belum lengkap."
+        )
+        st.caption(
+            "Simulasi tiebreak tiga tim atau lebih masih memakai undian urutan awal "
+            "karena total durasi kemenangan belum tersedia. Hasil mingguan direkonstruksi "
+            "pada siang hari berikutnya; waktu publikasi hasil historis tidak tersedia."
+        )
 
 
 def main() -> None:

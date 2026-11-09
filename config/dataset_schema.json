@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "reference": "MPL Indonesia Season 18: data/contracts.py dan gabungan header CSV S1-S17",
+  "region": "PH",
+  "missing_value_policy": "null; tidak diisi nol atau data perkiraan",
+  "tables": {
+    "matches": ["season", "stage", "week", "date", "match_id", "team_a", "team_b", "team_a_score", "team_b_score", "winner", "best_of", "round", "source"],
+    "teams": ["season", "team_id", "team_name", "source"],
+    "players": ["season", "team", "player", "role", "status", "source"],
+    "championships": ["season", "team", "final_rank", "champion", "runner_up", "source"],
+    "games": ["season", "match_id", "game_number", "date", "team_a", "team_b", "winner", "duration_minutes", "source"],
+    "drafts": ["season", "match_id", "game_number", "team", "action", "order", "hero", "source", "scope", "total_count", "wins", "losses", "win_rate_pct"],
+    "player_season_stats": ["season", "team", "player", "role", "stat_scope", "snapshot_label", "snapshot_date", "ranking", "games_played", "win_rate_pct", "total_kills", "avg_kills", "total_deaths", "avg_deaths", "total_assists", "avg_assists", "avg_kda", "kill_participation_pct", "mvp_points", "signature_hero", "signature_hero_games", "signature_hero_win_rate_pct", "damage_taken_per_game", "damage_taken_per_minute", "coverage_status", "source"]
+  },
+  "integer_columns": ["season", "week", "team_a_score", "team_b_score", "best_of", "final_rank", "champion", "runner_up", "game_number", "order", "total_count", "wins", "losses", "ranking", "games_played", "total_kills", "total_deaths", "total_assists", "mvp_points", "signature_hero_games"],
+  "number_columns": ["duration_minutes", "win_rate_pct", "avg_kills", "avg_deaths", "avg_assists", "avg_kda", "kill_participation_pct", "signature_hero_win_rate_pct", "damage_taken_per_game", "damage_taken_per_minute"],
+  "match_winner_values": ["team_a", "team_b", "draw"],
+  "live_tables": {
+    "teams": ["season", "team_id", "team_name", "organization_id", "franchise_slot_id", "source_url"],
+    "schedule_results": ["season", "stage", "week", "match_id", "official_match_id", "scheduled_at", "team_a_id", "team_b_id", "team_a_franchise_slot_id", "team_b_franchise_slot_id", "team_a_score", "team_b_score", "winner_team_id", "winner_side", "best_of", "status", "observed_at", "source_url"],
+    "playoff_schedule_results": ["season", "stage", "match_id", "official_match_id", "round", "scheduled_at", "best_of", "team_a_id", "team_b_id", "team_a_score", "team_b_score", "winner_team_id", "status", "observed_at", "source_url", "routing_basis", "best_of_basis"],
+    "rosters": ["season", "team_id", "team_name", "organization_id", "franchise_slot_id", "nickname", "player_key_raw", "player_key", "player_id", "role_raw", "role", "member_type", "observed_at", "valid_from", "valid_to", "temporal_basis", "source_url"]
+  }
+}

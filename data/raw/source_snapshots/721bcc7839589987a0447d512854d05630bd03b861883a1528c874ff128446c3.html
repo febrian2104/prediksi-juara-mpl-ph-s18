@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Error 500</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://ph-mpl.com/images/logo/mpl-ph-logo-official.png"/>
+
+    <link rel="stylesheet" href="https://ph-mpl.com/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="https://ph-mpl.com/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="https://ph-mpl.com/css/custom.css?1775461045" />
+
+    <style>
+        .app {
+            min-height: 100vh;
+            background-color: #f1f4f8;
+        }
+
+        .img-logo {
+            max-width: 150px;
+        }
+
+        .error_number {
+            font-size: 78px;
+            font-weight: 600;
+            line-height: 60px;
+            margin-bottom: 25px;
+            color: #1b2a4e;
+        }
+        .error_number small {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1b2a4e;
+        }
+
+        .error_number hr {
+            margin-top: 60px;
+            margin-bottom: 0;
+            width: 50px;
+        }
+
+        .error_title {
+            margin-top: 20px;
+            font-size: 36px;
+            font-weight: 400;
+        }
+
+        .error_description {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .text-muted, .text-muted small {
+            color: #869ab8 !important;
+        }
+
+        .bb {
+            border-bottom: solid #dadee4 1px;
+            width: 200px;
+            margin: 0px auto;
+        }
+        .btn-back {
+            background: #1b2a4e;
+            color: #ffff;
+            padding: 5px 10px;
+        }
+
+        /* sm: phone - landscape */
+        @media (min-width: 576px) {
+        }
+        /* md: tablet */
+        @media (min-width: 768px) {
+        }
+        /* lg: desktop */
+        @media (min-width: 992px) {
+            .img-logo {
+                max-width: 300px;
+            }
+
+            .error_number {
+                font-size: 156px;
+                line-height: 100px;
+                margin-bottom: 50px;
+            }
+
+            .error_title {
+                margin-top: 40px;
+            }
+
+            .bb {
+                width: 400px;
+            }
+        }
+        /* xl: wide */
+        @media (min-width: 1200px) {
+        }
+        /* super wide */
+        @media (min-width: 1440px) {
+        }
+  </style>
+</head>
+<body class="app d-flex flex-row align-items-center border">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+                    <div class="mr-0 mr-lg-3">
+                        <img src="https://ph-mpl.com/images/logo/mpl-ph-logo-official.png" alt="MPL-PH" class="img-logo" />
+                    </div>
+                    <div class="ml-0 ml-lg-3">
+                        <div class="error_number">
+                            <small>ERROR</small>
+                            <br>
+                            500
+                        </div>
+                    </div>
+                </div>
+                <div class="bb">
+                </div>
+                <div class="error_title text-muted">
+                    	Something went wrong.
+                </div>
+                <button class="btn-back mt-3 rounded border-0">
+                    <a href="https://ph-mpl.com/s4">Back To Homepage</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

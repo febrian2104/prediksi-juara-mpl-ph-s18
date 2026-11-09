@@ -3,6 +3,18 @@
   "season": 18,
   "data_cutoff": "2026-11-09",
   "timezone": "Asia/Manila",
+  "historical_franchise_start": {
+    "season": 8,
+    "source_url": "https://ph-mpl.com/news/whos-who-in-season-8-of-mpl-ph",
+    "verified_on": "2026-11-09"
+  },
+  "participants": ["APBR", "RORA", "ONIC", "OMG", "FLCN", "TLPH", "TNC", "TWIS"],
+  "verification": {
+    "status": "verified",
+    "season": 18,
+    "verified_at": "2026-11-09T07:30:00+00:00",
+    "source_url": "https://ph-mpl.com/rules"
+  },
   "regular_season": {
     "team_count": 8,
     "round_robin_cycles": 2,

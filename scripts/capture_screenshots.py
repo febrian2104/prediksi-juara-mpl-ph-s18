@@ -1,5 +1,6 @@
 """Capture the three live dashboard pages after Streamlit is running locally."""
 
+import os
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -15,6 +16,10 @@ PAGES = {
 
 def main() -> None:
     OUTPUT.mkdir(parents=True, exist_ok=True)
+    browser_temp = ROOT / ".cache/browser"
+    browser_temp.mkdir(parents=True, exist_ok=True)
+    os.environ["TMPDIR"] = str(browser_temp)
+    os.environ["XDG_CACHE_HOME"] = str(ROOT / ".cache")
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(
             headless=True,
@@ -26,6 +31,8 @@ def main() -> None:
             page.goto(url, wait_until="networkidle", timeout=30_000)
             page.wait_for_selector("h1", timeout=30_000)
             page.wait_for_timeout(1_000)
+            if page.locator('[data-testid="stException"]').count():
+                raise RuntimeError(f"Error aplikasi ditemukan: {url}")
             page.screenshot(path=OUTPUT / filename, full_page=False)
         browser.close()
 

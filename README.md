@@ -38,7 +38,8 @@ Sumber utama adalah [rulebook resmi MPL PH S18](https://ph-mpl.com/rules),
 [klasemen resmi](https://ph-mpl.com/data), [daftar tim resmi](https://ph-mpl.com/teams),
 halaman roster resmi masing-masing tim, serta
 [rilis juara dari MOONTON Games](https://en.moonton.com/news/391.html). Seluruh sumber
-dicatat di `data/raw/source_manifest.csv` dengan tanggal akses 9 November 2026.
+dicatat di `data/raw/source_manifest.csv`; pemeriksaan sumber awal dicatat di
+`data/raw/historical_source_manifest.csv`, dengan tanggal akses 9 November 2026.
 
 Format yang diterapkan:
 
@@ -49,22 +50,38 @@ Format yang diterapkan:
 - enam tim ke playoff; seed 3–6 masuk play-in, seed 1–2 mendapat bye;
 - seluruh seri playoff BO5, kecuali lower bracket final dan grand final yang BO7.
 
-Dataset berisi 787 laga yang lolos canonicalisasi: 723 laga historis terverifikasi sebelum
-S18 dan 64 laga S18. Arsip resmi S5 dan S8 tidak menyediakan kartu hasil yang dapat diaudit,
-dan satu skor S6 tampil rusak sebagai `2:-2`; data tersebut tidak dibuat-buat dan dikeluarkan.
-Roster S18 memuat 49 pemain dan 17 pelatih/staf. Roster bertanggal lintas musim belum cukup
-lengkap, sehingga fitur roster belum dipakai pada model awal.
+Katalog mencakup **Season 1–18**, dengan status yang berbeda per musim:
+
+- **S1–S5:** 14 hasil parsial dari berita resmi lama, laporan pertandingan, dan sumber
+  pembanding. Jam mulai belum lengkap; hasil BO2 seri S1 dipertahankan. Belum masuk model.
+- **S6–S18:** 852 laga canonical, termasuk 788 laga sebelum S18 dan 64 laga S18.
+  S8 dipulihkan dari halaman jadwal resmi. Tiga skor S6 yang rusak dikoreksi memakai
+  dua laporan pertandingan dan berita resmi liga; skor asli serta sumber disimpan.
+- Roster S18 memuat 49 pemain dan 17 pelatih/staf. Ada tujuh observasi pemain historis,
+  tetapi tanggal efektifnya belum cukup lengkap untuk fitur roster.
+- Tujuh tabel mengikuti nama kolom dataset referensi Indonesia. Statistik 49 pemain S18
+  tersedia sebagai observasi pascamusim; kolom yang tidak tersedia tetap null dan statistik
+  tersebut tidak digunakan untuk fitur S18. [Kamus variabel](docs/DATA_DICTIONARY.md)
+  menjelaskan pemetaan dan tipe data.
+
+Cakupan dan kekurangan setiap musim tercatat di `reports/season_coverage.csv`.
+Data per musim memakai `data/mpl-season1` sampai `data/mpl-season17` dan `data/season18`,
+mengikuti proyek referensi MPL Indonesia. Data olahan juga tersedia di
+`data/interim/normalized` dan `data/processed/{canonical,features,predictions}`;
+model berada di `artifacts/final_match_model.joblib`.
+[Pemetaan struktur](docs/STRUCTURE.md) dan [catatan sumber](docs/DATA_SOURCES.md) menjelaskan
+penyesuaian khusus PH. Tabel opsional yang belum tersedia hanya berisi header, tanpa data buatan.
 
 ## Hasil model
 
 Walk-forward backtesting memakai S10–S17 sebagai jendela uji dan hanya melatih pada musim
-yang lebih lama. Elo menjadi model produksi karena log loss-nya paling rendah (0,615),
-sedikit lebih baik daripada Logistic Regression (0,617), Random Forest (0,630), dan XGBoost
-(0,634). Pemilihan ini dilakukan sebelum evaluasi S18 dan hasil S18 tidak dipakai untuk
+yang lebih lama. Setelah S8 ditambahkan dan alias historis ECHO dibetulkan,
+Logistic Regression menjadi model produksi dengan log loss 0,613, dibanding Elo 0,617,
+Random Forest 0,623, dan XGBoost 0,625. Pemilihan ini dilakukan sebelum evaluasi S18 dan hasil S18 tidak dipakai untuk
 training atau pemilihan model.
 
-Pada rekonstruksi regular season S18, Elo memperoleh accuracy 85,7%, log loss 0,482, dan
-Brier score 0,153. Rekonstruksi pramusim memilih Team Liquid PH dengan peluang juara 58,0%,
+Pada rekonstruksi regular season S18, model memperoleh accuracy 82,1%, log loss 0,436, dan
+Brier score 0,139. Rekonstruksi pramusim memilih Team Liquid PH dengan peluang juara 78,9%,
 sedangkan juara aktual adalah Aurora Gaming PH. Hasil meleset ini tetap ditampilkan apa
 adanya.
 
@@ -99,8 +116,16 @@ make rebuild
 ```
 
 Jumlah simulasi dapat diubah melalui `simulation.iterations` di `config/model.json`.
-Prediksi lama harus disalin sebagai snapshot bertanggal sebelum pembaruan live berikutnya;
-pipeline tidak boleh mengubah label rekonstruksi menjadi prediksi tersimpan.
+Setiap pembaruan otomatis mengarsipkan keadaan sebelum dan sesudah pipeline di
+`data/predictions/history`. Snapshot memakai waktu simpan sebenarnya, checksum, dan pembuatan
+eksklusif agar riwayat tidak tertimpa. Jalankan `make verify-history` untuk memeriksa integritas.
+Label S18 tetap rekonstruksi. [Petunjuk prediksi live](docs/LIVE_PREDICTIONS.md) menyediakan
+perintah untuk laga mendatang dan evaluasi terpisah; saat ini belum ada prediksi live asli.
+
+BO1 tiebreak disimulasikan memakai probabilitas model. Untuk tiebreak tiga tim atau lebih,
+urutan awal masih menggunakan undian karena total durasi kemenangan tidak tersedia.
+Snapshot mingguan memakai siang hari berikutnya sebagai asumsi rekonstruksi; arsip tidak
+menyediakan waktu publikasi hasil yang sebenarnya. Keterbatasan ini juga tampil di dashboard.
 
 ## Pengujian
 
@@ -111,7 +136,7 @@ make check
 Untuk mengambil ulang screenshot setelah dashboard lokal berjalan:
 
 ```bash
-python scripts/capture_screenshots.py
+.venv/bin/python scripts/capture_screenshots.py
 ```
 
 ## Streamlit Cloud
@@ -119,4 +144,7 @@ python scripts/capture_screenshots.py
 Gunakan `streamlit_app.py` sebagai main file. `requirements.txt` hanya berisi dependensi
 runtime dan seluruh file prediksi yang dibaca dashboard sudah disertakan. Aplikasi tidak
 menjalankan kolektor, training, atau simulasi ketika halaman dibuka.
+
+Daftar pekerjaan selesai dan tertunda: [PROJECT_STATUS.md](PROJECT_STATUS.md).
+Operasional lokal: [docs/OPERATIONS.md](docs/OPERATIONS.md).
 

@@ -1,0 +1,13 @@
+{
+  "season": 11,
+  "collected_match_rows": 64,
+  "model_eligible_rows": 64,
+  "coverage_status": "available_archive_loaded",
+  "regular_season_rows": 56,
+  "playoff_rows": 8,
+  "player_rows": 0,
+  "games_rows": 0,
+  "drafts_rows": 0,
+  "player_stat_rows": 0,
+  "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim dan tidak digunakan sebagai fitur S18."
+}

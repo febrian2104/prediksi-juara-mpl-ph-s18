@@ -1,11 +1,21 @@
 {
-  "model_name": "elo_baseline",
+  "trained_at": "2026-11-09T08:20:01.018654+00:00",
+  "training_latest_match_at": "2026-05-31 09:00:00+00:00",
+  "training_data_observed_at": "2026-11-09T08:08:42.496740+00:00",
+  "model_name": "logistic_regression",
   "feature_columns": [
-    "elo_diff"
+    "elo_diff",
+    "form_3_diff",
+    "form_5_diff",
+    "game_diff_5_diff",
+    "sos_5_diff",
+    "h2h_diff",
+    "season_matches_diff"
   ],
   "training_seasons": [
     6,
     7,
+    8,
     9,
     10,
     11,
@@ -16,7 +26,7 @@
     16,
     17
   ],
-  "training_rows_original": 723,
+  "training_rows_original": 788,
   "selection_method": "lowest walk-forward log loss, then Brier score",
   "s18_used_for_selection_or_training": false
 }

@@ -8,10 +8,12 @@ DEV_STAMP := $(VENV)/.dev-ready
 HOST ?= 127.0.0.1
 PORT ?= 8501
 
-.PHONY: run setup dev-setup update rebuild test lint check help
+.PHONY: run setup dev-setup update rebuild test lint check help archive verify-history forecast evaluate collect-history dashboard verify
 
 run: setup
 	$(PYTHON) -m streamlit run streamlit_app.py --server.address $(HOST) --server.port $(PORT)
+
+dashboard: run
 
 setup: $(RUNTIME_STAMP)
 
@@ -43,6 +45,25 @@ lint: dev-setup
 
 check: lint test
 
+verify: check verify-history
+
+collect-history: setup
+	$(PYTHON) scripts/collect_history.py
+
+archive: setup
+	$(PYTHON) scripts/update_project.py --archive-only
+
+verify-history: setup
+	$(PYTHON) scripts/update_project.py --verify-history
+
+forecast: setup
+	@test -n "$(SCHEDULE)" -a -n "$(PERIOD)" || (echo 'Isi SCHEDULE dan PERIOD; lihat docs/LIVE_PREDICTIONS.md.'; exit 2)
+	$(PYTHON) scripts/forecast.py save --schedule "$(SCHEDULE)" --period "$(PERIOD)" --rules "$(or $(RULES),config/competition.json)"
+
+evaluate: setup
+	@test -n "$(SNAPSHOT)" || (echo 'Isi SNAPSHOT dengan jalur prediksi live.'; exit 2)
+	$(PYTHON) scripts/forecast.py evaluate --snapshot "$(SNAPSHOT)"
+
 help:
 	@printf '%s\n' \
 		'make run       Siapkan environment otomatis lalu jalankan dashboard' \
@@ -50,4 +71,9 @@ help:
 		'make update    Ambil data resmi lalu perbarui seluruh artefak' \
 		'make rebuild   Bangun ulang artefak dari data mentah lokal' \
 		'make check     Jalankan lint dan seluruh pengujian' \
+		'make archive   Simpan arsip artefak saat ini tanpa menimpa riwayat' \
+		'make collect-history  Periksa ulang sumber historis Season 1-5' \
+		'make verify-history  Periksa integritas seluruh snapshot' \
+		'make forecast SCHEDULE=... PERIOD=... RULES=...  Simpan prediksi mendatang' \
+		'make evaluate SNAPSHOT=...  Evaluasi prediksi live secara terpisah' \
 		'make help      Tampilkan bantuan ini'

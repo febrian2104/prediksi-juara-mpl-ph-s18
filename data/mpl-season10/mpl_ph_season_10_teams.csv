@@ -1,0 +1,9 @@
+season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
+10,blacklist_international,Blacklist International,https://ph-mpl.com/s10,BLCK,,,True,https://ph-mpl.com/s10
+10,bren_esports,Bren Esports,https://ph-mpl.com/s10,BREN,,,True,https://ph-mpl.com/s10
+10,echo,ECHO,https://ph-mpl.com/s10,ECHO,,,True,https://ph-mpl.com/s10
+10,nexplay_evos,Nexplay EVOS,https://ph-mpl.com/s10,NXPE,,,True,https://ph-mpl.com/s10
+10,onic_philippines,ONIC Philippines,https://ph-mpl.com/s10,ONIC,,,True,https://ph-mpl.com/s10
+10,rsg_philippines,RSG Philippines,https://ph-mpl.com/s10,RSG,,,True,https://ph-mpl.com/s10
+10,smart_omega,Smart Omega,https://ph-mpl.com/s10,OMG,,,True,https://ph-mpl.com/s10
+10,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s10,TNC,,,True,https://ph-mpl.com/s10

@@ -1,8 +1,9 @@
 {
-  "rows": 787,
+  "rows": 852,
   "seasons": [
     6,
     7,
+    8,
     9,
     10,
     11,
@@ -25,6 +26,29 @@
     "h2h_diff",
     "season_matches_diff"
   ],
+  "reference_compatible_columns": [
+    "current_matches_diff",
+    "current_match_win_rate_diff",
+    "current_game_win_rate_diff",
+    "current_game_diff_per_match_diff",
+    "prior_regular_match_win_rate_diff",
+    "prior_regular_game_win_rate_diff",
+    "prior_regular_game_diff_per_match_diff",
+    "prior_3_season_match_win_rate_diff",
+    "prior_3_season_game_win_rate_diff",
+    "prior_3_season_game_diff_per_match_diff",
+    "current_form_3_diff",
+    "current_form_5_diff",
+    "current_sos_elo_avg_diff",
+    "rest_days_diff",
+    "elo_rating_a",
+    "elo_rating_b",
+    "elo_rating_diff",
+    "elo_expected_team_a",
+    "latest_history_date_a",
+    "latest_history_date_b"
+  ],
+  "completion_time_status": "unverified_kept_null",
   "roster_features_used": false,
   "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap."
 }

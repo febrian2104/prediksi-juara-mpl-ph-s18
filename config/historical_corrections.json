@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-11-09",
+  "score_corrections": [
+    {
+      "season": 6,
+      "scheduled_at": "2020-09-13T19:30:00+08:00",
+      "team_a_code": "BLCK",
+      "team_b_code": "ONIC",
+      "original_score": "2:-2",
+      "team_a_score": 2,
+      "team_b_score": 0,
+      "source_urls": [
+        "https://tiebreakertimes.com.ph/tbt/edward-fullclip-link-blacklist-stuns-onic-ph-mpl",
+        "https://www.dugout.ph/2020/09/blacklist-intl-sweeps-onic-extends-win.html"
+      ],
+      "verification": "Dua laporan pertandingan kontemporer menyebut Blacklist menang 2-0 pada 13 September 2020. Skor arsip resmi tetap dicatat sebagai rusak; koreksi ini bukan skor yang diperbaiki oleh penyelenggara.",
+      "verification_type": "corroborated_match_reports"
+    },
+    {
+      "season": 6,
+      "scheduled_at": "2020-09-18T19:30:00+08:00",
+      "team_a_code": "ONIC",
+      "team_b_code": "BREN",
+      "original_score": "0:0",
+      "team_a_score": 0,
+      "team_b_score": 2,
+      "source_urls": [
+        "https://ph-mpl.com/news/mpl-ph-season-6-bren-esports-move-to-7-0-blu-fire-drop-to-0-8-to-open-up-week-5"
+      ],
+      "verification_type": "official_news_report",
+      "verification": "Berita resmi liga pada 19 September 2020 menyebut BREN menyapu ONIC pada pembuka week 5. Kartu jadwal menyebut 0:0; hasil BO3 sweep adalah 0-2."
+    },
+    {
+      "season": 6,
+      "scheduled_at": "2020-09-19T19:30:00+08:00",
+      "team_a_code": "EXE",
+      "team_b_code": "AURA",
+      "original_score": "1:1",
+      "team_a_score": 1,
+      "team_b_score": 2,
+      "source_urls": [
+        "https://ph-mpl.com/news/mpl-ph-season-6-aura-cignal-ultra-nexplay-solid-victorious-over-execration-bsb-and-blacklist-intl"
+      ],
+      "verification_type": "official_news_report",
+      "verification": "Berita resmi liga pada 21 September 2020 secara eksplisit menyebut Aura mengalahkan Execration 2-1 dalam pertemuan kedua season 6, week 5. Kartu jadwal sebelumnya mencatat 1:1."
+    }
+  ],
+  "season_team_aliases": [
+    {
+      "first_season": 8,
+      "last_season": 12,
+      "raw_team_code": "TLPH",
+      "canonical_code": "ECHO",
+      "official_name": "ECHO",
+      "source_url": "https://ph-mpl.com/s8/data",
+      "corroborating_url": "https://teamliquid.com/id/articles/the-5-steps-of-recovering-from-mobile-esports-denial",
+      "note": "Arsip mengganti kode lama secara retroaktif. Klasemen S8 masih menyebut ECHO; Team Liquid mengonfirmasi akuisisi ECHO baru pada Mei 2024. Riwayat ECHO disimpan terpisah dari TLPH secara konservatif."
+    }
+  ]
+}

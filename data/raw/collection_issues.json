@@ -8,14 +8,6 @@
     "source_url": "https://ph-mpl.com/s5"
   },
   {
-    "severity": "warning",
-    "scope": "season_8",
-    "issue": "official_archive_has_no_machine_readable_match_cards",
-    "detail": "Halaman arsip resmi S8 tidak memuat kartu hasil yang dapat diaudit.",
-    "action": "season_excluded_from_training",
-    "source_url": "https://ph-mpl.com/s8"
-  },
-  {
     "severity": "info",
     "scope": "roster_features",
     "issue": "dated_historical_rosters_unavailable_in_collected_official_archives",
@@ -24,11 +16,37 @@
     "source_url": "https://ph-mpl.com/teams"
   },
   {
-    "severity": "warning",
+    "severity": "info",
     "scope": "season_6",
-    "issue": "historical_match_not_parseable",
-    "detail": "Card 32: Week 4 - 13 Sep · 7:30 PM; score=2:-2 EN PH",
-    "action": "excluded_from_canonical_dataset",
-    "source_url": "https://ph-mpl.com/s6"
+    "issue": "corrupted_score_corrected_with_documented_evidence",
+    "detail": "Dua laporan pertandingan kontemporer menyebut Blacklist menang 2-0 pada 13 September 2020. Skor arsip resmi tetap dicatat sebagai rusak; koreksi ini bukan skor yang diperbaiki oleh penyelenggara.",
+    "action": "included_with_explicit_correction_provenance",
+    "source_url": "https://ph-mpl.com/s6",
+    "correction_sources": [
+      "https://tiebreakertimes.com.ph/tbt/edward-fullclip-link-blacklist-stuns-onic-ph-mpl",
+      "https://www.dugout.ph/2020/09/blacklist-intl-sweeps-onic-extends-win.html"
+    ]
+  },
+  {
+    "severity": "info",
+    "scope": "season_6",
+    "issue": "corrupted_score_corrected_with_documented_evidence",
+    "detail": "Berita resmi liga pada 19 September 2020 menyebut BREN menyapu ONIC pada pembuka week 5. Kartu jadwal menyebut 0:0; hasil BO3 sweep adalah 0-2.",
+    "action": "included_with_explicit_correction_provenance",
+    "source_url": "https://ph-mpl.com/s6",
+    "correction_sources": [
+      "https://ph-mpl.com/news/mpl-ph-season-6-bren-esports-move-to-7-0-blu-fire-drop-to-0-8-to-open-up-week-5"
+    ]
+  },
+  {
+    "severity": "info",
+    "scope": "season_6",
+    "issue": "corrupted_score_corrected_with_documented_evidence",
+    "detail": "Berita resmi liga pada 21 September 2020 secara eksplisit menyebut Aura mengalahkan Execration 2-1 dalam pertemuan kedua season 6, week 5. Kartu jadwal sebelumnya mencatat 1:1.",
+    "action": "included_with_explicit_correction_provenance",
+    "source_url": "https://ph-mpl.com/s6",
+    "correction_sources": [
+      "https://ph-mpl.com/news/mpl-ph-season-6-aura-cignal-ultra-nexplay-solid-victorious-over-execration-bsb-and-blacklist-intl"
+    ]
   }
 ]

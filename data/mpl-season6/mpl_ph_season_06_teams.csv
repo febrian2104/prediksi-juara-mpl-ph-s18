@@ -1,0 +1,11 @@
+season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
+6,aura_ph,Aura PH,https://ph-mpl.com/s6,AURA,,,True,https://ph-mpl.com/s6
+6,blacklist_international,Blacklist International,https://ph-mpl.com/s6,BLCK,,,True,https://ph-mpl.com/s6
+6,blu_fire,Blu Fire,https://ph-mpl.com/s6,BNK,,,True,https://ph-mpl.com/s6
+6,bren_esports,Bren Esports,https://ph-mpl.com/s6,BREN,,,True,https://ph-mpl.com/s6
+6,bsb,Bsb,https://ph-mpl.com/s6,BSB,,,True,https://ph-mpl.com/s6
+6,cignal_ultra,Cignal Ultra,https://ph-mpl.com/s6,CIG,,,True,https://ph-mpl.com/s6
+6,execration,Execration,https://ph-mpl.com/s6,EXE,,,True,https://ph-mpl.com/s6
+6,nexplay_solid,Nexplay Solid,https://ph-mpl.com/s6,NXP,,,True,https://ph-mpl.com/s6
+6,onic_philippines,ONIC Philippines,https://ph-mpl.com/s6,ONIC,,,True,https://ph-mpl.com/s6
+6,smart_omega,Smart Omega,https://ph-mpl.com/s6,OMG,,,True,https://ph-mpl.com/s6

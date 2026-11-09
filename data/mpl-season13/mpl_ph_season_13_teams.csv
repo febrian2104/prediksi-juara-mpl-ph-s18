@@ -1,0 +1,9 @@
+season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
+13,ap_bren,AP BREN,https://ph-mpl.com/s13,APBR,,,True,https://ph-mpl.com/s13
+13,blacklist_international,Blacklist International,https://ph-mpl.com/s13,BLCK,,,True,https://ph-mpl.com/s13
+13,minana_evos,Minana EVOS,https://ph-mpl.com/s13,MNNE,,,True,https://ph-mpl.com/s13
+13,onic_philippines,ONIC Philippines,https://ph-mpl.com/s13,ONIC,,,True,https://ph-mpl.com/s13
+13,rsg_philippines,RSG Philippines,https://ph-mpl.com/s13,RSG,,,True,https://ph-mpl.com/s13
+13,smart_omega,Smart Omega,https://ph-mpl.com/s13,OMG,,,True,https://ph-mpl.com/s13
+13,team_liquid_ph,Team Liquid PH,https://ph-mpl.com/s13,TLPH,,,True,https://ph-mpl.com/s13
+13,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s13,TNC,,,True,https://ph-mpl.com/s13
