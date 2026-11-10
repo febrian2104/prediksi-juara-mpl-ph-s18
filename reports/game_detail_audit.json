@@ -1,9 +1,10 @@
 {
   "information_cutoff": "2026-11-09",
-  "generated_at": "2026-11-10T01:40:15.885114+00:00",
+  "generated_at": "2026-11-10T02:55:30.249768+00:00",
   "detail_links_attempted": 128,
   "series_passed": 119,
   "series_unavailable_or_failed": 9,
   "games": 309,
+  "retained_previous_games": 0,
   "limitation": "Tidak membuktikan arsip lengkap. Winner, durasi, ban dan urutan pick belum terverifikasi. IGN bukan identitas pemain lintas musim. Data observasi pascamusim ini tidak digunakan sebagai fitur S18."
 }

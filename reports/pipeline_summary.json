@@ -6,6 +6,7 @@
       "model_eligible_rows": 0,
       "coverage_status": "partial",
       "regular_wl_reconciliation": "failed",
+      "archive_wl_scope": "not_checked",
       "regular_season_rows": 4,
       "playoff_rows": 1,
       "player_rows": 0,
@@ -20,6 +21,7 @@
       "model_eligible_rows": 0,
       "coverage_status": "partial",
       "regular_wl_reconciliation": "failed",
+      "archive_wl_scope": "not_checked",
       "regular_season_rows": 4,
       "playoff_rows": 2,
       "player_rows": 0,
@@ -34,6 +36,7 @@
       "model_eligible_rows": 0,
       "coverage_status": "partial",
       "regular_wl_reconciliation": "failed",
+      "archive_wl_scope": "not_checked",
       "regular_season_rows": 0,
       "playoff_rows": 1,
       "player_rows": 0,
@@ -48,6 +51,7 @@
       "model_eligible_rows": 0,
       "coverage_status": "partial",
       "regular_wl_reconciliation": "failed",
+      "archive_wl_scope": "not_checked",
       "regular_season_rows": 0,
       "playoff_rows": 1,
       "player_rows": 0,
@@ -62,6 +66,7 @@
       "model_eligible_rows": 0,
       "coverage_status": "partial",
       "regular_wl_reconciliation": "canonical_regular_matches_missing",
+      "archive_wl_scope": "unresolved",
       "regular_season_rows": 0,
       "playoff_rows": 1,
       "player_rows": 6,
@@ -76,6 +81,7 @@
       "model_eligible_rows": 73,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "source_conflict_or_scope_mismatch",
+      "archive_wl_scope": "unresolved",
       "regular_season_rows": 65,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -90,6 +96,7 @@
       "model_eligible_rows": 75,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 65,
       "playoff_rows": 10,
       "player_rows": 0,
@@ -104,6 +111,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "source_conflict_or_scope_mismatch",
+      "archive_wl_scope": "unresolved",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 1,
@@ -118,6 +126,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "source_conflict_or_scope_mismatch",
+      "archive_wl_scope": "unresolved",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -131,7 +140,8 @@
       "collected_match_rows": 64,
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
-      "regular_wl_reconciliation": "source_conflict_or_scope_mismatch",
+      "regular_wl_reconciliation": "season_wl_totals_reconciled",
+      "archive_wl_scope": "all_collected_matches",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -146,6 +156,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -160,6 +171,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -174,6 +186,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -188,6 +201,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -202,6 +216,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -216,6 +231,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "source_conflict_or_scope_mismatch",
+      "archive_wl_scope": "unresolved",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -230,6 +246,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 0,
@@ -244,6 +261,7 @@
       "model_eligible_rows": 64,
       "coverage_status": "available_archive_loaded",
       "regular_wl_reconciliation": "regular_wl_totals_reconciled",
+      "archive_wl_scope": "regular_season",
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 66,
@@ -253,7 +271,7 @@
       "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim; statistik arsip belum terverifikasi scope/penetapan tim. Observasi statistik ini tidak digunakan sebagai fitur S18."
     }
   ],
-  "previous_snapshot": "data/predictions/history/20261110T020836567072Z-b38e600b4b34.json",
+  "previous_snapshot": "data/predictions/history/20261110T025723421967Z-0002d788162a.json",
   "data_quality": {
     "raw_match_rows": 852,
     "canonical_match_rows": 852,
@@ -328,7 +346,7 @@
     "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap."
   },
   "production_model": {
-    "trained_at": "2026-11-10T02:08:58.235439+00:00",
+    "trained_at": "2026-11-10T02:58:32.292959+00:00",
     "training_latest_match_at": "2026-05-31 09:00:00+00:00",
     "training_data_observed_at": "2026-11-09T08:08:42.496740+00:00",
     "model_name": "logistic_regression",
@@ -382,7 +400,7 @@
       "accuracy": 0.640625,
       "log_loss": 0.622922636422018,
       "brier_score": 0.21764010966038208,
-      "expected_calibration_error": 0.058507352766820626
+      "expected_calibration_error": 0.05850735276682063
     },
     {
       "model": "xgboost",
@@ -408,5 +426,18 @@
       "log_loss": 0.4363006191019428,
       "brier_score": 0.1386257439580378
     }
+  },
+  "game_summary_audit": {
+    "generated_at": "2026-11-10T02:58:11.623956+00:00",
+    "games": 309,
+    "comparable_counters": 3090,
+    "counter_differences": 22,
+    "games_with_differences": 20,
+    "games_without_complete_comparison": 0,
+    "differences_by_metric": {
+      "gold": 4,
+      "hero_damage": 18
+    },
+    "limitations": "Hanya konsistensi angka yang diperiksa. Selisih gold/damage mungkin berbeda definisi/waktu observasi; tidak menentukan nilai mana yang benar, memverifikasi winner/durasi, atau memperbaiki skor/penempatan pemain. Detail tetap non-training."
   }
 }

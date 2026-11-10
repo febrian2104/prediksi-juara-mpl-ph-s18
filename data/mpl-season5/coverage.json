@@ -4,6 +4,7 @@
   "model_eligible_rows": 0,
   "coverage_status": "partial",
   "regular_wl_reconciliation": "canonical_regular_matches_missing",
+  "archive_wl_scope": "unresolved",
   "regular_season_rows": 0,
   "playoff_rows": 1,
   "player_rows": 6,

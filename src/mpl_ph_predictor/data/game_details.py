@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -19,10 +20,29 @@ from mpl_ph_predictor.data.contracts import conform_table
 
 ROOT = Path(__file__).resolve().parents[3]
 PLAYER_COLUMNS = [
-    "season", "match_id", "game_number", "date", "team", "team_code", "player", "hero",
-    "kills", "deaths", "assists", "official_kda", "gold", "hero_damage", "damage_taken",
-    "tower_damage", "source", "source_snapshot_path", "observed_at", "information_cutoff",
-    "feature_eligible_for_s18", "identity_verification",
+    "season",
+    "match_id",
+    "game_number",
+    "date",
+    "team",
+    "team_code",
+    "player",
+    "hero",
+    "kills",
+    "deaths",
+    "assists",
+    "official_kda",
+    "gold",
+    "hero_damage",
+    "damage_taken",
+    "tower_damage",
+    "source",
+    "source_snapshot_path",
+    "observed_at",
+    "information_cutoff",
+    "feature_eligible_for_s18",
+    "identity_verification",
+    "feature_eligible_for_training",
 ]
 
 
@@ -31,8 +51,8 @@ def _number(value: str) -> int | float | None:
     if cleaned in ("", "-", "N/A"):
         return None
     number = float(cleaned)
-    if number < 0:
-        raise ValueError("Statistik negatif pada scoreboard resmi.")
+    if not math.isfinite(number) or number < 0:
+        raise ValueError("Statistik negatif/nonfinite pada scoreboard resmi.")
     return int(number) if number.is_integer() else number
 
 
@@ -68,6 +88,7 @@ def parse_game_detail(
         "observed_at": provenance["retrieved_at"],
         "information_cutoff": provenance["information_cutoff"],
         "feature_eligible_for_s18": False,
+        "feature_eligible_for_training": False,
     }
     games, drafts, players = [], [], []
     for pane in panes:
@@ -88,8 +109,19 @@ def parse_game_detail(
             seen_codes.append(code)
             headers = [th.get_text(" ", strip=True) for th in table.select("thead th")]
             required = [
-                "Player", "Hero", "Kill", "Death", "Assist", "KDA", "Gold", "Items",
-                "Emblems", "Talents", "Hero Damage", "Damage Taken", "Tower Damage",
+                "Player",
+                "Hero",
+                "Kill",
+                "Death",
+                "Assist",
+                "KDA",
+                "Gold",
+                "Items",
+                "Emblems",
+                "Talents",
+                "Hero Damage",
+                "Damage Taken",
+                "Tower Damage",
             ]
             if headers != required:
                 raise ValueError(f"Game {number}: skema scoreboard berubah.")
@@ -101,13 +133,22 @@ def parse_game_detail(
                 if len(cells) != len(required) or not cells[0] or not cells[1]:
                     raise ValueError(f"Game {number}: baris pemain tidak lengkap.")
                 row = {
-                    **game_shared, "team": names[code], "team_code": code,
-                    "player": cells[0], "hero": cells[1],
+                    **game_shared,
+                    "team": names[code],
+                    "team_code": code,
+                    "player": cells[0],
+                    "hero": cells[1],
                     "identity_verification": "observed_ign_only_not_linked_to_roster",
                 }
                 indices = {
-                    "kills": 2, "deaths": 3, "assists": 4, "official_kda": 5,
-                    "gold": 6, "hero_damage": 10, "damage_taken": 11, "tower_damage": 12,
+                    "kills": 2,
+                    "deaths": 3,
+                    "assists": 4,
+                    "official_kda": 5,
+                    "gold": 6,
+                    "hero_damage": 10,
+                    "damage_taken": 11,
+                    "tower_damage": 12,
                 }
                 row.update({column: _number(cells[index]) for column, index in indices.items()})
                 game_players.append(row)
@@ -116,23 +157,38 @@ def parse_game_detail(
         if pd.DataFrame(game_players).duplicated(["team_code", "player"]).any():
             raise ValueError(f"Game {number}: pemain duplikat dalam tim.")
         for row in game_players:
-            drafts.append({
-                **game_shared, "team": row["team"], "team_code": row["team_code"] ,
-                "action": "pick", "order": None, "hero": row["hero"],
-                "scope": "observed_game_lineup_not_draft_sequence", "player": row["player"],
-            })
+            drafts.append(
+                {
+                    **game_shared,
+                    "team": row["team"],
+                    "team_code": row["team_code"],
+                    "action": "pick",
+                    "order": None,
+                    "hero": row["hero"],
+                    "scope": "observed_game_lineup_not_draft_sequence",
+                    "player": row["player"],
+                }
+            )
         players.extend(game_players)
-        games.append({
-            **game_shared, "team_a": match["team_a_name"], "team_b": match["team_b_name"],
-            "winner": None, "duration_minutes": None,
-            "coverage_status": "scoreboard_available_winner_and_duration_unverified",
-        })
+        games.append(
+            {
+                **game_shared,
+                "team_a": match["team_a_name"],
+                "team_b": match["team_b_name"],
+                "winner": None,
+                "duration_minutes": None,
+                "coverage_status": "scoreboard_available_winner_and_duration_unverified",
+            }
+        )
     return games, drafts, players
 
 
 def collect_game_details(
-    *, root: Path = ROOT, seasons: list[int] | None = None,
-    refresh: bool = False, cache_only: bool = False,
+    *,
+    root: Path = ROOT,
+    seasons: list[int] | None = None,
+    refresh: bool = False,
+    cache_only: bool = False,
 ) -> dict[str, Any]:
     """Fetch known official detail links only; append retrieval attempts to manifest."""
     if refresh and cache_only:
@@ -145,9 +201,12 @@ def collect_game_details(
     if seasons is not None:
         matches = matches.loc[matches["season"].isin(seasons)]
     # Archive cards without a genuine detail link are deliberately not guessed.
-    eligible = matches.loc[matches["source_url"].map(
-        lambda url: urlparse(url).hostname == "ph-mpl.com" and "/data/match/" in urlparse(url).path
-    )]
+    eligible = matches.loc[
+        matches["source_url"].map(
+            lambda url: urlparse(url).hostname == "ph-mpl.com"
+            and "/data/match/" in urlparse(url).path
+        )
+    ]
     raw_dir = root / "data/raw"
     manifest_path = raw_dir / "game_detail_source_manifest.csv"
     previous = pd.read_csv(manifest_path) if manifest_path.exists() else pd.DataFrame()
@@ -170,8 +229,11 @@ def collect_game_details(
         if cache_only:
             return {"url": url, "retrieval_status": "not_cached"}, None, False
         record = {
-            "url": url, "season": match["season"], "match_id": match["match_id"],
-            "retrieved_at": utc_now(), "information_cutoff": cutoff,
+            "url": url,
+            "season": match["season"],
+            "match_id": match["match_id"],
+            "retrieved_at": utc_now(),
+            "information_cutoff": cutoff,
         }
         try:
             response = requests.get(url, timeout=45, headers={"User-Agent": "MPL-PH-Research/1.0"})
@@ -183,11 +245,16 @@ def collect_game_details(
             digest = sha256(content)
             path = raw_dir / "source_snapshots" / f"{digest}.html"
             path.parent.mkdir(parents=True, exist_ok=True)
-            if not path.exists():
+            try:
                 with path.open("xb") as handle:
                     handle.write(content)
+            except FileExistsError:
+                if sha256(path.read_bytes()) != digest:
+                    raise ValueError("Snapshot lokal tidak sesuai dengan hash sumber.") from None
             record.update(
-                sha256=digest, snapshot_path=str(path.relative_to(root)), retrieval_status="ok",
+                sha256=digest,
+                snapshot_path=str(path.relative_to(root)),
+                retrieval_status="ok",
             )
             return record, content, True
         except (requests.RequestException, ValueError) as error:
@@ -200,12 +267,14 @@ def collect_game_details(
     attempts = [record for record, _, fresh in fetched if fresh]
     if attempts:
         pd.concat([previous, pd.DataFrame(attempts)], ignore_index=True).to_csv(
-            manifest_path, index=False,
+            manifest_path,
+            index=False,
         )
     games, drafts, players, audit = [], [], [], []
     for match, (record, content, _) in zip(records, fetched, strict=True):
         row = {
-            "season": int(match["season"]), "match_id": match["match_id"],
+            "season": int(match["season"]),
+            "match_id": match["match_id"],
             "source": match["source_url"],
             "expected_games": int(match["team_a_score"] + match["team_b_score"]),
             "parsed_games": 0,
@@ -221,43 +290,81 @@ def collect_game_details(
         except (ValueError, KeyError, TypeError) as error:
             row.update(status="unavailable_or_failed_audit", reason=str(error))
         audit.append(row)
-    selected = set(matches["season"].astype(int))
-    # A targeted refresh must preserve previously collected seasons.
+    attempted_ids = {record["match_id"] for record in records}
+    unavailable_ids = {
+        match["match_id"]
+        for match, (_, content, _) in zip(
+            records,
+            fetched,
+            strict=True,
+        )
+        if content is None
+    }
+    retained_games = {}
+    game_path = raw_dir / "official_games.csv"
+    if game_path.exists():
+        old = pd.read_csv(game_path)
+        retained_games = (
+            old.loc[old["match_id"].isin(unavailable_ids)].groupby("match_id").size().to_dict()
+        )
+    for row in audit:
+        row["retained_previous_games"] = int(retained_games.get(row["match_id"], 0))
+    # Retrieval failure is not evidence that a previously observed fact disappeared.
+    # A successfully fetched but invalid scoreboard is still rejected, not silently retained.
     for name, rows in (("games", games), ("drafts", drafts), ("player_game_stats", players)):
         path = raw_dir / f"official_{name}.csv"
         frame = (
-            pd.DataFrame(rows, columns=PLAYER_COLUMNS) if name == "player_game_stats"
+            pd.DataFrame(rows, columns=PLAYER_COLUMNS)
+            if name == "player_game_stats"
             else conform_table(pd.DataFrame(rows), name)
         )
         if path.exists():
             old = pd.read_csv(path)
-            retained = old.loc[~old["season"].isin(selected)]
+            retained = old.loc[
+                ~old["match_id"].isin(attempted_ids) | old["match_id"].isin(unavailable_ids)
+            ]
             if not retained.empty:
                 frame = pd.concat([retained, frame], ignore_index=True)
         frame.to_csv(path, index=False)
     audit_path = root / "reports/game_detail_audit.csv"
-    audit_frame = pd.DataFrame(audit, columns=[
-        "season", "match_id", "source", "expected_games", "parsed_games", "status", "reason",
-    ])
+    audit_frame = pd.DataFrame(
+        audit,
+        columns=[
+            "season",
+            "match_id",
+            "source",
+            "expected_games",
+            "parsed_games",
+            "status",
+            "reason",
+            "retained_previous_games",
+        ],
+    )
     if audit_path.exists():
         old = pd.read_csv(audit_path)
-        retained = old.loc[~old["season"].isin(selected)]
+        retained = old.loc[~old["match_id"].isin(attempted_ids)]
         if not retained.empty:
             audit_frame = pd.concat([retained, audit_frame], ignore_index=True)
     audit_frame.to_csv(audit_path, index=False)
     summary = {
-        "information_cutoff": cutoff, "generated_at": utc_now(),
+        "information_cutoff": cutoff,
+        "generated_at": utc_now(),
         "detail_links_attempted": len(audit_frame),
         "series_passed": int(audit_frame["status"].eq("pass").sum()),
         "series_unavailable_or_failed": int(audit_frame["status"].ne("pass").sum()),
-        "games": int(audit_frame["parsed_games"].sum()),
+        "games": len(pd.read_csv(game_path)),
+        "retained_previous_games": int(audit_frame["retained_previous_games"].fillna(0).sum()),
         "limitation": "Tidak membuktikan arsip lengkap. Winner, durasi, ban dan urutan pick "
         "belum terverifikasi. IGN bukan identitas pemain lintas musim. Data observasi "
         "pascamusim ini tidak digunakan sebagai fitur S18.",
     }
     (root / "reports/game_detail_audit.json").write_text(
-        json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8",
+        json.dumps(summary, indent=2, ensure_ascii=False),
+        encoding="utf-8",
     )
+    from mpl_ph_predictor.data.game_audit import audit_game_summaries
+
+    audit_game_summaries(root=root)
     return summary
 
 
@@ -273,7 +380,9 @@ def main() -> None:
 
     archive_project_state(reason="before_game_detail_update")
     summary = collect_game_details(
-        seasons=args.seasons, refresh=args.refresh, cache_only=args.cache_only,
+        seasons=args.seasons,
+        refresh=args.refresh,
+        cache_only=args.cache_only,
     )
     matches, teams, rosters, quality = build_canonical_data()
     if quality["status"] != "pass":

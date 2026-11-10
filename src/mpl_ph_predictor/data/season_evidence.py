@@ -23,6 +23,11 @@ from mpl_ph_predictor.archive import sha256, utc_now
 from mpl_ph_predictor.data.contracts import conform_table
 
 ROOT = Path(__file__).resolve().parents[3]
+RECONCILED_STATUSES = {
+    "regular_wl_totals_reconciled",
+    "season_wl_totals_reconciled",
+    "mixed_scope_wl_totals_reconciled",
+}
 NUMERIC_STATS = [
     "total_kills",
     "avg_kills",
@@ -216,11 +221,10 @@ def parse_archive_standings(content: bytes, season: int, provenance: dict) -> pd
     return pd.DataFrame(rows, columns=STANDING_COLUMNS)
 
 
-def reconcile_standings(matches: pd.DataFrame, observed: pd.DataFrame, season: int) -> dict:
-    """Compare raw W/L totals, not the S18 points formula on historical seasons."""
-    regular = matches.loc[matches["season"].eq(season) & matches["stage"].eq("regular_season")]
+def _wl_totals(matches: pd.DataFrame) -> dict[str, list[int]]:
+    """Outcome counters only; no season-specific points or ranking assumptions."""
     computed = {}
-    for match in regular.itertuples():
+    for match in matches.itertuples():
         for side, other in (("a", "b"), ("b", "a")):
             code = getattr(match, f"team_{side}_code")
             own, opponent = (
@@ -237,13 +241,13 @@ def reconcile_standings(matches: pd.DataFrame, observed: pd.DataFrame, season: i
                     strict=True,
                 )
             ]
+    return computed
+
+
+def _wl_differences(computed: dict, compared: pd.DataFrame) -> list[dict]:
     fields = ["match_wins", "match_losses", "game_wins", "game_losses"]
-    compared = observed.drop_duplicates(["team_code", *fields])
-    conflicts = compared["team_code"].duplicated().any()
-    compared = compared.drop_duplicates("team_code").set_index("team_code")
-    codes = sorted(set(compared.index) | set(computed))
     differences = []
-    for code in codes:
+    for code in sorted(set(compared.index) | set(computed)):
         if code not in computed or code not in compared.index:
             differences.append(
                 {
@@ -264,14 +268,45 @@ def reconcile_standings(matches: pd.DataFrame, observed: pd.DataFrame, season: i
                         "archive": int(compared.loc[code, field]),
                     }
                 )
+    return differences
+
+
+def reconcile_standings(matches: pd.DataFrame, observed: pd.DataFrame, season: int) -> dict:
+    """Separate regular, season-wide and mixed counter scopes without changing results."""
+    season_matches = matches.loc[matches["season"].eq(season)]
+    regular = season_matches.loc[season_matches["stage"].eq("regular_season")]
+    computed = _wl_totals(regular)
+    overall = _wl_totals(season_matches)
+    fields = ["match_wins", "match_losses", "game_wins", "game_losses"]
+    compared = observed.drop_duplicates(["team_code", *fields])
+    conflicts = compared["team_code"].duplicated().any()
+    compared = compared.drop_duplicates("team_code").set_index("team_code")
+    differences = _wl_differences(computed, compared)
+    overall_differences = _wl_differences(overall, compared)
+    mixed = {
+        code: values[:2] + overall[code][2:] for code, values in computed.items() if code in overall
+    }
+    mixed_differences = _wl_differences(mixed, compared)
+    candidates = {
+        "regular_season": differences,
+        "all_collected_matches": overall_differences,
+        "regular_match_wl_and_all_collected_game_wl": mixed_differences,
+    }
+    eligible = bool(computed) and bool(overall) and not conflicts and not observed.empty
+    exact_scopes = [scope for scope, diffs in candidates.items() if eligible and not diffs]
+    closest = min(candidates, key=lambda scope: len(candidates[scope]))
     status = (
         "no_standings_available"
         if observed.empty
         else "canonical_regular_matches_missing"
         if regular.empty
-        else "source_conflict_or_scope_mismatch"
-        if conflicts or differences
         else "regular_wl_totals_reconciled"
+        if "regular_season" in exact_scopes
+        else "season_wl_totals_reconciled"
+        if "all_collected_matches" in exact_scopes
+        else "mixed_scope_wl_totals_reconciled"
+        if exact_scopes
+        else "source_conflict_or_scope_mismatch"
     )
     return {
         "season": season,
@@ -290,8 +325,18 @@ def reconcile_standings(matches: pd.DataFrame, observed: pd.DataFrame, season: i
             item["field"] in ("team_presence", "game_wins", "game_losses") for item in differences
         ),
         "differences": differences,
+        "canonical_all_stage_rows": len(season_matches),
+        "exact_matching_scopes": exact_scopes,
+        "archive_wl_scope": exact_scopes[0] if exact_scopes else "unresolved",
+        "scope_comparison": {
+            scope: {"difference_count": len(diffs), "differences": diffs}
+            for scope, diffs in candidates.items()
+        },
+        "closest_counter_scope": closest if eligible else None,
+        "residual_difference_count": len(candidates[closest]) if eligible else None,
+        "scope_basis": "counter_agreement_with_collected_matches_not_official_scope_declaration",
         "conflicting_duplicate_team_rows": bool(conflicts),
-        "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+        "scope": "counter_scope_reconciliation_not_individual_match_completeness",
         "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
     }
 
@@ -453,7 +498,9 @@ def collect_season_evidence(
         json.dumps(audits, indent=2, ensure_ascii=False, allow_nan=False),
         encoding="utf-8",
     )
-    pd.DataFrame([{k: v for k, v in row.items() if k != "differences"} for row in audits]).to_csv(
+    pd.DataFrame(
+        [{k: v for k, v in row.items() if not isinstance(v, (dict, list))} for row in audits]
+    ).to_csv(
         root / "reports/season_reconciliation.csv",
         index=False,
     )
@@ -466,8 +513,13 @@ def collect_season_evidence(
             r["season"] for r in audits if r["status"] == "regular_wl_totals_reconciled"
         ],
         "seasons_requiring_review": [
-            r["season"] for r in audits if r["status"] != "regular_wl_totals_reconciled"
+            r["season"] for r in audits if r["status"] not in RECONCILED_STATUSES
         ],
+        "resolved_non_regular_counter_scopes": {
+            r["season"]: r["archive_wl_scope"]
+            for r in audits
+            if r["status"] in RECONCILED_STATUSES - {"regular_wl_totals_reconciled"}
+        },
         "all_statistics_excluded_from_training": True,
     }
 

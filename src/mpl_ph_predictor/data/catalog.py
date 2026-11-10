@@ -71,12 +71,15 @@ def team_table(matches: pd.DataFrame) -> pd.DataFrame:
         )
         part["appearance_date"] = matches["date"]
         parts.append(part)
-    result = pd.concat(parts).sort_values("appearance_date").groupby(
-        ["season", "team_id", "team_code"], as_index=False
-    ).agg(
-        team_name=("team_name", "last"),
-        historical_names=("team_name", lambda values: " | ".join(dict.fromkeys(values))),
-        source=("source", lambda values: " | ".join(sorted(set(values)))),
+    result = (
+        pd.concat(parts)
+        .sort_values("appearance_date")
+        .groupby(["season", "team_id", "team_code"], as_index=False)
+        .agg(
+            team_name=("team_name", "last"),
+            historical_names=("team_name", lambda values: " | ".join(dict.fromkeys(values))),
+            source=("source", lambda values: " | ".join(sorted(set(values)))),
+        )
     )
     result["organization_id"] = pd.NA
     result["franchise_slot_id"] = pd.NA
@@ -230,15 +233,32 @@ def export_reference_layout(
     )
     reconciliation_path = ROOT / "reports/season_reconciliation.json"
     reconciliation = (
-        {row["season"]: row["status"] for row in json.loads(reconciliation_path.read_text())}
-        if reconciliation_path.exists() else {}
+        {row["season"]: row for row in json.loads(reconciliation_path.read_text())}
+        if reconciliation_path.exists()
+        else {}
     )
     details = {}
     for table in ("games", "drafts"):
         path = ROOT / f"data/raw/official_{table}.csv"
         details[table] = (
             conform_table(pd.read_csv(path), table)
-            if path.exists() else conform_table(pd.DataFrame(), table)
+            if path.exists()
+            else conform_table(pd.DataFrame(), table)
+        )
+        details[table] = details[table].loc[details[table]["match_id"].isin(matches["match_id"])]
+    summary_audit_path = ROOT / "reports/game_summary_audit.csv"
+    if summary_audit_path.is_file():
+        quality_flags = pd.read_csv(summary_audit_path)
+        columns = ["summary_check_status", "summary_checked_counters", "summary_difference_count"]
+        details["games"] = (
+            details["games"]
+            .drop(columns=columns, errors="ignore")
+            .merge(
+                quality_flags[["season", "match_id", "game_number", *columns]],
+                on=["season", "match_id", "game_number"],
+                how="left",
+                validate="one_to_one",
+            )
         )
     stats.to_csv(ROOT / "data/raw/official_s18_player_season_stats.csv", index=False)
     all_tables: dict[str, list[pd.DataFrame]] = {
@@ -299,7 +319,12 @@ def export_reference_layout(
             "collected_match_rows": len(season_matches),
             "model_eligible_rows": len(source),
             "coverage_status": "partial" if season <= 5 else "available_archive_loaded",
-            "regular_wl_reconciliation": reconciliation.get(season, "not_checked"),
+            "regular_wl_reconciliation": reconciliation.get(season, {}).get(
+                "status", "not_checked"
+            ),
+            "archive_wl_scope": reconciliation.get(season, {}).get(
+                "archive_wl_scope", "not_checked"
+            ),
             "regular_season_rows": int(season_matches["stage"].eq("regular_season").sum()),
             "playoff_rows": int(season_matches["stage"].isin(["playoffs", "grand_final"]).sum()),
             "player_rows": len(season_players),

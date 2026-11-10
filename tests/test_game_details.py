@@ -11,8 +11,19 @@ from mpl_ph_predictor.data.game_details import collect_game_details, parse_game_
 
 ROOT = Path(__file__).resolve().parents[1]
 HEADERS = [
-    "Player", "Hero", "Kill", "Death", "Assist", "KDA", "Gold", "Items", "Emblems",
-    "Talents", "Hero Damage", "Damage Taken", "Tower Damage",
+    "Player",
+    "Hero",
+    "Kill",
+    "Death",
+    "Assist",
+    "KDA",
+    "Gold",
+    "Items",
+    "Emblems",
+    "Talents",
+    "Hero Damage",
+    "Damage Taken",
+    "Tower Damage",
 ]
 
 
@@ -22,36 +33,58 @@ def fixture_html() -> bytes:
         headers = "".join(f"<th>{header}</th>" for header in HEADERS)
         rows = []
         for index in range(5):
-            cells = [f"test_player_{index}", f"test_hero_{index}", "0", "0", "0", "0", "1,000",
-                     "", "", "", "100", "200", "0"]
+            cells = [
+                f"test_player_{index}",
+                f"test_hero_{index}",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1,000",
+                "",
+                "",
+                "",
+                "100",
+                "200",
+                "0",
+            ]
             rows.append("<tr>" + "".join(f"<td>{cell}</td>" for cell in cells) + "</tr>")
         tables.append(
             f'<div class="container"><img alt="{code} logo">'
             f'<table class="table-scoreboard"><thead><tr>{headers}</tr></thead>'
-            f'<tbody>{"".join(rows)}</tbody></table></div>'
+            f"<tbody>{''.join(rows)}</tbody></table></div>"
         )
     return ('<div id="game1">' + "".join(tables) + "</div>").encode()
 
 
 def fixture_match() -> dict:
     return {
-        "season": 18, "match_id": "fixture_only", "scheduled_at": "2026-08-21T08:00:00Z",
-        "team_a_code": "FIXTURE_A", "team_b_code": "FIXTURE_B", "team_a_name": "Test A",
-        "team_b_name": "Test B", "team_a_score": 1, "team_b_score": 0,
+        "season": 18,
+        "match_id": "fixture_only",
+        "scheduled_at": "2026-08-21T08:00:00Z",
+        "team_a_code": "FIXTURE_A",
+        "team_b_code": "FIXTURE_B",
+        "team_a_name": "Test A",
+        "team_b_name": "Test B",
+        "team_a_score": 1,
+        "team_b_score": 0,
         "source_url": "https://ph-mpl.com/data/match/fixture-only",
     }
 
 
 def fixture_provenance() -> dict:
     return {
-        "snapshot_path": "fixture_only.html", "retrieved_at": "2026-11-10T01:00:00Z",
+        "snapshot_path": "fixture_only.html",
+        "retrieved_at": "2026-11-10T01:00:00Z",
         "information_cutoff": "2026-11-09",
     }
 
 
 def test_observed_picks_do_not_invent_winners_durations_or_draft_order() -> None:
     games, drafts, players = parse_game_detail(
-        fixture_html(), fixture_match(), fixture_provenance(),
+        fixture_html(),
+        fixture_match(),
+        fixture_provenance(),
     )
     assert len(games) == 1
     assert len(drafts) == len(players) == 10
@@ -87,14 +120,22 @@ def test_cache_only_rejects_bad_hash_and_never_accesses_network(tmp_path, monkey
     for folder in ("data/clean", "data/raw/source_snapshots", "config", "reports"):
         (tmp_path / folder).mkdir(parents=True)
     pd.DataFrame([fixture_match()]).to_csv(tmp_path / "data/clean/matches.csv", index=False)
-    (tmp_path / "config/competition.json").write_text(json.dumps({
-        "data_cutoff": "2026-11-09", "timezone": "Asia/Manila",
-    }))
+    (tmp_path / "config/competition.json").write_text(
+        json.dumps(
+            {
+                "data_cutoff": "2026-11-09",
+                "timezone": "Asia/Manila",
+            }
+        )
+    )
     path = tmp_path / "data/raw/source_snapshots/test.html"
     path.write_bytes(fixture_html())
     record = {
-        "url": fixture_match()["source_url"], "retrieval_status": "ok", "sha256": "bad_hash",
-        "snapshot_path": str(path.relative_to(tmp_path)), **fixture_provenance(),
+        "url": fixture_match()["source_url"],
+        "retrieval_status": "ok",
+        "sha256": "bad_hash",
+        "snapshot_path": str(path.relative_to(tmp_path)),
+        **fixture_provenance(),
     }
     record["snapshot_path"] = str(path.relative_to(tmp_path))
     manifest_path = tmp_path / "data/raw/game_detail_source_manifest.csv"
@@ -111,6 +152,32 @@ def test_cache_only_rejects_bad_hash_and_never_accesses_network(tmp_path, monkey
     pd.DataFrame([record]).to_csv(manifest_path, index=False)
     report = collect_game_details(root=tmp_path, cache_only=True)
     assert report["series_passed"] == report["games"] == 1
+    saved_paths = [
+        tmp_path / f"data/raw/official_{name}.csv"
+        for name in (
+            "games",
+            "drafts",
+            "player_game_stats",
+        )
+    ]
+    saved_frames = [pd.read_csv(path) for path in saved_paths]
+    record["sha256"] = "invalid_after_success"
+    pd.DataFrame([record]).to_csv(manifest_path, index=False)
+    report = collect_game_details(root=tmp_path, cache_only=True)
+    assert report["games"] == 1 and report["retained_previous_games"] == 1
+    assert report["series_unavailable_or_failed"] == 1
+    for path, original in zip(saved_paths, saved_frames, strict=True):
+        pd.testing.assert_frame_equal(pd.read_csv(path), original)
+
+
+@pytest.mark.parametrize("value", ["NaN", "inf", "-1"])
+def test_nonfinite_and_negative_game_statistics_are_rejected(value: str) -> None:
+    with pytest.raises(ValueError, match="negatif/nonfinite"):
+        parse_game_detail(
+            fixture_html().replace(b"1,000", value.encode()),
+            fixture_match(),
+            fixture_provenance(),
+        )
 
 
 def test_collected_scoreboards_have_matching_series_counts_and_provenance() -> None:

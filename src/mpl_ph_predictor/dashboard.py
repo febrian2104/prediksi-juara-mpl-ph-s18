@@ -335,14 +335,20 @@ def page_results() -> None:
         coverage = pd.read_csv(ROOT / "reports/season_coverage.csv")
         st.dataframe(
             coverage[
-                ["season", "collected_match_rows", "model_eligible_rows", "games_rows",
-                 "drafts_rows", "coverage_status"]
+                [
+                    "season",
+                    "collected_match_rows",
+                    "model_eligible_rows",
+                    "games_rows",
+                    "drafts_rows",
+                    "coverage_status",
+                ]
             ].rename(
                 columns={
                     "season": "Season",
                     "collected_match_rows": "Laga terkumpul",
                     "model_eligible_rows": "Laga layak model",
-                    "games_rows": "Game terverifikasi",
+                    "games_rows": "Game terdata",
                     "drafts_rows": "Observasi hero",
                     "coverage_status": "Status cakupan",
                 }
@@ -360,17 +366,42 @@ def page_results() -> None:
             "winner per game, dan durasi belum terverifikasi. Detail pascamusim tidak "
             "digunakan sebagai fitur prediksi S18."
         )
+        summary_audit_path = ROOT / "reports/game_summary_audit.json"
+        if summary_audit_path.is_file():
+            game_audit = json.loads(summary_audit_path.read_text())
+            st.caption(
+                f"Ringkasan dan scoreboard berbeda pada {game_audit['games_with_differences']} "
+                f"game ({game_audit['counter_differences']} penghitung). "
+                "Nilai sumber dipertahankan; selisih definisi/waktu observasi belum terverifikasi."
+            )
         reconciliation_path = ROOT / "reports/season_reconciliation.csv"
         if reconciliation_path.is_file():
             audit = pd.read_csv(reconciliation_path)
             agreed = audit.loc[audit["status"].eq("regular_wl_totals_reconciled"), "season"]
-            review = audit.loc[audit["status"].ne("regular_wl_totals_reconciled"), "season"]
+            resolved = audit["status"].isin(
+                [
+                    "season_wl_totals_reconciled",
+                    "mixed_scope_wl_totals_reconciled",
+                ]
+            )
+            review = audit.loc[
+                ~resolved & audit["status"].ne("regular_wl_totals_reconciled"), "season"
+            ]
             st.caption(
                 "Audit silang total W/L regular season cocok pada S"
                 + ", S".join(agreed.astype(str))
                 + ". Perlu pemeriksaan pada S"
                 + ", S".join(review.astype(str))
                 + "; kecocokan total bukan bukti semua pertandingan/playoff sudah lengkap."
+            )
+            st.caption(
+                "Cakupan penghitung arsip yang berhasil dijelaskan di luar regular season: "
+                + (
+                    ", ".join("S" + str(s) for s in audit.loc[resolved, "season"])
+                    if resolved.any()
+                    else "belum ada"
+                )
+                + ". Angka ini bukan klasemen regular season dan bukan bukti arsip lengkap."
             )
             st.caption(
                 "Statistik pemain arsip merupakan observasi pascamusim: cakupan tahap dan "

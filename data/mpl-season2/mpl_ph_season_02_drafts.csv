@@ -1,1 +1,1 @@
-season,match_id,game_number,team,action,order,hero,source,scope,total_count,wins,losses,win_rate_pct,date,source_snapshot_path,observed_at,information_cutoff,feature_eligible_for_s18,team_code,player
+season,match_id,game_number,team,action,order,hero,source,scope,total_count,wins,losses,win_rate_pct,date,source_snapshot_path,observed_at,information_cutoff,feature_eligible_for_s18,feature_eligible_for_training,team_code,player

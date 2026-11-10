@@ -70,6 +70,9 @@ Katalog mencakup **Season 1–18**, dengan status yang berbeda per musim:
   sembilan seri S8 ditolak karena data detail tidak cocok/tidak lengkap. Ini bukan transkrip
   draft: ban, urutan pick, winner per game, dan durasi belum terverifikasi dan tetap null.
   Observasi pascamusim ini tidak dipakai sebagai fitur S18.
+  Audit silang 3.090 penghitung ringkasan/scoreboard menemukan 22 selisih pada 20 game S18
+  (empat gold dan 18 hero damage); K/D/A cocok. Kedua nilai sumber dipertahankan dengan
+  penanda review karena definisi atau waktu observasinya belum dipastikan, bukan diperbaiki otomatis.
 - Statistik historis S5–S17: 773 observasi pemain dari halaman arsip resmi. Parser menangani
   format total/rata-rata dan header bertingkat S11–S13. Cakupan tahap serta penetapan tim
   belum terverifikasi; observasi ini bukan roster efektif dan tidak dipakai untuk training.
@@ -77,11 +80,16 @@ Katalog mencakup **Season 1–18**, dengan status yang berbeda per musim:
 - Nama ECHO pada pertandingan S13 dibedakan menurut tanggal pengumuman akuisisi:
   ECHO sebelum 21 Mei 2024 dan Team Liquid ECHO PH setelahnya. Registry nama tidak
   otomatis menggabungkan rating atau badan hukum tim.
+  Registry juga membedakan AP.Bren/Falcons APBren dan ONIC Philippines/Fnatic ONIC PH.
+  Pengumuman [Fnatic](https://fnatic.com/news/fnatic-partners-with-onic-esports) menyebut
+  nama kompetisi mulai digunakan pada 22 Mei, bukan otomatis pada hari pengumuman 21 Mei.
 
 Audit silang total match/game W/L regular season cocok pada S7, S11–S15, S17, dan S18.
 Musim lainnya masih perlu pemeriksaan: sumber S1–S4 mengembalikan HTTP 500, S5 belum
-mempunyai hasil regular season canonical, dan S6/S8–S10/S16 menunjukkan konflik atau
-perbedaan cakupan. Kecocokan total tidak membuktikan seluruh laga/playoff lengkap.
+mempunyai hasil regular season canonical, dan S6/S8/S9/S16 masih menunjukkan konflik.
+Seluruh penghitung S10 cocok dengan semua 64 laga yang dikumpulkan, termasuk playoff;
+angka arsipnya bukan klasemen regular season. Pencocokan scope ini tidak mengubah skor
+dan bukan bukti bahwa seluruh laga/playoff lengkap.
 Laporan rinci: `reports/season_reconciliation.json`; konflik tidak mengubah skor otomatis.
 
 Cakupan dan kekurangan setiap musim tercatat di `reports/season_coverage.csv`.
@@ -140,6 +148,9 @@ Data cache diperiksa dengan SHA-256; gunakan
 `make collect-details DETAIL_ARGS="--seasons 18 --cache-only"` untuk ekspor offline.
 Statistik arsip dan audit silang klasemen tersedia melalui `make collect-season-data`,
 atau `make collect-season-data EVIDENCE_ARGS=--cache-only` untuk memakai bukti lokal.
+Gunakan `make audit-game-data` untuk membandingkan ringkasan game dengan scoreboard lokal
+tanpa jaringan atau training. Hasil dan kedua nilai yang berbeda ada pada
+`reports/game_summary_audit.json` dan `reports/game_summary_checks.csv`.
 
 Jumlah simulasi dapat diubah melalui `simulation.iterations` di `config/model.json`.
 Setiap pembaruan otomatis mengarsipkan keadaan sebelum dan sesudah pipeline di

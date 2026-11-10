@@ -23,13 +23,16 @@ def apply_team_name_history(matches: pd.DataFrame, *, root: Path = ROOT) -> pd.D
                 transition["team_code"]
             )
             boundary = transition["announcement_date"]
-            if (selected & local_dates.eq(boundary)).any():
+            effective = transition.get("effective_from_date")
+            if not effective and (selected & local_dates.eq(boundary)).any():
                 raise ValueError(
                     "Tanggal pergantian nama hanya diketahui harinya; jam perlu audit."
                 )
+            before = local_dates.lt(effective or boundary)
+            after = local_dates.ge(effective) if effective else local_dates.gt(boundary)
             for mask, name in (
-                (selected & local_dates.lt(boundary), transition["name_before"]),
-                (selected & local_dates.gt(boundary), transition["name_after"]),
+                (selected & before, transition["name_before"]),
+                (selected & after, transition["name_after"]),
             ):
                 result.loc[mask, f"team_{side}_name"] = name
                 result.loc[mask, f"team_{side}_name_basis"] = "dated_official_announcement"

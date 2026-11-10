@@ -12,6 +12,7 @@ from mpl_ph_predictor.archive import archive_project_state, verify_history
 from mpl_ph_predictor.collector import collect_official_data, write_raw_data
 from mpl_ph_predictor.data import build_canonical_data, write_canonical_data
 from mpl_ph_predictor.data.catalog import export_processed_outputs, export_reference_layout
+from mpl_ph_predictor.data.game_audit import audit_game_summaries
 from mpl_ph_predictor.data.game_details import collect_game_details
 from mpl_ph_predictor.data.research import collect_historical_source_availability
 from mpl_ph_predictor.data.season_evidence import collect_season_evidence
@@ -77,6 +78,8 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
     if fetch:
         collect_season_evidence()
         collect_game_details()
+    else:
+        audit_game_summaries()
     coverage = export_reference_layout(matches, teams, rosters)
 
     features = build_match_features(matches)
@@ -102,6 +105,9 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
         "production_model": artifact,
         "walk_forward_metrics": metrics.to_dict(orient="records"),
         "s18_evaluation": evaluation,
+        "game_summary_audit": json.loads((ROOT / "reports/game_summary_audit.json").read_text())
+        if (ROOT / "reports/game_summary_audit.json").is_file()
+        else None,
     }
     (ROOT / "reports" / "pipeline_summary.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8"

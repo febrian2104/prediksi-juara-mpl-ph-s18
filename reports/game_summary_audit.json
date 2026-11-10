@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-11-10T02:58:11.623956+00:00",
+  "games": 309,
+  "comparable_counters": 3090,
+  "counter_differences": 22,
+  "games_with_differences": 20,
+  "games_without_complete_comparison": 0,
+  "differences_by_metric": {
+    "gold": 4,
+    "hero_damage": 18
+  },
+  "limitations": "Hanya konsistensi angka yang diperiksa. Selisih gold/damage mungkin berbeda definisi/waktu observasi; tidak menentukan nilai mana yang benar, memverifikasi winner/durasi, atau memperbaiki skor/penempatan pemain. Detail tetap non-training."
+}

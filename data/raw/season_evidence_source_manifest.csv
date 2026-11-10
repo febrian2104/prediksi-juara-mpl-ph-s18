@@ -20,3 +20,8 @@ https://ph-mpl.com/s1/data,1,2026-11-10T02:03:03.091496+00:00,2026-11-09,500,htt
 https://ph-mpl.com/s2/data,2,2026-11-10T02:03:03.093553+00:00,2026-11-09,500,https://ph-mpl.com/s2/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s2/data
 https://ph-mpl.com/s3/data,3,2026-11-10T02:03:03.095525+00:00,2026-11-09,500,https://ph-mpl.com/s3/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s3/data
 https://ph-mpl.com/s4/data,4,2026-11-10T02:03:03.096912+00:00,2026-11-09,500,https://ph-mpl.com/s4/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s4/data
+https://ph-mpl.com/s1/data,1,2026-11-10T02:48:46.930884+00:00,2026-11-09,500,https://ph-mpl.com/s1/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s1/data
+https://ph-mpl.com/s2/data,2,2026-11-10T02:48:46.931784+00:00,2026-11-09,500,https://ph-mpl.com/s2/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s2/data
+https://ph-mpl.com/s3/data,3,2026-11-10T02:48:46.935102+00:00,2026-11-09,500,https://ph-mpl.com/s3/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s3/data
+https://ph-mpl.com/s4/data,4,2026-11-10T02:48:46.936857+00:00,2026-11-09,500,https://ph-mpl.com/s4/data,,,failed,500 Server Error: Internal Server Error for url: https://ph-mpl.com/s4/data
+https://fnatic.com/news/fnatic-partners-with-onic-esports,13,2026-11-10T02:48:49.800883+00:00,2026-11-09,200,https://fnatic.com/news/fnatic-partners-with-onic-esports,6ffca75b8882aa58abfe90f6e30244474dcb7bbde5e2996477c7b8c7c19d7c2b,data/raw/source_snapshots/6ffca75b8882aa58abfe90f6e30244474dcb7bbde5e2996477c7b8c7c19d7c2b.html,ok,

@@ -144,6 +144,96 @@ def test_reconciliation_compares_wl_not_s18_points_and_does_not_mutate_matches()
     pd.testing.assert_frame_equal(matches, original)
 
 
+@pytest.mark.parametrize("scope", ["season", "mixed"])
+def test_season_and_mixed_scopes_do_not_masquerade_as_regular_standings(scope: str) -> None:
+    matches = pd.DataFrame(
+        {
+            "season": [10, 10],
+            "stage": ["regular_season", "playoffs"],
+            "team_a_code": ["FIXTURE_A"] * 2,
+            "team_b_code": ["FIXTURE_B"] * 2,
+            "team_a_score": [2, 3],
+            "team_b_score": [0, 1],
+        }
+    )
+    original = matches.copy(deep=True)
+    observations = pd.DataFrame(
+        {
+            "team_code": ["FIXTURE_A", "FIXTURE_B"],
+            "match_wins": [2 if scope == "season" else 1, 0],
+            "match_losses": [0, 2 if scope == "season" else 1],
+            "game_wins": [5, 1],
+            "game_losses": [1, 5],
+        }
+    )
+    report = reconcile_standings(matches, observations, 10)
+    expected = (
+        "season_wl_totals_reconciled" if scope == "season" else ("mixed_scope_wl_totals_reconciled")
+    )
+    assert report["status"] == expected
+    assert not report["game_wl_totals_reconciled"]
+    assert report["residual_difference_count"] == 0
+    assert "regular_season" not in report["exact_matching_scopes"]
+    observations.loc[0, "game_wins"] += 1
+    conflict = reconcile_standings(matches, observations, 10)
+    assert conflict["status"] == "source_conflict_or_scope_mismatch"
+    assert conflict["residual_difference_count"] == 1
+    pd.testing.assert_frame_equal(matches, original)
+
+
+def test_real_s10_archive_matches_all_stages_but_s8_has_an_unresolved_residual() -> None:
+    audits = json.loads((ROOT / "reports/season_reconciliation.json").read_text())
+    by_season = {row["season"]: row for row in audits}
+    assert by_season[10]["status"] == "season_wl_totals_reconciled"
+    assert by_season[10]["archive_wl_scope"] == "all_collected_matches"
+    assert by_season[10]["residual_difference_count"] == 0
+    assert by_season[8]["status"] == "source_conflict_or_scope_mismatch"
+    assert by_season[8]["residual_difference_count"] > 0
+
+
+def test_fnatic_competition_start_date_is_not_the_announcement_date() -> None:
+    fixture = pd.DataFrame(
+        {
+            "season": [13, 13, 13],
+            "scheduled_at": [
+                "2024-05-21T10:00:00Z",
+                "2024-05-22T08:00:00Z",
+                "2024-05-23T08:00:00Z",
+            ],
+            "team_a_code": ["ONIC"] * 3,
+            "team_b_code": ["FIXTURE_B"] * 3,
+            "team_a_name": ["ONIC Philippines"] * 3,
+            "team_b_name": ["Fixture"] * 3,
+        }
+    )
+    result = apply_team_name_history(fixture)
+    assert result.team_a_name.tolist() == ["ONIC Philippines", "Fnatic ONIC PH", "Fnatic ONIC PH"]
+    assert result.team_a_code.equals(fixture.team_a_code)
+
+
+@pytest.mark.parametrize(
+    "code,before,after",
+    [
+        ("ONIC", "ONIC Philippines", "Fnatic ONIC PH"),
+        ("APBR", "AP.Bren", "Falcons APBren"),
+    ],
+)
+def test_s13_additional_names_are_date_aware_and_do_not_duplicate_team_ids(
+    code: str,
+    before: str,
+    after: str,
+) -> None:
+    matches = pd.read_csv(ROOT / "data/clean/matches.csv").query("season == 13")
+    for side in ("a", "b"):
+        rows = matches.loc[matches[f"team_{side}_code"].eq(code)]
+        assert set(rows.loc[rows.stage.eq("regular_season"), f"team_{side}_name"]) <= {before}
+        assert set(rows.loc[rows.stage.eq("playoffs"), f"team_{side}_name"]) <= {after}
+    teams = pd.read_csv(ROOT / "data/mpl-season13/mpl_ph_season_13_teams.csv")
+    assert len(teams) == 8 and not teams.team_id.duplicated().any()
+    row = teams.loc[teams.team_code.eq(code)].iloc[0]
+    assert row.team_name == after and row.historical_names == f"{before} | {after}"
+
+
 def test_collected_historical_statistics_and_source_hashes_are_auditable() -> None:
     stats = pd.read_csv(ROOT / "data/raw/historical_player_season_stats.csv")
     assert len(stats) > 0 and stats["season"].between(5, 17).all()

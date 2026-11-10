@@ -14,6 +14,32 @@
         "https://teamliquid.com/articles/the-5-steps-of-recovering-from-mobile-esports-denial",
         "https://en.moonton.com/news/93.html"
       ]
+    },
+    {
+      "season": 13,
+      "team_code": "ONIC",
+      "announcement_date": "2024-05-21",
+      "effective_from_date": "2024-05-22",
+      "name_before": "ONIC Philippines",
+      "name_after": "Fnatic ONIC PH",
+      "precision": "announcement_date_only_explicit_competition_start_date",
+      "source_urls": [
+        "https://fnatic.com/news/fnatic-partners-with-onic-esports",
+        "https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs"
+      ]
+    },
+    {
+      "season": 13,
+      "team_code": "APBR",
+      "announcement_date": "2024-05-19",
+      "name_before": "AP.Bren",
+      "name_after": "Falcons APBren",
+      "precision": "date_only_no_match_on_announcement_date",
+      "date_basis": "Official league article dated Tuesday 21 May describes the announcement as the preceding Sunday (19 May). No exact hour or roster effective date is inferred.",
+      "source_urls": [
+        "https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs",
+        "https://en.moonton.com/news/93.html"
+      ]
     }
   ]
 }
