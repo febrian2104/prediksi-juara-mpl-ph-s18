@@ -62,7 +62,7 @@ verify-release: dev-setup
 	$(PYTHON) scripts/verify_release.py $(RELEASE_ARGS)
 
 collect-history: setup
-	$(PYTHON) scripts/collect_history.py
+	$(PYTHON) scripts/collect_history.py $(HISTORY_ARGS)
 
 collect-details: setup
 	$(PYTHON) scripts/collect_game_details.py $(DETAIL_ARGS)
@@ -80,7 +80,7 @@ verify-history: setup
 	$(PYTHON) scripts/update_project.py --verify-history
 
 forecast: setup
-	@test -n "$(SCHEDULE)" -a -n "$(PERIOD)" || (echo 'Isi SCHEDULE dan PERIOD; lihat docs/LIVE_PREDICTIONS.md.'; exit 2)
+	@test -n "$(SCHEDULE)" -a -n "$(PERIOD)" || (echo 'Isi SCHEDULE dan PERIOD; lihat README.md atau scripts/forecast.py --help.'; exit 2)
 	$(PYTHON) scripts/forecast.py save --schedule "$(SCHEDULE)" --period "$(PERIOD)" --rules "$(or $(RULES),config/competition.json)"
 
 evaluate: setup
@@ -97,7 +97,8 @@ help:
 		'make smoke     Uji tiga halaman offline tanpa training atau kolektor' \
 		'make verify-release RELEASE_ARGS=--fresh-env  Uji salinan Git dengan venv baru' \
 		'make archive   Simpan arsip artefak saat ini tanpa menimpa riwayat' \
-		'make collect-history  Periksa ulang sumber historis Season 1-5' \
+		'make collect-history  Periksa dan ekspor bukti Season 1-5 tanpa training' \
+		'make collect-history HISTORY_ARGS=--cache-only  Ekspor bukti awal offline' \
 		'make collect-details  Ambil scoreboard game resmi tanpa training ulang' \
 		'make collect-season-data  Ambil statistik arsip dan audit silang klasemen' \
 		'make audit-game-data  Bandingkan ringkasan game dan scoreboard lokal' \

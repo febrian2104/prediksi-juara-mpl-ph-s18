@@ -1,8 +1,874 @@
 {
-  "generated_at": "2026-11-10T03:38:01.264199+00:00",
-  "reviewed_result_rows": 8,
-  "total_early_result_rows": 22,
-  "source_url": "https://pinoygamer.ph/articles/mobile-legends-professional-league-philippines-season-5-week-2-results.8221/",
-  "evidence_record_sha256": "30c24bbe45f1cbc060db4fd1d86091f6286b6ef9fb818831ccdc7ae959849332",
-  "limitation": "Sumber sekunder kontemporer melalui web reader; HTTP langsung 403. Hanya rentang tanggal pekan diketahui. Jam, tanggal per laga dan BO tidak diisi. Hasil parsial tidak dimasukkan ke training atau dianggap arsip S5 lengkap."
+  "generated_at": "2026-11-10T04:04:25.551785+00:00",
+  "reviewed_result_rows": 50,
+  "total_early_result_rows": 64,
+  "sources": [
+    {
+      "url": "https://pinoygamer.ph/articles/mobile-legends-professional-league-philippines-season-5-week-2-results.8221/",
+      "rows": 8,
+      "evidence_record_path": "data/raw/reviewed_early_results.json",
+      "evidence_record_sha256": "30c24bbe45f1cbc060db4fd1d86091f6286b6ef9fb818831ccdc7ae959849332"
+    },
+    {
+      "url": "https://www.dugout.ph/2020/02/bren-opens-mpl-ph-season-5-with-win.html",
+      "rows": 1,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://pinoygamer.ph/articles/mpl-philippines-season-5-week-3-results.8264/",
+      "rows": 8,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://pinoygamer.ph/articles/mobile-legends-professional-league-philippines-week-4-results.8920/",
+      "rows": 8,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://pinoygamer.ph/articles/mpl-philippines-regular-season-week-5-season-5-results.8959/",
+      "rows": 8,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://pinoygamer.ph/articles/mpl-philippines-season-5-week-6-results.9005/",
+      "rows": 8,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://esports.inquirer.net/22361/an-explosive-start-mpl-ph-s5-playoffs-day-1-recap",
+      "rows": 2,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://tiebreakertimes.com.ph/tbt/honda-beast-carries-blacklist-international-mpl-lower-bracket-semis/184880",
+      "rows": 2,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://esports.inquirer.net/22385/gearing-up-for-the-leagues-first-ever-two-time-champion-mpl-ph-s5-playoffs-day-2-recap",
+      "rows": 2,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://esports.inquirer.net/22385/gearing-up-for-the-leagues-first-ever-two-time-champion-mpl-ph-s5-playoffs-day-2-recap",
+      "rows": 1,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://esports.inquirer.net/22385/gearing-up-for-the-leagues-first-ever-two-time-champion-mpl-ph-s5-playoffs-day-2-recap",
+      "rows": 1,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://tiebreakertimes.com.ph/tbt/onic-ph-stuns-bren-esports-advances-to-mpl-grand-finals/184931",
+      "rows": 1,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
+      "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    }
+  ],
+  "coverage": [
+    {
+      "season": 5,
+      "regular_rows": 41,
+      "playoff_rows": 10,
+      "expected_regular_rows": 45,
+      "expectation_status": "secondary_sources_not_verified_primary_rulebook",
+      "expectation_source_urls": [
+        "https://www.dugout.ph/2020/08/mpl-ph-spills-new-tournament-format.html",
+        "https://liquipedia.net/mobilelegends/MPL/Philippines/Season_5/Regular_Season"
+      ],
+      "missing_regular_pairs": [
+        [
+          "BLCK",
+          "STI"
+        ],
+        [
+          "BSB",
+          "SGD"
+        ],
+        [
+          "EXE",
+          "ONIC"
+        ],
+        [
+          "GF",
+          "ULVL"
+        ]
+      ],
+      "duplicate_regular_pairs": [],
+      "unexpected_regular_pairs": [],
+      "training_eligible": false,
+      "comparison_dataset": "non_training_reviewed_early_observations_not_canonical_training",
+      "status": "partial_reviewed_results_not_training_data",
+      "limitation": "Kecocokan penghitung bukan bukti lengkapnya laga, roster, tanggal efektif atau waktu publikasi. Skor yang hilang tidak dihitung balik dari klasemen.",
+      "standings_comparison": {
+        "season": 5,
+        "status": "source_conflict_or_scope_mismatch",
+        "canonical_regular_rows": 41,
+        "standings_team_rows": 10,
+        "difference_count": 34,
+        "match_wl_totals_reconciled": false,
+        "game_wl_totals_reconciled": false,
+        "differences": [
+          {
+            "team_code": "BLCK",
+            "field": "match_wins",
+            "canonical": 3,
+            "archive": 5
+          },
+          {
+            "team_code": "BLCK",
+            "field": "match_losses",
+            "canonical": 5,
+            "archive": 6
+          },
+          {
+            "team_code": "BLCK",
+            "field": "game_wins",
+            "canonical": 7,
+            "archive": 11
+          },
+          {
+            "team_code": "BLCK",
+            "field": "game_losses",
+            "canonical": 11,
+            "archive": 14
+          },
+          {
+            "team_code": "BREN",
+            "field": "match_wins",
+            "canonical": 8,
+            "archive": 9
+          },
+          {
+            "team_code": "BREN",
+            "field": "match_losses",
+            "canonical": 1,
+            "archive": 3
+          },
+          {
+            "team_code": "BREN",
+            "field": "game_wins",
+            "canonical": 16,
+            "archive": 19
+          },
+          {
+            "team_code": "BREN",
+            "field": "game_losses",
+            "canonical": 4,
+            "archive": 9
+          },
+          {
+            "team_code": "BSB",
+            "field": "match_losses",
+            "canonical": 5,
+            "archive": 7
+          },
+          {
+            "team_code": "BSB",
+            "field": "game_wins",
+            "canonical": 7,
+            "archive": 9
+          },
+          {
+            "team_code": "BSB",
+            "field": "game_losses",
+            "canonical": 10,
+            "archive": 14
+          },
+          {
+            "team_code": "EXE",
+            "field": "match_wins",
+            "canonical": 7,
+            "archive": 8
+          },
+          {
+            "team_code": "EXE",
+            "field": "match_losses",
+            "canonical": 1,
+            "archive": 4
+          },
+          {
+            "team_code": "EXE",
+            "field": "game_wins",
+            "canonical": 14,
+            "archive": 17
+          },
+          {
+            "team_code": "EXE",
+            "field": "game_losses",
+            "canonical": 6,
+            "archive": 12
+          },
+          {
+            "team_code": "GEEK",
+            "field": "match_losses",
+            "canonical": 7,
+            "archive": 8
+          },
+          {
+            "team_code": "GEEK",
+            "field": "game_losses",
+            "canonical": 14,
+            "archive": 16
+          },
+          {
+            "team_code": "ONIC",
+            "field": "match_wins",
+            "canonical": 6,
+            "archive": 10
+          },
+          {
+            "team_code": "ONIC",
+            "field": "match_losses",
+            "canonical": 2,
+            "archive": 3
+          },
+          {
+            "team_code": "ONIC",
+            "field": "game_wins",
+            "canonical": 14,
+            "archive": 24
+          },
+          {
+            "team_code": "ONIC",
+            "field": "game_losses",
+            "canonical": 5,
+            "archive": 12
+          },
+          {
+            "team_code": "SGD",
+            "field": "match_wins",
+            "canonical": 5,
+            "archive": 7
+          },
+          {
+            "team_code": "SGD",
+            "field": "match_losses",
+            "canonical": 3,
+            "archive": 4
+          },
+          {
+            "team_code": "SGD",
+            "field": "game_wins",
+            "canonical": 11,
+            "archive": 16
+          },
+          {
+            "team_code": "SGD",
+            "field": "game_losses",
+            "canonical": 6,
+            "archive": 9
+          },
+          {
+            "team_code": "SS",
+            "field": "match_wins",
+            "canonical": 7,
+            "archive": 9
+          },
+          {
+            "team_code": "SS",
+            "field": "game_wins",
+            "canonical": 16,
+            "archive": 22
+          },
+          {
+            "team_code": "SS",
+            "field": "game_losses",
+            "canonical": 5,
+            "archive": 8
+          },
+          {
+            "team_code": "STI",
+            "field": "match_losses",
+            "canonical": 8,
+            "archive": 9
+          },
+          {
+            "team_code": "STI",
+            "field": "game_losses",
+            "canonical": 16,
+            "archive": 18
+          },
+          {
+            "team_code": "ULVL",
+            "field": "match_wins",
+            "canonical": 1,
+            "archive": 2
+          },
+          {
+            "team_code": "ULVL",
+            "field": "match_losses",
+            "canonical": 7,
+            "archive": 8
+          },
+          {
+            "team_code": "ULVL",
+            "field": "game_wins",
+            "canonical": 3,
+            "archive": 6
+          },
+          {
+            "team_code": "ULVL",
+            "field": "game_losses",
+            "canonical": 14,
+            "archive": 15
+          }
+        ],
+        "canonical_all_stage_rows": 51,
+        "exact_matching_scopes": [],
+        "archive_wl_scope": "unresolved",
+        "scope_comparison": {
+          "regular_season": {
+            "difference_count": 34,
+            "differences": [
+              {
+                "team_code": "BLCK",
+                "field": "match_wins",
+                "canonical": 3,
+                "archive": 5
+              },
+              {
+                "team_code": "BLCK",
+                "field": "match_losses",
+                "canonical": 5,
+                "archive": 6
+              },
+              {
+                "team_code": "BLCK",
+                "field": "game_wins",
+                "canonical": 7,
+                "archive": 11
+              },
+              {
+                "team_code": "BLCK",
+                "field": "game_losses",
+                "canonical": 11,
+                "archive": 14
+              },
+              {
+                "team_code": "BREN",
+                "field": "match_wins",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "BREN",
+                "field": "match_losses",
+                "canonical": 1,
+                "archive": 3
+              },
+              {
+                "team_code": "BREN",
+                "field": "game_wins",
+                "canonical": 16,
+                "archive": 19
+              },
+              {
+                "team_code": "BREN",
+                "field": "game_losses",
+                "canonical": 4,
+                "archive": 9
+              },
+              {
+                "team_code": "BSB",
+                "field": "match_losses",
+                "canonical": 5,
+                "archive": 7
+              },
+              {
+                "team_code": "BSB",
+                "field": "game_wins",
+                "canonical": 7,
+                "archive": 9
+              },
+              {
+                "team_code": "BSB",
+                "field": "game_losses",
+                "canonical": 10,
+                "archive": 14
+              },
+              {
+                "team_code": "EXE",
+                "field": "match_wins",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "EXE",
+                "field": "match_losses",
+                "canonical": 1,
+                "archive": 4
+              },
+              {
+                "team_code": "EXE",
+                "field": "game_wins",
+                "canonical": 14,
+                "archive": 17
+              },
+              {
+                "team_code": "EXE",
+                "field": "game_losses",
+                "canonical": 6,
+                "archive": 12
+              },
+              {
+                "team_code": "GEEK",
+                "field": "match_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "GEEK",
+                "field": "game_losses",
+                "canonical": 14,
+                "archive": 16
+              },
+              {
+                "team_code": "ONIC",
+                "field": "match_wins",
+                "canonical": 6,
+                "archive": 10
+              },
+              {
+                "team_code": "ONIC",
+                "field": "match_losses",
+                "canonical": 2,
+                "archive": 3
+              },
+              {
+                "team_code": "ONIC",
+                "field": "game_wins",
+                "canonical": 14,
+                "archive": 24
+              },
+              {
+                "team_code": "ONIC",
+                "field": "game_losses",
+                "canonical": 5,
+                "archive": 12
+              },
+              {
+                "team_code": "SGD",
+                "field": "match_wins",
+                "canonical": 5,
+                "archive": 7
+              },
+              {
+                "team_code": "SGD",
+                "field": "match_losses",
+                "canonical": 3,
+                "archive": 4
+              },
+              {
+                "team_code": "SGD",
+                "field": "game_wins",
+                "canonical": 11,
+                "archive": 16
+              },
+              {
+                "team_code": "SGD",
+                "field": "game_losses",
+                "canonical": 6,
+                "archive": 9
+              },
+              {
+                "team_code": "SS",
+                "field": "match_wins",
+                "canonical": 7,
+                "archive": 9
+              },
+              {
+                "team_code": "SS",
+                "field": "game_wins",
+                "canonical": 16,
+                "archive": 22
+              },
+              {
+                "team_code": "SS",
+                "field": "game_losses",
+                "canonical": 5,
+                "archive": 8
+              },
+              {
+                "team_code": "STI",
+                "field": "match_losses",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "STI",
+                "field": "game_losses",
+                "canonical": 16,
+                "archive": 18
+              },
+              {
+                "team_code": "ULVL",
+                "field": "match_wins",
+                "canonical": 1,
+                "archive": 2
+              },
+              {
+                "team_code": "ULVL",
+                "field": "match_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "ULVL",
+                "field": "game_wins",
+                "canonical": 3,
+                "archive": 6
+              },
+              {
+                "team_code": "ULVL",
+                "field": "game_losses",
+                "canonical": 14,
+                "archive": 15
+              }
+            ]
+          },
+          "all_collected_matches": {
+            "difference_count": 23,
+            "differences": [
+              {
+                "team_code": "BLCK",
+                "field": "match_wins",
+                "canonical": 4,
+                "archive": 5
+              },
+              {
+                "team_code": "BLCK",
+                "field": "game_wins",
+                "canonical": 9,
+                "archive": 11
+              },
+              {
+                "team_code": "BSB",
+                "field": "match_losses",
+                "canonical": 6,
+                "archive": 7
+              },
+              {
+                "team_code": "BSB",
+                "field": "game_wins",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "BSB",
+                "field": "game_losses",
+                "canonical": 12,
+                "archive": 14
+              },
+              {
+                "team_code": "EXE",
+                "field": "match_losses",
+                "canonical": 3,
+                "archive": 4
+              },
+              {
+                "team_code": "EXE",
+                "field": "game_losses",
+                "canonical": 10,
+                "archive": 12
+              },
+              {
+                "team_code": "GEEK",
+                "field": "match_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "GEEK",
+                "field": "game_losses",
+                "canonical": 14,
+                "archive": 16
+              },
+              {
+                "team_code": "ONIC",
+                "field": "match_wins",
+                "canonical": 9,
+                "archive": 10
+              },
+              {
+                "team_code": "ONIC",
+                "field": "match_losses",
+                "canonical": 4,
+                "archive": 3
+              },
+              {
+                "team_code": "ONIC",
+                "field": "game_wins",
+                "canonical": 22,
+                "archive": 24
+              },
+              {
+                "team_code": "SGD",
+                "field": "match_wins",
+                "canonical": 6,
+                "archive": 7
+              },
+              {
+                "team_code": "SGD",
+                "field": "game_wins",
+                "canonical": 14,
+                "archive": 16
+              },
+              {
+                "team_code": "SGD",
+                "field": "game_losses",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "SS",
+                "field": "match_wins",
+                "canonical": 10,
+                "archive": 9
+              },
+              {
+                "team_code": "SS",
+                "field": "game_wins",
+                "canonical": 23,
+                "archive": 22
+              },
+              {
+                "team_code": "SS",
+                "field": "game_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "STI",
+                "field": "match_losses",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "STI",
+                "field": "game_losses",
+                "canonical": 16,
+                "archive": 18
+              },
+              {
+                "team_code": "ULVL",
+                "field": "match_wins",
+                "canonical": 1,
+                "archive": 2
+              },
+              {
+                "team_code": "ULVL",
+                "field": "game_wins",
+                "canonical": 3,
+                "archive": 6
+              },
+              {
+                "team_code": "ULVL",
+                "field": "game_losses",
+                "canonical": 16,
+                "archive": 15
+              }
+            ]
+          },
+          "regular_match_wl_and_all_collected_game_wl": {
+            "difference_count": 29,
+            "differences": [
+              {
+                "team_code": "BLCK",
+                "field": "match_wins",
+                "canonical": 3,
+                "archive": 5
+              },
+              {
+                "team_code": "BLCK",
+                "field": "match_losses",
+                "canonical": 5,
+                "archive": 6
+              },
+              {
+                "team_code": "BLCK",
+                "field": "game_wins",
+                "canonical": 9,
+                "archive": 11
+              },
+              {
+                "team_code": "BREN",
+                "field": "match_wins",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "BREN",
+                "field": "match_losses",
+                "canonical": 1,
+                "archive": 3
+              },
+              {
+                "team_code": "BSB",
+                "field": "match_losses",
+                "canonical": 5,
+                "archive": 7
+              },
+              {
+                "team_code": "BSB",
+                "field": "game_wins",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "BSB",
+                "field": "game_losses",
+                "canonical": 12,
+                "archive": 14
+              },
+              {
+                "team_code": "EXE",
+                "field": "match_wins",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "EXE",
+                "field": "match_losses",
+                "canonical": 1,
+                "archive": 4
+              },
+              {
+                "team_code": "EXE",
+                "field": "game_losses",
+                "canonical": 10,
+                "archive": 12
+              },
+              {
+                "team_code": "GEEK",
+                "field": "match_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "GEEK",
+                "field": "game_losses",
+                "canonical": 14,
+                "archive": 16
+              },
+              {
+                "team_code": "ONIC",
+                "field": "match_wins",
+                "canonical": 6,
+                "archive": 10
+              },
+              {
+                "team_code": "ONIC",
+                "field": "match_losses",
+                "canonical": 2,
+                "archive": 3
+              },
+              {
+                "team_code": "ONIC",
+                "field": "game_wins",
+                "canonical": 22,
+                "archive": 24
+              },
+              {
+                "team_code": "SGD",
+                "field": "match_wins",
+                "canonical": 5,
+                "archive": 7
+              },
+              {
+                "team_code": "SGD",
+                "field": "match_losses",
+                "canonical": 3,
+                "archive": 4
+              },
+              {
+                "team_code": "SGD",
+                "field": "game_wins",
+                "canonical": 14,
+                "archive": 16
+              },
+              {
+                "team_code": "SGD",
+                "field": "game_losses",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "SS",
+                "field": "match_wins",
+                "canonical": 7,
+                "archive": 9
+              },
+              {
+                "team_code": "SS",
+                "field": "game_wins",
+                "canonical": 23,
+                "archive": 22
+              },
+              {
+                "team_code": "SS",
+                "field": "game_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "STI",
+                "field": "match_losses",
+                "canonical": 8,
+                "archive": 9
+              },
+              {
+                "team_code": "STI",
+                "field": "game_losses",
+                "canonical": 16,
+                "archive": 18
+              },
+              {
+                "team_code": "ULVL",
+                "field": "match_wins",
+                "canonical": 1,
+                "archive": 2
+              },
+              {
+                "team_code": "ULVL",
+                "field": "match_losses",
+                "canonical": 7,
+                "archive": 8
+              },
+              {
+                "team_code": "ULVL",
+                "field": "game_wins",
+                "canonical": 3,
+                "archive": 6
+              },
+              {
+                "team_code": "ULVL",
+                "field": "game_losses",
+                "canonical": 16,
+                "archive": 15
+              }
+            ]
+          }
+        },
+        "closest_counter_scope": "all_collected_matches",
+        "residual_difference_count": 23,
+        "scope_basis": "counter_agreement_with_collected_matches_not_official_scope_declaration",
+        "conflicting_duplicate_team_rows": false,
+        "scope": "counter_scope_reconciliation_not_individual_match_completeness",
+        "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis."
+      }
+    }
+  ],
+  "limitation": "Fakta ditinjau dari sumber sekunder kontemporer melalui web reader, bukan klaim arsip HTML berhasil. Rentang pekan atau tanggal laga dicatat sesuai bukti; jam mulai dan BO yang tidak terverifikasi tetap kosong. Hasil parsial tidak dimasukkan ke training atau dianggap arsip S5 lengkap."
 }

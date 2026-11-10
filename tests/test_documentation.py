@@ -13,7 +13,11 @@ def test_readme_local_documentation_and_screenshots_are_present() -> None:
             assert (ROOT / target).is_file(), f"Broken README link: {link}"
 
 
-def test_expected_operation_guides_exist() -> None:
-    for name in ("STRUCTURE", "DATA_SOURCES", "DATA_DICTIONARY", "OPERATIONS",
-                 "LIVE_PREDICTIONS", "ADDING_A_SEASON"):
-        assert (ROOT / "docs" / f"{name}.md").is_file()
+def test_public_readme_is_self_contained_without_private_local_guides() -> None:
+    readme = (ROOT / "README.md").read_text()
+    for command in ("make run", "make update", "make rebuild", "make check", "make smoke"):
+        assert command in readme
+    assert "streamlit_app.py" in readme
+    assert "requirements.txt" in readme
+    links = re.findall(r"\]\(([^)]+)\)", readme)
+    assert not any(link.startswith("docs/") or link == "PROJECT_STATUS.md" for link in links)

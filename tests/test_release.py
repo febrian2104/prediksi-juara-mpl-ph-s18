@@ -8,22 +8,16 @@ from mpl_ph_predictor.release import git_visible_files
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_release_contains_operating_guides_and_status_not_ignored_local_only_files():
-    required = {Path("PROJECT_STATUS.md"), Path("docs/LEAGUE_IDENTITY.md")}
-    required.update(
-        Path("docs") / f"{name}.md"
-        for name in (
-            "STRUCTURE",
-            "DATA_SOURCES",
-            "DATA_DICTIONARY",
-            "OPERATIONS",
-            "LIVE_PREDICTIONS",
-            "ADDING_A_SEASON",
-        )
-    )
-    assert all((ROOT / path).is_file() for path in required)
+def test_release_keeps_private_local_guides_outside_github_package():
     if (ROOT / ".git").exists():
-        assert required.issubset(set(git_visible_files(ROOT)))
+        paths = set(git_visible_files(ROOT))
+        assert Path("README.md") in paths
+        assert Path("streamlit_app.py") in paths
+        assert Path("PROJECT_STATUS.md") not in paths
+        assert not any(path.parts[0] == "docs" for path in paths)
+    else:
+        assert not (ROOT / "docs").exists()
+        assert not (ROOT / "PROJECT_STATUS.md").exists()
 
 
 def test_release_rejects_tracked_symlink_escaping_allowed_workspace(tmp_path):

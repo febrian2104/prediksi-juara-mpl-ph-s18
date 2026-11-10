@@ -1,11 +1,11 @@
 season,team,final_rank,champion,runner_up,source,rank_coverage
-7,Aura PH,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Blacklist International,1,1,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Bren Esports,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Cignal Ultra,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Execration,2,0,1,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Laus Playbook Esports,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Nexplay Solid,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,ONIC Philippines,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Smart Omega,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
-7,Work Auster Force,,0,0,https://ph-mpl.com/s7,finalists_only_other_ranks_unverified
+7,Aura PH,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Blacklist International,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Bren Esports,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Cignal Ultra,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Execration,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Laus Playbook Esports,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Nexplay Solid,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,ONIC Philippines,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Smart Omega,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified
+7,Work Auster Force,,,,https://ph-mpl.com/s7,grand_final_not_explicitly_identified

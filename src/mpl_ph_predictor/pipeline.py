@@ -72,8 +72,6 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
     required = ROOT / "data" / "raw" / "official_matches.csv"
     if not required.exists():
         raise FileNotFoundError("Data mentah belum ada; jalankan pipeline tanpa --no-fetch.")
-    import_reviewed_early_results()
-
     matches, teams, rosters, quality = build_canonical_data()
     write_canonical_data(matches, teams, rosters, quality)
     if quality["status"] != "pass":
@@ -83,6 +81,7 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
         collect_game_details()
     else:
         audit_game_summaries()
+    import_reviewed_early_results()
     coverage = export_reference_layout(matches, teams, rosters)
     league_identity = write_league_identity_audit()
 

@@ -1,9 +1,9 @@
 season,team,final_rank,champion,runner_up,source,rank_coverage
-15,AP BREN,,0,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,Aurora Gaming PH,,0,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,ONIC Philippines,2,0,1,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,Smart Omega,,0,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,Team Falcons PH,,0,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,Team Liquid PH,1,1,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,TNC Pro Team,,0,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
-15,Twisted Minds PH,,0,0,https://ph-mpl.com/s15,finalists_only_other_ranks_unverified
+15,AP BREN,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,Aurora Gaming PH,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,ONIC Philippines,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,Smart Omega,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,Team Falcons PH,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,Team Liquid PH,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,TNC Pro Team,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified
+15,Twisted Minds PH,,,,https://ph-mpl.com/s15,grand_final_not_explicitly_identified

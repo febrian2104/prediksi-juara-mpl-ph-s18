@@ -1,0 +1,179 @@
+{
+  "schema_version": 2,
+  "reviewed_on": "2026-11-10",
+  "season": 5,
+  "training_eligible": false,
+  "source_access_method": "web_reader",
+  "evidence_kind": "reviewed_match_facts_not_raw_html_or_official_verification",
+  "raw_html_archived": false,
+  "team_names": {
+    "SS": "Sunsparks", "ONIC": "ONIC Philippines", "BREN": "Bren Esports",
+    "EXE": "Execration", "SGD": "SGD Omega", "BLCK": "Blacklist International",
+    "BSB": "BSB", "ULVL": "ULVL", "GF": "Geek Fam PH", "STI": "STI e-Olympians"
+  },
+  "batches": [
+    {
+      "source_url": "https://www.dugout.ph/2020/02/bren-opens-mpl-ph-season-5-with-win.html",
+      "source_title": "Bren opens MPL PH Season 5 with win",
+      "published_date": "2020-02-29",
+      "stage": "regular_season", "week": 1,
+      "date_range_start": "2020-02-29", "date_range_end": "2020-02-29",
+      "date_basis": "Contemporary same-day opening-match report, not its publication timestamp as a start time.",
+      "review_notes": "Liquipedia labels season opening Feb 28; contemporary opening report and preseason announcement say Feb 29. Do not import a precise start time.",
+      "supporting_source_urls": ["https://businessmirror.com.ph/2020/02/18/mobile-legends-bang-bang-professional-league-philippines-season-five-is-here/"],
+      "results": [
+        {"team_a_code": "BREN", "team_b_code": "SS", "team_a_score": 2, "team_b_score": 1}
+      ]
+    },
+    {
+      "source_url": "https://pinoygamer.ph/articles/mpl-philippines-season-5-week-3-results.8264/",
+      "source_title": "MPL Philippines Season 5 Week 3 Results",
+      "published_date": "2020-03-17",
+      "stage": "regular_season", "week": 3,
+      "date_range_start": "2020-03-13", "date_range_end": "2020-03-15",
+      "date_basis": "Week-level report and contemporary published calendar; no per-match timestamp asserted.",
+      "review_notes": "Article groups three matches on Day 1, including two Execration matches. Day grouping is not treated as verified exact dates. Esports Charts labels one opponent GFPH, conflicting with this report's BLCK; opponent identity remains a source-review issue.",
+      "supporting_source_urls": ["https://businessmirror.com.ph/2020/02/18/mobile-legends-bang-bang-professional-league-philippines-season-five-is-here/", "https://escharts.com/tournaments/mobile-legends/mpl-ph-season-5/schedule"],
+      "results": [
+        {"team_a_code": "SS", "team_b_code": "STI", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "EXE", "team_b_code": "BLCK", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "EXE", "team_b_code": "SS", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "BREN", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BLCK", "team_b_code": "BSB", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "GF", "team_b_code": "STI", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BSB", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "ONIC", "team_b_code": "SGD", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://pinoygamer.ph/articles/mobile-legends-professional-league-philippines-week-4-results.8920/",
+      "source_title": "Mobile Legends Professional League Philippines Week 4 Results",
+      "published_date": "2020-05-04",
+      "stage": "regular_season", "week": 4,
+      "date_range_start": "2020-05-01", "date_range_end": "2020-05-03",
+      "date_basis": "Postponement-aware week-level calendar, corroborated by resumption announcement.",
+      "review_notes": "Item 6 incorrectly says week 3 although title/body identify week 4. Original March calendar was postponed and is not used for this week.",
+      "supporting_source_urls": ["https://www.ungeek.ph/2020/05/season-5-of-the-mobile-legends-pro-league-philippines-resumes-this-month/"],
+      "results": [
+        {"team_a_code": "ONIC", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BREN", "team_b_code": "EXE", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SGD", "team_b_code": "GF", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "ULVL", "team_b_code": "STI", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SS", "team_b_code": "BLCK", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "EXE", "team_b_code": "BSB", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "ONIC", "team_b_code": "GF", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SGD", "team_b_code": "BREN", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://pinoygamer.ph/articles/mpl-philippines-regular-season-week-5-season-5-results.8959/",
+      "source_title": "MPL Philippines Regular Season Week 5 Season 5 Results",
+      "published_date": "2020-05-11",
+      "stage": "regular_season", "week": 5,
+      "date_range_start": "2020-05-08", "date_range_end": "2020-05-10",
+      "date_basis": "Week-level report and resumption announcement, not precise match dates.",
+      "review_notes": "Item 6 incorrectly says week 3; title and surrounding text identify week 5. Do not use the day label to invent dates.",
+      "supporting_source_urls": ["https://www.ungeek.ph/2020/05/season-5-of-the-mobile-legends-pro-league-philippines-resumes-this-month/"],
+      "results": [
+        {"team_a_code": "ONIC", "team_b_code": "BLCK", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "BREN", "team_b_code": "STI", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "ONIC", "team_b_code": "BSB", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BLCK", "team_b_code": "GF", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "EXE", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "EXE", "team_b_code": "GF", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BREN", "team_b_code": "BSB", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SS", "team_b_code": "SGD", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://pinoygamer.ph/articles/mpl-philippines-season-5-week-6-results.9005/",
+      "source_title": "MPL Philippines Season 5 Week 6 Results",
+      "published_date": "2020-05-18",
+      "stage": "regular_season", "week": 6,
+      "date_range_start": "2020-05-15", "date_range_end": "2020-05-17",
+      "date_basis": "Week-level report and resumption announcement; start times unverified.",
+      "supporting_source_urls": ["https://www.ungeek.ph/2020/05/season-5-of-the-mobile-legends-pro-league-philippines-resumes-this-month/", "https://esports.inquirer.net/22254/all-set-for-playoffs-mpl-ph-s5-week-6-day-3-recap"],
+      "results": [
+        {"team_a_code": "SGD", "team_b_code": "BLCK", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SS", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "ONIC", "team_b_code": "STI", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SGD", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BREN", "team_b_code": "BLCK", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "BSB", "team_b_code": "GF", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "EXE", "team_b_code": "STI", "team_a_score": 2, "team_b_score": 0},
+        {"team_a_code": "SS", "team_b_code": "ONIC", "team_a_score": 2, "team_b_score": 1}
+      ]
+    },
+    {
+      "source_url": "https://esports.inquirer.net/22361/an-explosive-start-mpl-ph-s5-playoffs-day-1-recap",
+      "source_title": "An Explosive Start: MPL-PH S5 Playoffs Day 1 Recap",
+      "published_date": "2020-05-30",
+      "stage": "playoffs", "round": "upper_bracket_semifinal",
+      "date_range_start": "2020-05-29", "date_range_end": "2020-05-29",
+      "date_basis": "First playoff day May 29 independently identified in same-day Tiebreaker Times report, not the recap's publication date.",
+      "supporting_source_urls": ["https://tiebreakertimes.com.ph/tbt/karltzy-posts-monster-line-sets-up-bren-esports-sunsparks-showdown-in-mpl-upper-bracket-finals"],
+      "results": [
+        {"team_a_code": "BREN", "team_b_code": "EXE", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "SS", "team_b_code": "ONIC", "team_a_score": 2, "team_b_score": 1}
+      ]
+    },
+    {
+      "source_url": "https://tiebreakertimes.com.ph/tbt/honda-beast-carries-blacklist-international-mpl-lower-bracket-semis/184880",
+      "source_title": "HONDA BEAST carries Blacklist International to MPL Lower Bracket semis",
+      "published_date": "2020-05-29",
+      "stage": "playoffs", "round": "lower_bracket_round_1",
+      "date_range_start": "2020-05-29", "date_range_end": "2020-05-29",
+      "date_basis": "Same-day Friday playoff report with deciding-game descriptions.",
+      "supporting_source_urls": ["https://esports.inquirer.net/22361/an-explosive-start-mpl-ph-s5-playoffs-day-1-recap"],
+      "results": [
+        {"team_a_code": "BLCK", "team_b_code": "BSB", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "SGD", "team_b_code": "ULVL", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://esports.inquirer.net/22385/gearing-up-for-the-leagues-first-ever-two-time-champion-mpl-ph-s5-playoffs-day-2-recap",
+      "source_title": "Gearing Up For The League's First-Ever Two-Time Champion: MPL-PH S5 Playoffs Day 2 Recap",
+      "published_date": "2020-05-31",
+      "stage": "playoffs", "round": "lower_bracket_quarterfinal",
+      "date_range_start": "2020-05-30", "date_range_end": "2020-05-30",
+      "date_basis": "Second playoff day, May 30, not the post-midnight recap publication date.",
+      "results": [
+        {"team_a_code": "ONIC", "team_b_code": "SGD", "team_a_score": 2, "team_b_score": 1},
+        {"team_a_code": "EXE", "team_b_code": "BLCK", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://esports.inquirer.net/22385/gearing-up-for-the-leagues-first-ever-two-time-champion-mpl-ph-s5-playoffs-day-2-recap",
+      "source_title": "Gearing Up For The League's First-Ever Two-Time Champion: MPL-PH S5 Playoffs Day 2 Recap",
+      "published_date": "2020-05-31",
+      "stage": "playoffs", "round": "upper_bracket_final",
+      "date_range_start": "2020-05-30", "date_range_end": "2020-05-30",
+      "date_basis": "Day 2 recap; winning both described games establishes a 2-0 result.",
+      "results": [
+        {"team_a_code": "SS", "team_b_code": "BREN", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://esports.inquirer.net/22385/gearing-up-for-the-leagues-first-ever-two-time-champion-mpl-ph-s5-playoffs-day-2-recap",
+      "source_title": "Gearing Up For The League's First-Ever Two-Time Champion: MPL-PH S5 Playoffs Day 2 Recap",
+      "published_date": "2020-05-31",
+      "stage": "playoffs", "round": "lower_bracket_semifinal",
+      "date_range_start": "2020-05-30", "date_range_end": "2020-05-30",
+      "date_basis": "Day 2 recap explicitly describes ONIC winning both games.",
+      "results": [
+        {"team_a_code": "ONIC", "team_b_code": "EXE", "team_a_score": 2, "team_b_score": 0}
+      ]
+    },
+    {
+      "source_url": "https://tiebreakertimes.com.ph/tbt/onic-ph-stuns-bren-esports-advances-to-mpl-grand-finals/184931",
+      "source_title": "ONIC PH stuns BREN Esports, advances to MPL Grand Finals",
+      "published_date": "2020-05-31",
+      "stage": "playoffs", "round": "lower_bracket_final",
+      "date_range_start": "2020-05-31", "date_range_end": "2020-05-31",
+      "date_basis": "Same-day Sunday report explicitly records ONIC's 2-1 series win.",
+      "results": [
+        {"team_a_code": "ONIC", "team_b_code": "BREN", "team_a_score": 2, "team_b_score": 1}
+      ]
+    }
+  ]
+}

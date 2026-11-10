@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "seasons": {
+    "5": {
+      "regular_pair_meetings": 1,
+      "expected_regular_match_rows": 45,
+      "participants": ["BREN", "SS", "ONIC", "EXE", "SGD", "BLCK", "BSB", "ULVL", "GF", "STI"],
+      "counter_aliases": {"GF": "GEEK"},
+      "expectation_status": "secondary_sources_not_verified_primary_rulebook",
+      "source_urls": [
+        "https://www.dugout.ph/2020/08/mpl-ph-spills-new-tournament-format.html",
+        "https://liquipedia.net/mobilelegends/MPL/Philippines/Season_5/Regular_Season"
+      ],
+      "reviewed_on": "2026-11-10",
+      "note": "45 regular series and 10 participants are supported by contemporary reporting. Single round-robin is a secondary-source expectation for coverage checks, not a verified historical simulation rule. No points or tiebreak rules are assumed."
+    }
+  }
+}

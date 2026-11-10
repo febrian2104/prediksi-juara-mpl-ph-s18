@@ -62,13 +62,13 @@
     },
     {
       "season": 5,
-      "collected_match_rows": 9,
+      "collected_match_rows": 51,
       "model_eligible_rows": 0,
       "coverage_status": "partial",
       "regular_wl_reconciliation": "canonical_regular_matches_missing",
       "archive_wl_scope": "unresolved",
-      "regular_season_rows": 8,
-      "playoff_rows": 1,
+      "regular_season_rows": 41,
+      "playoff_rows": 10,
       "player_rows": 6,
       "games_rows": 0,
       "drafts_rows": 0,
@@ -271,7 +271,7 @@
       "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim; statistik arsip belum terverifikasi scope/penetapan tim. Observasi statistik ini tidak digunakan sebagai fitur S18."
     }
   ],
-  "previous_snapshot": "data/predictions/history/20261110T033801230863Z-11303da162fa.json",
+  "previous_snapshot": "data/predictions/history/20261110T040254846354Z-88628c4ed6b1.json",
   "data_quality": {
     "raw_match_rows": 852,
     "canonical_match_rows": 852,
@@ -290,7 +290,7 @@
     "status": "pass"
   },
   "league_identity_audit": {
-    "generated_at": "2026-11-10T03:38:45.906648+00:00",
+    "generated_at": "2026-11-10T04:03:47.589753+00:00",
     "franchise_start_season": 8,
     "participant_rows": 136,
     "unique_participant_ids": 136,
@@ -738,7 +738,7 @@
     "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap."
   },
   "production_model": {
-    "trained_at": "2026-11-10T03:38:59.260054+00:00",
+    "trained_at": "2026-11-10T04:04:01.530487+00:00",
     "training_latest_match_at": "2026-05-31 09:00:00+00:00",
     "training_data_observed_at": "2026-11-09T08:08:42.496740+00:00",
     "model_name": "logistic_regression",
@@ -801,7 +801,7 @@
       "accuracy": 0.640625,
       "log_loss": 0.6237896050129914,
       "brier_score": 0.21819247834447836,
-      "expected_calibration_error": 0.06871865595754595
+      "expected_calibration_error": 0.06871865595754596
     },
     {
       "model": "xgboost",
@@ -829,7 +829,7 @@
     }
   },
   "game_summary_audit": {
-    "generated_at": "2026-11-10T03:38:42.690694+00:00",
+    "generated_at": "2026-11-10T04:03:44.238717+00:00",
     "games": 309,
     "comparable_counters": 3090,
     "counter_differences": 22,

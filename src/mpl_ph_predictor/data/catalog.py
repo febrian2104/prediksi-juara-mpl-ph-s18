@@ -48,7 +48,7 @@ def match_table(frame: pd.DataFrame) -> pd.DataFrame:
         axis=1,
     )
     result["source"] = result["source_url"]
-    result["round"] = pd.NA
+    result["round"] = result.get("round", pd.NA)
     result.loc[result["stage"].eq("regular_season"), "round"] = "regular_season"
     result.loc[result["stage"].eq("grand_final"), "round"] = "grand_final"
     if "bracket_match_id" in result:
@@ -137,7 +137,10 @@ def player_table(rosters: pd.DataFrame) -> pd.DataFrame:
 
 
 def championship_table(matches: pd.DataFrame, teams: pd.DataFrame) -> pd.DataFrame:
-    final = matches.loc[matches["stage"].isin(["playoffs", "grand_final"])].tail(1)
+    # Import order is not bracket order: later evidence can describe an earlier round.
+    final = matches.loc[matches["stage"].eq("grand_final") | matches["round"].eq("grand_final")]
+    if len(final) > 1:
+        raise ValueError("Lebih dari satu grand final; verifikasi bracket diperlukan.")
     result = teams[["season", "team_name", "source"]].rename(columns={"team_name": "team"}).copy()
     for column in ("final_rank", "champion", "runner_up"):
         result[column] = pd.Series(pd.NA, index=result.index, dtype="Int64")
@@ -154,6 +157,8 @@ def championship_table(matches: pd.DataFrame, teams: pd.DataFrame) -> pd.DataFra
         if "verification_status" in row:
             result["verification_status"] = row.verification_status
     result["rank_coverage"] = "finalists_only_other_ranks_unverified"
+    if final.empty:
+        result["rank_coverage"] = "grand_final_not_explicitly_identified"
     return conform_table(result, "championships")
 
 
@@ -252,6 +257,12 @@ def export_reference_layout(
         if reconciliation_path.exists()
         else {}
     )
+    early_audit_path = ROOT / "reports/early_results_audit.json"
+    early_coverage = (
+        {row["season"]: row for row in json.loads(early_audit_path.read_text()).get("coverage", [])}
+        if early_audit_path.is_file()
+        else {}
+    )
     details = {}
     for table in ("games", "drafts"):
         path = ROOT / f"data/raw/official_{table}.csv"
@@ -340,6 +351,13 @@ def export_reference_layout(
             "archive_wl_scope": reconciliation.get(season, {}).get(
                 "archive_wl_scope", "not_checked"
             ),
+            "reviewed_early_regular_rows": early_coverage.get(season, {}).get("regular_rows"),
+            "missing_reviewed_regular_pairs": len(early_coverage[season]["missing_regular_pairs"])
+            if season in early_coverage
+            else None,
+            "reviewed_early_counter_status": early_coverage.get(season, {})
+            .get("standings_comparison", {})
+            .get("status", "not_checked"),
             "regular_season_rows": int(season_matches["stage"].eq("regular_season").sum()),
             "playoff_rows": int(season_matches["stage"].isin(["playoffs", "grand_final"]).sum()),
             "player_rows": len(season_players),

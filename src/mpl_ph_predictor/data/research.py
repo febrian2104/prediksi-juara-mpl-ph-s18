@@ -61,6 +61,18 @@ def collect_historical_source_availability() -> pd.DataFrame:
             },
         }
     )
+    from mpl_ph_predictor.data.early_results import reviewed_batches
+
+    for _, _, batch in reviewed_batches(ROOT):
+        for url in [batch["source_url"], *batch.get("supporting_source_urls", [])]:
+            candidates[url] = {
+                "season": batch["season"],
+                "source_type": "reviewed_secondary_evidence",
+            }
+    coverage_config = json.loads((ROOT / "config/early_season_coverage.json").read_text())
+    for season, expectation in coverage_config["seasons"].items():
+        for url in expectation["source_urls"]:
+            candidates[url] = {"season": int(season), "source_type": "early_coverage_reference"}
     snapshots = ROOT / "data/raw/source_snapshots"
     snapshots.mkdir(parents=True, exist_ok=True)
 

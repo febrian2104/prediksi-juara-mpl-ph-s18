@@ -1,9 +1,9 @@
 season,team,final_rank,champion,runner_up,source,rank_coverage
-10,Blacklist International,1,1,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,Bren Esports,,0,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,ECHO,2,0,1,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,Nexplay EVOS,,0,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,ONIC Philippines,,0,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,RSG Philippines,,0,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,Smart Omega,,0,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
-10,TNC Pro Team,,0,0,https://ph-mpl.com/s10,finalists_only_other_ranks_unverified
+10,Blacklist International,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,Bren Esports,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,ECHO,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,Nexplay EVOS,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,ONIC Philippines,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,RSG Philippines,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,Smart Omega,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
+10,TNC Pro Team,,,,https://ph-mpl.com/s10,grand_final_not_explicitly_identified
