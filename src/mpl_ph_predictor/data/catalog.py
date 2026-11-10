@@ -10,8 +10,10 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from mpl_ph_predictor.data.contracts import conform_table, load_dataset_schema, variable_coverage
+from mpl_ph_predictor.data.finals import annotate_reviewed_finals
 from mpl_ph_predictor.data.league_history import annotate_match_participants, participant_id
 from mpl_ph_predictor.data.normalization import slug
+from mpl_ph_predictor.storage import publish_table, publish_text
 
 ROOT = Path(__file__).resolve().parents[3]
 
@@ -156,6 +158,16 @@ def championship_table(matches: pd.DataFrame, teams: pd.DataFrame) -> pd.DataFra
         result["source"] = row.source
         if "verification_status" in row:
             result["verification_status"] = row.verification_status
+        if pd.notna(row.get("grand_final_basis")):
+            for column in (
+                "grand_final_basis",
+                "grand_final_source_urls",
+                "grand_final_verification_status",
+                "grand_final_reviewed_on",
+                "grand_final_registry_sha256",
+            ):
+                result[column] = row[column]
+            result["grand_final_match_id"] = row.match_id
     result["rank_coverage"] = "finalists_only_other_ranks_unverified"
     if final.empty:
         result["rank_coverage"] = "grand_final_not_explicitly_identified"
@@ -241,6 +253,11 @@ def official_player_stats(players: pd.DataFrame) -> pd.DataFrame:
 def export_reference_layout(
     matches: pd.DataFrame, teams: pd.DataFrame, rosters: pd.DataFrame
 ) -> pd.DataFrame:
+    matches, final_audit = annotate_reviewed_finals(matches)
+    publish_text(
+        json.dumps(final_audit, indent=2, ensure_ascii=False, allow_nan=False),
+        ROOT / "reports/grand_final_audit.json",
+    )
     early = pd.read_csv(ROOT / "data/raw/early_match_evidence.csv")
     historical_rosters = pd.read_csv(ROOT / "data/raw/historical_roster_observations.csv")
     s18_players = player_table(rosters)
@@ -286,7 +303,7 @@ def export_reference_layout(
                 validate="one_to_one",
             )
         )
-    stats.to_csv(ROOT / "data/raw/official_s18_player_season_stats.csv", index=False)
+    publish_table(stats, ROOT / "data/raw/official_s18_player_season_stats.csv")
     all_tables: dict[str, list[pd.DataFrame]] = {
         table: [] for table in load_dataset_schema()["tables"]
     }
@@ -315,7 +332,7 @@ def export_reference_layout(
             else historical_stats.loc[historical_stats["season"].eq(season)],
         }
         for name, frame in tables.items():
-            frame.to_csv(folder / f"mpl_ph_season_{season:02}_{name}.csv", index=False)
+            publish_table(frame, folder / f"mpl_ph_season_{season:02}_{name}.csv")
             variables.extend(variable_coverage(frame, name, season))
             all_tables[name].append(frame)
         if season == 18:
@@ -323,23 +340,25 @@ def export_reference_layout(
             live_matches["observed_at"] = live_matches["result_observed_at"]
             live_matches["team_a_franchise_slot_id"] = pd.NA
             live_matches["team_b_franchise_slot_id"] = pd.NA
-            conform_table(
-                live_matches.loc[live_matches["stage"].eq("regular_season")],
-                "schedule_results",
-                live=True,
-            ).to_csv(folder / "schedule_results.csv", index=False)
+            publish_table(
+                conform_table(
+                    live_matches.loc[live_matches["stage"].eq("regular_season")],
+                    "schedule_results",
+                    live=True,
+                ),
+                folder / "schedule_results.csv",
+            )
             playoff = live_matches.loc[live_matches["stage"].eq("playoffs")].copy()
             playoff["routing_basis"] = "verified_ph_s18_rulebook"
             playoff["best_of_basis"] = "verified_ph_s18_rulebook"
-            conform_table(playoff, "playoff_schedule_results", live=True).to_csv(
-                folder / "playoff_schedule_results.csv", index=False
+            publish_table(
+                conform_table(playoff, "playoff_schedule_results", live=True),
+                folder / "playoff_schedule_results.csv",
             )
-            conform_table(season_players, "rosters", live=True).to_csv(
-                folder / "rosters.csv", index=False
+            publish_table(
+                conform_table(season_players, "rosters", live=True), folder / "rosters.csv"
             )
-            conform_table(season_teams, "teams", live=True).to_csv(
-                folder / "teams.csv", index=False
-            )
+            publish_table(conform_table(season_teams, "teams", live=True), folder / "teams.csv")
         row: dict[str, Any] = {
             "season": season,
             "collected_match_rows": len(season_matches),
@@ -374,13 +393,13 @@ def export_reference_layout(
                 "Observasi statistik ini tidak digunakan sebagai fitur S18."
             ),
         }
-        (folder / "coverage.json").write_text(json.dumps(row, indent=2, ensure_ascii=False))
+        publish_text(json.dumps(row, indent=2, ensure_ascii=False), folder / "coverage.json")
         coverage.append(row)
-    pd.DataFrame(variables).to_csv(ROOT / "reports/dataset_variable_coverage.csv", index=False)
+    publish_table(pd.DataFrame(variables), ROOT / "reports/dataset_variable_coverage.csv")
     frame = pd.DataFrame(coverage)
-    frame.to_csv(ROOT / "reports/season_coverage.csv", index=False)
-    (ROOT / "reports/season_coverage.json").write_text(
-        json.dumps(coverage, indent=2, ensure_ascii=False)
+    publish_table(frame, ROOT / "reports/season_coverage.csv")
+    publish_text(
+        json.dumps(coverage, indent=2, ensure_ascii=False), ROOT / "reports/season_coverage.json"
     )
     for name, parts in all_tables.items():
         all_columns = list(dict.fromkeys(column for part in parts for column in part))
@@ -396,14 +415,12 @@ def export_reference_layout(
             target = combined
             if layer == "processed/canonical" and name == "matches":
                 target = combined.loc[combined["training_eligible"].eq(True)]
-            target.to_parquet(folder / f"{name}.parquet", index=False)
+            publish_table(target, folder / f"{name}.parquet")
     player_games = ROOT / "data/raw/official_player_game_stats.csv"
     if player_games.exists():
         player_frame = pd.read_csv(player_games)
         for layer in ("interim/normalized", "processed/canonical"):
-            player_frame.to_parquet(
-                ROOT / "data" / layer / "player_game_stats.parquet", index=False
-            )
+            publish_table(player_frame, ROOT / "data" / layer / "player_game_stats.parquet")
     return frame
 
 
@@ -412,4 +429,4 @@ def export_processed_outputs() -> None:
         folder = ROOT / "data/processed" / target
         folder.mkdir(parents=True, exist_ok=True)
         for path in (ROOT / "data" / source).glob("*.csv"):
-            pd.read_csv(path).to_parquet(folder / f"{path.stem}.parquet", index=False)
+            publish_table(pd.read_csv(path), folder / f"{path.stem}.parquet")

@@ -363,6 +363,11 @@ def collect_season_evidence(
     for event in league["events"]:
         for url in event["source_urls"]:
             urls[url] = event["season"]
+    finals_path = root / "config/reviewed_grand_finals.json"
+    if finals_path.is_file():
+        for final in json.loads(finals_path.read_text())["finals"]:
+            for source in final["sources"]:
+                urls[source["url"]] = final["season"]
     manifest_path = root / "data/raw/season_evidence_source_manifest.csv"
     previous = pd.read_csv(manifest_path) if manifest_path.exists() else pd.DataFrame()
     cache, last_attempts = {}, {}

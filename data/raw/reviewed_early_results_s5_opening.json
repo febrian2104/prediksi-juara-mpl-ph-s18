@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-10",
+  "source_url": "https://liquipedia.net/mobilelegends/Geek_Fam_PH",
+  "source_title": "Geek Fam PH: historical played matches",
+  "source_access_method": "web_reader_search_index",
+  "evidence_kind": "reviewed_historical_archive_fact_not_contemporary_report_or_raw_html",
+  "verification_status": "reviewed_secondary_archive",
+  "published_date": null,
+  "season": 5,
+  "stage": "regular_season",
+  "week": 1,
+  "date_range_start": "2020-02-28",
+  "date_range_end": "2020-03-01",
+  "training_eligible": false,
+  "exact_match_date_status": "source_conflict_feb28_archive_vs_feb29_contemporary_calendar",
+  "review_notes": "The played-match row explicitly records Geek Fam PH 0-2 ULVL in S5 regular week 1. Liquipedia dates it Feb 28; contemporary opening announcements and Esports Charts start Feb 29. Store a conservative opening-week range, not a fabricated exact start. No score is inferred from aggregate standings.",
+  "supporting_source_urls": [
+    "https://businessmirror.com.ph/2020/02/18/mobile-legends-bang-bang-professional-league-philippines-season-five-is-here/",
+    "https://escharts.com/tournaments/mobile-legends/mpl-ph-season-5/schedule"
+  ],
+  "results": [
+    {"team_a_code": "GF", "team_a_name": "Geek Fam PH", "team_b_code": "ULVL", "team_b_name": "ULVL", "team_a_score": 0, "team_b_score": 2}
+  ]
+}

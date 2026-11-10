@@ -1,0 +1,320 @@
+{
+  "generated_at": "2026-11-10T06:42:52.386136+00:00",
+  "status": "pass",
+  "scope": "explicit_final_identity_not_complete_bracket",
+  "finals": [
+    {
+      "season": 6,
+      "match_id": "S06-PL-S06-PL-073",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://ph-mpl.com/news/bren-esports-outlast-omega-to-win-mpl-ph-season-6",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/17b1e51846132bff7a718cf2144f0b848b0bc98c0d1e929cce26d8c9802d2250.html",
+          "sha256": "17b1e51846132bff7a718cf2144f0b848b0bc98c0d1e929cce26d8c9802d2250",
+          "retrieved_at": "2026-11-10T06:34:57.628599+00:00",
+          "kind": "league_hosted_syndicated_report"
+        }
+      ],
+      "article_score_verified": false,
+      "official_card": {
+        "url": "https://ph-mpl.com/s6",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/47cfb36f1c47db5d33a2b70279461262e13cbd965c199875b3ce958721472d89.html",
+        "sha256": "47cfb36f1c47db5d33a2b70279461262e13cbd965c199875b3ce958721472d89",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 7,
+      "match_id": "S07-PL-S07-PL-075",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://ph-mpl.com/news/blacklist-international-are-the-champions-of-mpl-ph-season-7",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/0516347014563f8bc7198f9ec669e363e955343a76a52761828d22ddd2df0268.html",
+          "sha256": "0516347014563f8bc7198f9ec669e363e955343a76a52761828d22ddd2df0268",
+          "retrieved_at": "2026-11-10T06:34:57.629832+00:00",
+          "kind": "league_hosted_syndicated_excerpt"
+        },
+        {
+          "url": "https://www.gosugamers.net/mobile-legends/news/54447-blacklist-international-are-the-champions-of-mpl-ph-season-7",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/8ae540f377d1f43c56d5f97918e46cf462639fd1d61517996e4c6ad484f03941.html",
+          "sha256": "8ae540f377d1f43c56d5f97918e46cf462639fd1d61517996e4c6ad484f03941",
+          "retrieved_at": "2026-11-10T06:34:57.676867+00:00",
+          "kind": "secondary_original_of_league_linked_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s7",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/55fea67f3c98b3aed03a380ad3a469637788e4a8cf8ee9623dfc470011be8ff2.html",
+        "sha256": "55fea67f3c98b3aed03a380ad3a469637788e4a8cf8ee9623dfc470011be8ff2",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 8,
+      "match_id": "S08-PL-onic-blck-20211024",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://ph-mpl.com/news/blacklist-proves-doubters-wrong-with-second-straight-mpl-title",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/4fcf3055102891cd2f517109448429b6538fa420db4625e6b54e441305b0e803.html",
+          "sha256": "4fcf3055102891cd2f517109448429b6538fa420db4625e6b54e441305b0e803",
+          "retrieved_at": "2026-11-10T06:34:57.718568+00:00",
+          "kind": "league_hosted_match_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s8/schedule",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/23baf56150f14e501bbe714bc2968421763b4dec13f8598616fdf349da63e40a.html",
+        "sha256": "23baf56150f14e501bbe714bc2968421763b4dec13f8598616fdf349da63e40a",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 9,
+      "match_id": "S09-PL-S09-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://ph-mpl.com/news/kings-of-the-hill-rsg-dominates-mpl-ph-playoffs-and-secures-the-championship-trophy",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/cc4146cb0f1e7199efc0596ca31ce6248ad8a9a96daac0b02a37daa8b0dca39b.html",
+          "sha256": "cc4146cb0f1e7199efc0596ca31ce6248ad8a9a96daac0b02a37daa8b0dca39b",
+          "retrieved_at": "2026-11-10T06:35:00.071430+00:00",
+          "kind": "league_hosted_match_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s9",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/6f4ced9d119b6b5f5419c4b79675eed0e9edd8b59261730d2ccc96cf31067b65.html",
+        "sha256": "6f4ced9d119b6b5f5419c4b79675eed0e9edd8b59261730d2ccc96cf31067b65",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 10,
+      "match_id": "S10-PL-S10-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://ph-mpl.com/news/blacklist-international-road-to-reclaiming-the-crown-3x-mpl-ph-champion",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/b60aee49b6a87ddf32e2ed705329c7e720b2ca0b21d3bb34d8be17ea17889968.html",
+          "sha256": "b60aee49b6a87ddf32e2ed705329c7e720b2ca0b21d3bb34d8be17ea17889968",
+          "retrieved_at": "2026-11-10T06:35:01.003211+00:00",
+          "kind": "league_hosted_match_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s10",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/9516ef56ea59521c03371d6d23e5cca9dc4311a1133fa90594667b6640763e6a.html",
+        "sha256": "9516ef56ea59521c03371d6d23e5cca9dc4311a1133fa90594667b6640763e6a",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 11,
+      "match_id": "S11-PL-S11-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://ph-mpl.com/news/echo-philippines-snatches-the-mpl-ph-championship-crown-from-blacklist-international-with-a-sweep",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/5e3ee43abcbafcee6507f251ef789a02a37c905395f5d3ede134a9c228d8f993.html",
+          "sha256": "5e3ee43abcbafcee6507f251ef789a02a37c905395f5d3ede134a9c228d8f993",
+          "retrieved_at": "2026-11-10T06:35:01.048173+00:00",
+          "kind": "league_hosted_match_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s11",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/515028048da91a2c68d8dceda21b5dbf36de0490dbceae89361ff13df102e7a9.html",
+        "sha256": "515028048da91a2c68d8dceda21b5dbf36de0490dbceae89361ff13df102e7a9",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 12,
+      "match_id": "S12-PL-S12-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://www.oneesports.gg/mobile-legends/mpl-ph-season-12-playoffs-results/",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/d8121f27e1dfefe84100fd6e29c47aca42ce4f3aac64f61cecedbfa51cde5f1e.html",
+          "sha256": "d8121f27e1dfefe84100fd6e29c47aca42ce4f3aac64f61cecedbfa51cde5f1e",
+          "retrieved_at": "2026-11-10T06:35:01.050867+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s12",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/f07b2482c835018b947fd1012783cff1f9404d89b26b737da95eec39445e3861.html",
+        "sha256": "f07b2482c835018b947fd1012783cff1f9404d89b26b737da95eec39445e3861",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 13,
+      "match_id": "S13-PL-S13-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://en.moonton.com/news/93.html",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/17cf783db55d5bb432219a307cded9341694d88a3bec6999d86461632d827e9b.html",
+          "sha256": "17cf783db55d5bb432219a307cded9341694d88a3bec6999d86461632d827e9b",
+          "retrieved_at": "2026-11-10T01:55:41.560652+00:00",
+          "kind": "official_publisher_release"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s13",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/29dbd892f2e7e5983b4aa97a926b48f9331e0eaa2b5ad4cf89e05067011bcab3.html",
+        "sha256": "29dbd892f2e7e5983b4aa97a926b48f9331e0eaa2b5ad4cf89e05067011bcab3",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 14,
+      "match_id": "S14-PL-S14-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://www.oneesports.gg/mobile-legends/fnatic-onic-ph-champion-mpl-s14/",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/8fa06b2f969578a0068c7df5fa877152bd0e8e52ff9189fb849ef5b8eaf3c93c.html",
+          "sha256": "8fa06b2f969578a0068c7df5fa877152bd0e8e52ff9189fb849ef5b8eaf3c93c",
+          "retrieved_at": "2026-11-10T06:35:01.121833+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s14",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/707c14712c394c943d75533e072059b10cf1f9794e59eb4c18e22f2f144e3741.html",
+        "sha256": "707c14712c394c943d75533e072059b10cf1f9794e59eb4c18e22f2f144e3741",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 15,
+      "match_id": "S15-PL-S15-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://en.moonton.com/news/202.html",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/c761eaaf86c39f629ddbf1822abbfbe8b0e3047b8cab2ec388e20ebd5c3d1538.html",
+          "sha256": "c761eaaf86c39f629ddbf1822abbfbe8b0e3047b8cab2ec388e20ebd5c3d1538",
+          "retrieved_at": "2026-11-10T06:35:06.271757+00:00",
+          "kind": "official_publisher_release"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s15",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/5dd27ca4cad436c1eefffb408be9b10c0076b9447e963c9fabba44b8fa098f8e.html",
+        "sha256": "5dd27ca4cad436c1eefffb408be9b10c0076b9447e963c9fabba44b8fa098f8e",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 16,
+      "match_id": "S16-PL-S16-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://en.moonton.com/news/263.html",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/49da04544f76d5b4510cdce5367e5075069623f4e227e76a476b4a3132d758e8.html",
+          "sha256": "49da04544f76d5b4510cdce5367e5075069623f4e227e76a476b4a3132d758e8",
+          "retrieved_at": "2026-11-10T06:35:06.305350+00:00",
+          "kind": "official_publisher_release"
+        }
+      ],
+      "article_score_verified": true,
+      "official_card": {
+        "url": "https://ph-mpl.com/s16",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/6e80901036923edf2703a68871da1c22e7469acc2c071304a1831eec4a32a85a.html",
+        "sha256": "6e80901036923edf2703a68871da1c22e7469acc2c071304a1831eec4a32a85a",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    },
+    {
+      "season": 17,
+      "match_id": "S17-PL-S17-PL-064",
+      "status": "verified",
+      "article_sources": [
+        {
+          "url": "https://en.moonton.com/news/342.html",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/bcb40e193d277b77764ba99d3dc563651aa3295f7a4f8a5158fa0ce21315d7d5.html",
+          "sha256": "bcb40e193d277b77764ba99d3dc563651aa3295f7a4f8a5158fa0ce21315d7d5",
+          "retrieved_at": "2026-11-10T06:35:06.315702+00:00",
+          "kind": "official_publisher_release"
+        }
+      ],
+      "article_score_verified": false,
+      "official_card": {
+        "url": "https://ph-mpl.com/s17",
+        "status": "official_card_verified",
+        "snapshot_path": "data/raw/source_snapshots/80a1de0c61500081cc8d36699014e7760932300eee851757ea80c8c76d02cb70.html",
+        "sha256": "80a1de0c61500081cc8d36699014e7760932300eee851757ea80c8c76d02cb70",
+        "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+        "conflicting_fields": [],
+        "team_code_comparison": "official_raw_codes_before_season_scoped_aliases"
+      }
+    }
+  ],
+  "reviewed_on": "2026-11-10",
+  "information_cutoff": "2026-11-09",
+  "registry_sha256": "3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e",
+  "verified_final_rows": 12,
+  "feature_eligible": false
+}

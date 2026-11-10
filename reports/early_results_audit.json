@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-10T04:04:25.551785+00:00",
-  "reviewed_result_rows": 50,
-  "total_early_result_rows": 64,
+  "generated_at": "2026-11-10T06:42:52.052314+00:00",
+  "reviewed_result_rows": 51,
+  "total_early_result_rows": 65,
   "sources": [
     {
       "url": "https://pinoygamer.ph/articles/mobile-legends-professional-league-philippines-season-5-week-2-results.8221/",
@@ -74,12 +74,18 @@
       "rows": 1,
       "evidence_record_path": "data/raw/reviewed_early_results_s5_expansion.json",
       "evidence_record_sha256": "b2cc6edf1c84dc43ac3ddd1aa7438335af35f86415e6902a8dd036ae1a3fc9d7"
+    },
+    {
+      "url": "https://liquipedia.net/mobilelegends/Geek_Fam_PH",
+      "rows": 1,
+      "evidence_record_path": "data/raw/reviewed_early_results_s5_opening.json",
+      "evidence_record_sha256": "e81c4716f969e32fc17a334ce808c8a88f63edb0bd00d37ea0807ed21d35abb0"
     }
   ],
   "coverage": [
     {
       "season": 5,
-      "regular_rows": 41,
+      "regular_rows": 42,
       "playoff_rows": 10,
       "expected_regular_rows": 45,
       "expectation_status": "secondary_sources_not_verified_primary_rulebook",
@@ -99,10 +105,6 @@
         [
           "EXE",
           "ONIC"
-        ],
-        [
-          "GF",
-          "ULVL"
         ]
       ],
       "duplicate_regular_pairs": [],
@@ -114,9 +116,9 @@
       "standings_comparison": {
         "season": 5,
         "status": "source_conflict_or_scope_mismatch",
-        "canonical_regular_rows": 41,
+        "canonical_regular_rows": 42,
         "standings_team_rows": 10,
-        "difference_count": 34,
+        "difference_count": 31,
         "match_wl_totals_reconciled": false,
         "game_wl_totals_reconciled": false,
         "differences": [
@@ -211,18 +213,6 @@
             "archive": 12
           },
           {
-            "team_code": "GEEK",
-            "field": "match_losses",
-            "canonical": 7,
-            "archive": 8
-          },
-          {
-            "team_code": "GEEK",
-            "field": "game_losses",
-            "canonical": 14,
-            "archive": 16
-          },
-          {
             "team_code": "ONIC",
             "field": "match_wins",
             "canonical": 6,
@@ -302,12 +292,6 @@
           },
           {
             "team_code": "ULVL",
-            "field": "match_wins",
-            "canonical": 1,
-            "archive": 2
-          },
-          {
-            "team_code": "ULVL",
             "field": "match_losses",
             "canonical": 7,
             "archive": 8
@@ -315,7 +299,7 @@
           {
             "team_code": "ULVL",
             "field": "game_wins",
-            "canonical": 3,
+            "canonical": 5,
             "archive": 6
           },
           {
@@ -325,12 +309,12 @@
             "archive": 15
           }
         ],
-        "canonical_all_stage_rows": 51,
+        "canonical_all_stage_rows": 52,
         "exact_matching_scopes": [],
         "archive_wl_scope": "unresolved",
         "scope_comparison": {
           "regular_season": {
-            "difference_count": 34,
+            "difference_count": 31,
             "differences": [
               {
                 "team_code": "BLCK",
@@ -423,18 +407,6 @@
                 "archive": 12
               },
               {
-                "team_code": "GEEK",
-                "field": "match_losses",
-                "canonical": 7,
-                "archive": 8
-              },
-              {
-                "team_code": "GEEK",
-                "field": "game_losses",
-                "canonical": 14,
-                "archive": 16
-              },
-              {
                 "team_code": "ONIC",
                 "field": "match_wins",
                 "canonical": 6,
@@ -514,12 +486,6 @@
               },
               {
                 "team_code": "ULVL",
-                "field": "match_wins",
-                "canonical": 1,
-                "archive": 2
-              },
-              {
-                "team_code": "ULVL",
                 "field": "match_losses",
                 "canonical": 7,
                 "archive": 8
@@ -527,7 +493,7 @@
               {
                 "team_code": "ULVL",
                 "field": "game_wins",
-                "canonical": 3,
+                "canonical": 5,
                 "archive": 6
               },
               {
@@ -539,7 +505,7 @@
             ]
           },
           "all_collected_matches": {
-            "difference_count": 23,
+            "difference_count": 20,
             "differences": [
               {
                 "team_code": "BLCK",
@@ -582,18 +548,6 @@
                 "field": "game_losses",
                 "canonical": 10,
                 "archive": 12
-              },
-              {
-                "team_code": "GEEK",
-                "field": "match_losses",
-                "canonical": 7,
-                "archive": 8
-              },
-              {
-                "team_code": "GEEK",
-                "field": "game_losses",
-                "canonical": 14,
-                "archive": 16
               },
               {
                 "team_code": "ONIC",
@@ -663,14 +617,8 @@
               },
               {
                 "team_code": "ULVL",
-                "field": "match_wins",
-                "canonical": 1,
-                "archive": 2
-              },
-              {
-                "team_code": "ULVL",
                 "field": "game_wins",
-                "canonical": 3,
+                "canonical": 5,
                 "archive": 6
               },
               {
@@ -682,7 +630,7 @@
             ]
           },
           "regular_match_wl_and_all_collected_game_wl": {
-            "difference_count": 29,
+            "difference_count": 26,
             "differences": [
               {
                 "team_code": "BLCK",
@@ -749,18 +697,6 @@
                 "field": "game_losses",
                 "canonical": 10,
                 "archive": 12
-              },
-              {
-                "team_code": "GEEK",
-                "field": "match_losses",
-                "canonical": 7,
-                "archive": 8
-              },
-              {
-                "team_code": "GEEK",
-                "field": "game_losses",
-                "canonical": 14,
-                "archive": 16
               },
               {
                 "team_code": "ONIC",
@@ -836,12 +772,6 @@
               },
               {
                 "team_code": "ULVL",
-                "field": "match_wins",
-                "canonical": 1,
-                "archive": 2
-              },
-              {
-                "team_code": "ULVL",
                 "field": "match_losses",
                 "canonical": 7,
                 "archive": 8
@@ -849,7 +779,7 @@
               {
                 "team_code": "ULVL",
                 "field": "game_wins",
-                "canonical": 3,
+                "canonical": 5,
                 "archive": 6
               },
               {
@@ -862,7 +792,7 @@
           }
         },
         "closest_counter_scope": "all_collected_matches",
-        "residual_difference_count": 23,
+        "residual_difference_count": 20,
         "scope_basis": "counter_agreement_with_collected_matches_not_official_scope_declaration",
         "conflicting_duplicate_team_rows": false,
         "scope": "counter_scope_reconciliation_not_individual_match_completeness",

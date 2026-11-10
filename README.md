@@ -24,9 +24,11 @@ Dashboard membaca artefak yang disertakan; membuka halaman tidak menjalankan tra
 - Tiga halaman: Regular Season (minggu terbaru dahulu), Playoff, dan Hasil Prediksi.
 - Katalog S1–S18 dengan struktur dan kontrak variabel mengikuti proyek referensi MPL ID.
 - S6–S18: 852 laga canonical. S1–S5 masih parsial dan tidak dipakai untuk training.
-- S5: 51 hasil terkumpul (41 regular season, 10 playoff/final). Empat pasangan regular
+- S5: 52 hasil terkumpul (42 regular season, 10 playoff/final). Tiga pasangan regular
   belum terkumpul; tanggal/jam yang tidak diketahui tidak diisi. Laporan sekunder yang
   telah ditinjau bukan pengganti arsip resmi lengkap.
+- Final S6–S17 mempunyai penanda eksplisit dari kartu resmi dan sumber pendukung
+  ber-checksum. S12/S14 memakai laporan sekunder; seluruh bracket belum dianggap lengkap.
 - Elo, Logistic Regression, Random Forest, dan XGBoost dibandingkan melalui walk-forward
   S10–S17. Logistic Regression dipilih dari evaluasi, bukan asumsi keunggulan model.
 - Fitur hanya memakai riwayat sebelum laga; statistik/roster yang waktunya belum
@@ -41,6 +43,7 @@ Sumber utama: [rulebook](https://ph-mpl.com/rules),
 dan [tim](https://ph-mpl.com/teams). Daftar sumber/tanggal pengambilan ada di
 `data/raw/*source_manifest.csv`; cakupan tiap musim di `reports/season_coverage.csv`.
 Bukti hasil awal dan kekurangannya: `reports/early_results_audit.json`.
+Bukti final historis: `reports/grand_final_audit.json`.
 Konflik penghitung S6/S8/S9/S16 belum tuntas; scope S10 cocok dengan laga termasuk playoff,
 bukan regular season. S5 juga belum direkonsiliasi penuh.
 

@@ -11,6 +11,7 @@ import pandas as pd
 
 from mpl_ph_predictor.archive import sha256, utc_now
 from mpl_ph_predictor.data.season_evidence import reconcile_standings
+from mpl_ph_predictor.storage import publish_table, publish_text
 
 ROOT = Path(__file__).resolve().parents[3]
 
@@ -39,6 +40,9 @@ def _reviewed_rows(evidence: dict, path: Path, content: bytes, root: Path) -> li
         raise ValueError("Bukti awal parsial tidak boleh menjadi data training.")
     if evidence["stage"] not in {"regular_season", "playoffs", "grand_final"}:
         raise ValueError("Tahap bukti pertandingan tidak didukung.")
+    verification = evidence.get("verification_status", "reviewed_contemporary_secondary_report")
+    if verification not in {"reviewed_contemporary_secondary_report", "reviewed_secondary_archive"}:
+        raise ValueError("Jenis verifikasi bukti awal tidak dikenali.")
     start, end = (
         date.fromisoformat(evidence[field]) for field in ("date_range_start", "date_range_end")
     )
@@ -77,7 +81,7 @@ def _reviewed_rows(evidence: dict, path: Path, content: bytes, root: Path) -> li
             scheduled_at=None,
             best_of=None,
             source_url=evidence["source_url"],
-            verification_status="reviewed_contemporary_secondary_report",
+            verification_status=verification,
             training_eligible=False,
             exclusion_reason="missing_verified_start_time_and_incomplete_season",
             accessed_at=evidence["reviewed_on"],
@@ -199,7 +203,7 @@ def import_reviewed_early_results(*, root: Path = ROOT) -> dict:
         ignore_index=True,
     ).reindex(columns=columns)
     coverage = audit_early_coverage(combined, root=root)
-    combined.to_csv(raw_path, index=False)
+    publish_table(combined, raw_path)
     report = {
         "generated_at": utc_now(),
         "reviewed_result_rows": len(additions),
@@ -211,7 +215,7 @@ def import_reviewed_early_results(*, root: Path = ROOT) -> dict:
         "jam mulai dan BO yang tidak terverifikasi tetap kosong. "
         "Hasil parsial tidak dimasukkan ke training atau dianggap arsip S5 lengkap.",
     }
-    (root / "reports/early_results_audit.json").write_text(
-        json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
+    publish_text(
+        json.dumps(report, indent=2, ensure_ascii=False), root / "reports/early_results_audit.json"
     )
     return report

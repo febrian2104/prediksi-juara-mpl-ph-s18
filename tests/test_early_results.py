@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_reviewed_s5_results_never_invent_dates_or_enter_training():
     rows = pd.read_csv(ROOT / "data/mpl-season5/mpl_ph_season_05_matches.csv")
     reviewed = rows.loc[rows.verification_status.eq("reviewed_contemporary_secondary_report")]
-    assert len(rows) == 51
+    assert len(rows) == 52
     assert len(reviewed) == 50
     weekly = reviewed.loc[reviewed.stage.eq("regular_season") & reviewed.week.ge(2)]
     assert len(weekly) == 40
@@ -97,19 +97,28 @@ def test_s5_missing_pairs_and_standings_conflicts_are_not_hidden():
     rows = pd.read_csv(ROOT / "data/raw/early_match_evidence.csv")
     before = rows.copy(deep=True)
     report = audit_early_coverage(rows)[0]
-    assert report["regular_rows"] == 41
+    assert report["regular_rows"] == 42
     assert report["expected_regular_rows"] == 45
     assert report["playoff_rows"] == 10
     assert report["missing_regular_pairs"] == [
         ["BLCK", "STI"],
         ["BSB", "SGD"],
         ["EXE", "ONIC"],
-        ["GF", "ULVL"],
     ]
     assert not report["duplicate_regular_pairs"]
     assert not report["training_eligible"]
     assert report["standings_comparison"]["archive_wl_scope"] == "unresolved"
     pd.testing.assert_frame_equal(rows, before)
+
+
+def test_secondary_archive_opening_result_does_not_become_exact_dated_contemporary_fact():
+    raw = pd.read_csv(ROOT / "data/raw/early_match_evidence.csv")
+    row = raw.loc[raw.match_id.eq("PH-S05-W01-GF-ULVL")].iloc[0]
+    assert row.verification_status == "reviewed_secondary_archive"
+    assert (row.team_a_score, row.team_b_score) == (0, 2)
+    assert pd.isna(row.match_date) and pd.isna(row.scheduled_at) and pd.isna(row.best_of)
+    assert row.date_range_start == "2020-02-28" and row.date_range_end == "2020-03-01"
+    assert not row.training_eligible
 
 
 def test_finalists_come_from_explicit_grand_final_not_import_order():

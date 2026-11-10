@@ -1,9 +1,9 @@
-season,team,final_rank,champion,runner_up,source,rank_coverage
-16,AP BREN,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,Aurora Gaming PH,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,ONIC Philippines,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,Smart Omega,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,Team Falcons PH,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,Team Liquid PH,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,TNC Pro Team,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
-16,Twisted Minds PH,,,,https://ph-mpl.com/s16,grand_final_not_explicitly_identified
+season,team,final_rank,champion,runner_up,source,grand_final_basis,grand_final_source_urls,grand_final_verification_status,grand_final_reviewed_on,grand_final_registry_sha256,grand_final_match_id,rank_coverage
+16,AP BREN,,0,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,Aurora Gaming PH,2,0,1,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,ONIC Philippines,,0,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,Smart Omega,,0,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,Team Falcons PH,,0,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,Team Liquid PH,1,1,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,TNC Pro Team,,0,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
+16,Twisted Minds PH,,0,0,https://ph-mpl.com/s16,reviewed_final_registry_with_checksummed_sources,https://en.moonton.com/news/263.html,reviewed_sources_and_official_card_verified,2026-11-10,3ac42545d34116fecb52263bda583f7b0c35fd7aa233c75072b42877a079317e,S16-PL-S16-PL-064,finalists_only_other_ranks_unverified
