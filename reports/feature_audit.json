@@ -50,6 +50,15 @@
   ],
   "completion_time_status": "unverified_kept_null",
   "roster_features_used": false,
+  "franchise_start_season": 8,
+  "rating_identity_policy": {
+    "version": "ph_franchise_boundary_v1",
+    "pre_franchise": "reset_rating_and_history_each_season",
+    "franchise_boundary": "reset_rating_and_history",
+    "post_franchise": "code_scoped_carryover_with_season_regression",
+    "acquisitions": "never_merge_different_codes_without_reviewed_roster_continuity",
+    "note": "This conservative modeling policy is not a league rule. A participant code is neither a legal organization ID nor a franchise slot ID. Same-code carryover after S8 is a modeling assumption, not verified unchanged ownership or roster."
+  },
   "player_statistics_features_used": false,
   "player_statistics_reason": "Observasi arsip pascamusim; scope dan tanggal efektif belum terverifikasi. Tidak dipakai sebagai fitur training.",
   "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap."

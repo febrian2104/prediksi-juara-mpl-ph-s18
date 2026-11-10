@@ -332,6 +332,12 @@ def page_results() -> None:
             "Sampel S18 hanya 56 laga regular season."
         )
     with st.expander("Status data Season 1–18 dan riwayat prediksi"):
+        st.caption(
+            "Sistem franchise PH dimulai S8. Peserta dipisahkan per musim; organisasi, "
+            "slot, roster, dan rating tidak disamakan. Akuisisi sesudah S8 tidak otomatis "
+            "menggabungkan rating. State pra-franchise direset antarmusim dan pada batas S8; "
+            "carryover kode sama setelah S8 tetap merupakan asumsi model."
+        )
         coverage = pd.read_csv(ROOT / "reports/season_coverage.csv")
         st.dataframe(
             coverage[

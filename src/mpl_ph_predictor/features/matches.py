@@ -8,6 +8,8 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from mpl_ph_predictor.data.league_history import load_league_history
+
 ROOT = Path(__file__).resolve().parents[3]
 
 
@@ -30,6 +32,7 @@ class FeatureState:
     k_factor: float = 28.0
     scale: float = 400.0
     season_carryover: float = 0.72
+    franchise_start_season: int = 8
     ratings: dict[str, float] = field(default_factory=dict)
     history: dict[str, list[TeamMatch]] = field(default_factory=dict)
     current_season: int | None = None
@@ -41,6 +44,7 @@ class FeatureState:
             k_factor=float(config["k_factor"]),
             scale=float(config["scale"]),
             season_carryover=float(config["season_carryover"]),
+            franchise_start_season=int(load_league_history()["franchise_start_season"]),
         )
 
     def rating(self, team: str) -> float:
@@ -49,7 +53,14 @@ class FeatureState:
     def begin_season(self, season: int) -> None:
         if self.current_season == season:
             return
-        if self.current_season is not None:
+        if self.current_season is not None and season < self.current_season:
+            raise ValueError("State fitur tidak boleh berjalan mundur ke musim sebelumnya.")
+        # Before S8, identical labels do not prove the same seasonal participant.
+        # Also reset across the franchise boundary, including gaps (e.g. S6 -> S9).
+        if self.current_season is not None and self.current_season < self.franchise_start_season:
+            self.ratings.clear()
+            self.history.clear()
+        elif self.current_season is not None:
             for team, rating in list(self.ratings.items()):
                 self.ratings[team] = self.initial_rating + self.season_carryover * (
                     rating - self.initial_rating
@@ -228,7 +239,7 @@ def build_match_features(matches: pd.DataFrame) -> pd.DataFrame:
         )
         rows.append(
             {
-                "feature_version": "ph_2_reference_columns",
+                "feature_version": "ph_3_franchise_boundary",
                 "match_id": row.match_id,
                 "season": int(row.season),
                 "stage": row.stage,
@@ -238,6 +249,9 @@ def build_match_features(matches: pd.DataFrame) -> pd.DataFrame:
                 "team_b_code": row.team_b_code,
                 "team_a_id": getattr(row, "team_a_id", pd.NA),
                 "team_b_id": getattr(row, "team_b_id", pd.NA),
+                "team_a_participant_id": getattr(row, "team_a_participant_id", pd.NA),
+                "team_b_participant_id": getattr(row, "team_b_participant_id", pd.NA),
+                "competition_regime": "pre_franchise" if int(row.season) < 8 else "franchise",
                 "team_a_franchise_slot_id": pd.NA,
                 "team_b_franchise_slot_id": pd.NA,
                 "completion_date": pd.NaT,
@@ -289,6 +303,8 @@ def write_features(features: pd.DataFrame) -> dict[str, Any]:
         ],
         "completion_time_status": "unverified_kept_null",
         "roster_features_used": False,
+        "franchise_start_season": 8,
+        "rating_identity_policy": load_league_history()["rating_policy"],
         "player_statistics_features_used": False,
         "player_statistics_reason": "Observasi arsip pascamusim; scope dan tanggal efektif belum "
         "terverifikasi. Tidak dipakai sebagai fitur training.",

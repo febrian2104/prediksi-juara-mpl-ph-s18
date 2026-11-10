@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-11-10T03:43:37.737934+00:00",
+  "status": "pass",
+  "fresh_virtualenv": true,
+  "python_version": "3.12.3",
+  "requirements_sha256": "a7f10729e0615affd446848e52109d22cfff274bec0d5871076ec082771ad7ef",
+  "copied_files": 600,
+  "checkout_path": ".cache/release_checks/checkout-wbwbzfzw",
+  "copy_basis": "git_visible_working_tree_including_uncommitted_changes_not_a_commit",
+  "cloud_deployment_performed": false,
+  "note": "Pengujian lokal terisolasi, bukan deployment Streamlit Cloud.",
+  "finished_at": "2026-11-10T03:45:05.657495+00:00"
+}

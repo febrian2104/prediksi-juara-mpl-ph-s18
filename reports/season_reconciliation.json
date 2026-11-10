@@ -4,7 +4,7 @@
     "source": "https://ph-mpl.com/s1/data",
     "player_stat_rows": 0,
     "source_http_status": 500,
-    "source_retrieved_at": "2026-11-10T02:48:46.930884+00:00",
+    "source_retrieved_at": "2026-11-10T03:16:46.603245+00:00",
     "source_snapshot_path": null,
     "status": "failed",
     "reason": "Sumber belum tersedia."
@@ -14,7 +14,7 @@
     "source": "https://ph-mpl.com/s2/data",
     "player_stat_rows": 0,
     "source_http_status": 500,
-    "source_retrieved_at": "2026-11-10T02:48:46.931784+00:00",
+    "source_retrieved_at": "2026-11-10T03:16:46.603992+00:00",
     "source_snapshot_path": null,
     "status": "failed",
     "reason": "Sumber belum tersedia."
@@ -24,7 +24,7 @@
     "source": "https://ph-mpl.com/s3/data",
     "player_stat_rows": 0,
     "source_http_status": 500,
-    "source_retrieved_at": "2026-11-10T02:48:46.935102+00:00",
+    "source_retrieved_at": "2026-11-10T03:16:46.607745+00:00",
     "source_snapshot_path": null,
     "status": "failed",
     "reason": "Sumber belum tersedia."
@@ -34,7 +34,7 @@
     "source": "https://ph-mpl.com/s4/data",
     "player_stat_rows": 0,
     "source_http_status": 500,
-    "source_retrieved_at": "2026-11-10T02:48:46.936857+00:00",
+    "source_retrieved_at": "2026-11-10T03:16:46.608920+00:00",
     "source_snapshot_path": null,
     "status": "failed",
     "reason": "Sumber belum tersedia."

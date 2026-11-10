@@ -288,6 +288,9 @@ def test_cache_only_without_sources_preserves_previous_observations(tmp_path, mo
         )
     )
     (tmp_path / "config/team_name_history.json").write_text('{"transitions": []}')
+    (tmp_path / "config/league_history.json").write_text(
+        '{"verification_sources": [], "events": []}'
+    )
     pd.DataFrame({"season": [8], "stage": ["regular_season"]}).to_csv(
         tmp_path / "data/clean/matches.csv",
         index=False,

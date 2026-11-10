@@ -39,11 +39,23 @@ Sumber utama adalah [rulebook resmi MPL PH S18](https://ph-mpl.com/rules),
 halaman roster resmi masing-masing tim, serta
 [rilis juara dari MOONTON Games](https://en.moonton.com/news/391.html). Seluruh sumber
 dicatat di `data/raw/source_manifest.csv`; pemeriksaan sumber awal dicatat di
-`data/raw/historical_source_manifest.csv`, dengan tanggal akses 9 November 2026.
+`data/raw/historical_source_manifest.csv`. Koleksi utama diambil 9 November 2026;
+pemeriksaan ulang sumber historis pada 10 November dicatat dengan tanggal sebenarnya.
 Pengambilan detail game berikutnya pada 10 November 2026 dicatat terpisah di
 `data/raw/game_detail_source_manifest.csv`; batas informasi kompetisi tetap 9 November.
 
 Format yang diterapkan:
+
+Sistem franchise PH dimulai pada **Season 8**, sesuai
+[berita liga](https://ph-mpl.com/news/preview-teams-competing-in-the-mpl-philippines-season-8-playoffs).
+Peserta sebelum S8 tidak dipaksa sama;
+sesudah S8 akuisisi, pergantian organisasi, dan kemitraan tetap dapat mengubah tim.
+Kunci peserta dipisahkan per musim. Rating/riwayat direset antarmusim sebelum S8 dan
+pada batas S8; kode berbeda tidak otomatis digabung setelah akuisisi. Carryover kode
+yang sama setelah S8 adalah asumsi model, bukan bukti roster atau pemilik tidak berubah.
+[Kebijakan identitas](docs/LEAGUE_IDENTITY.md) menjelaskan sumber dan keterbatasannya.
+
+Format berikut khusus **S18**, tidak diterapkan mundur ke musim sebelumnya:
 
 - delapan tim franchise, double round-robin, BO3, 14 pertandingan per tim;
 - satu poin untuk kemenangan seri dan nol untuk kekalahan;
@@ -54,8 +66,11 @@ Format yang diterapkan:
 
 Katalog mencakup **Season 1–18**, dengan status yang berbeda per musim:
 
-- **S1–S5:** 14 hasil parsial dari berita resmi lama, laporan pertandingan, dan sumber
+- **S1–S5:** 22 hasil parsial dari berita resmi lama, laporan pertandingan, dan sumber
   pembanding. Jam mulai belum lengkap; hasil BO2 seri S1 dipertahankan. Belum masuk model.
+  Delapan hasil tambahan S5 hanya diketahui dalam rentang pekan 6–8 Maret 2020;
+  tanggal/jam tiap laga dan BO tidak ditebak. Bukti ekstraksi melalui web reader dicatat
+  terpisah dari kegagalan HTTP langsung sumber tersebut, bukan diklaim unduhan HTML berhasil.
 - **S6–S18:** 852 laga canonical, termasuk 788 laga sebelum S18 dan 64 laga S18.
   S8 dipulihkan dari halaman jadwal resmi. Tiga skor S6 yang rusak dikoreksi memakai
   dua laporan pertandingan dan berita resmi liga; skor asli serta sumber disimpan.
@@ -103,13 +118,13 @@ penyesuaian khusus PH. Tabel opsional yang belum tersedia hanya berisi header, t
 ## Hasil model
 
 Walk-forward backtesting memakai S10–S17 sebagai jendela uji dan hanya melatih pada musim
-yang lebih lama. Setelah S8 ditambahkan dan alias historis ECHO dibetulkan,
-Logistic Regression menjadi model produksi dengan log loss 0,613, dibanding Elo 0,617,
-Random Forest 0,623, dan XGBoost 0,625. Pemilihan ini dilakukan sebelum evaluasi S18 dan hasil S18 tidak dipakai untuk
+yang lebih lama. Setelah pemisahan era franchise dan reset state pra-S8 diterapkan,
+Logistic Regression menjadi model produksi dengan log loss 0,615, dibanding Elo 0,617,
+Random Forest 0,624, dan XGBoost 0,628. Pemilihan ini dilakukan sebelum evaluasi S18 dan hasil S18 tidak dipakai untuk
 training atau pemilihan model.
 
-Pada rekonstruksi regular season S18, model memperoleh accuracy 82,1%, log loss 0,436, dan
-Brier score 0,139. Rekonstruksi pramusim memilih Team Liquid PH dengan peluang juara 78,9%,
+Pada rekonstruksi regular season S18, model memperoleh accuracy 83,9%, log loss 0,436, dan
+Brier score 0,139. Rekonstruksi pramusim memilih Team Liquid PH dengan peluang juara 81,2%,
 sedangkan juara aktual adalah Aurora Gaming PH. Hasil meleset ini tetap ditampilkan apa
 adanya.
 
@@ -125,6 +140,8 @@ Pada pemakaian pertama, perintah tersebut otomatis membuat `.venv` dan memasang 
 dengan `pip` (bukan `uv`), lalu membuka dashboard di `http://127.0.0.1:8501`. Pemakaian
 berikutnya langsung menjalankan aplikasi. Dashboard hanya membaca artefak CSV yang sudah
 tersedia, sehingga dapat dijalankan tanpa training ulang.
+Linux x86_64 menggunakan varian resmi `xgboost-cpu` versi yang sama untuk training CPU;
+platform lain memakai paket XGBoost standar. GPU tidak diperlukan oleh proyek ini.
 
 Target lain yang tersedia dapat dilihat dengan `make help`. Port dapat diganti, misalnya
 `make run PORT=8502`.
@@ -170,6 +187,16 @@ menyediakan waktu publikasi hasil yang sebenarnya. Keterbatasan ini juga tampil 
 make check
 ```
 
+Uji tiga halaman tanpa jaringan/training: `make smoke`. Untuk menguji salinan berisi
+hanya berkas yang dapat ikut Git, dengan virtual environment baru:
+
+```bash
+make verify-release RELEASE_ARGS=--fresh-env
+```
+
+Salinan dan log berada di `.cache/release_checks` dalam proyek ini; ringkasan di
+`reports/release_check.json`. Ini pengujian lokal terisolasi, bukan deployment Cloud.
+
 Untuk mengambil ulang screenshot setelah dashboard lokal berjalan:
 
 ```bash
@@ -181,6 +208,8 @@ Untuk mengambil ulang screenshot setelah dashboard lokal berjalan:
 Gunakan `streamlit_app.py` sebagai main file. `requirements.txt` hanya berisi dependensi
 runtime dan seluruh file prediksi yang dibaca dashboard sudah disertakan. Aplikasi tidak
 menjalankan kolektor, training, atau simulasi ketika halaman dibuka.
+Pengujian lokal memakai Python 3.12; pengujian salinan/venv baru bukan bukti deployment
+ke akun Streamlit Cloud.
 
 Daftar pekerjaan selesai dan tertunda: [PROJECT_STATUS.md](PROJECT_STATUS.md).
 Operasional lokal: [docs/OPERATIONS.md](docs/OPERATIONS.md).

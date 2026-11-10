@@ -1,9 +1,9 @@
-season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
-13,ap_bren,Falcons APBren,https://ph-mpl.com/s13,APBR,AP.Bren | Falcons APBren,,,True,https://ph-mpl.com/s13
-13,blacklist_international,Blacklist International,https://ph-mpl.com/s13,BLCK,Blacklist International,,,True,https://ph-mpl.com/s13
-13,minana_evos,Minana EVOS,https://ph-mpl.com/s13,MNNE,Minana EVOS,,,True,https://ph-mpl.com/s13
-13,onic_philippines,Fnatic ONIC PH,https://ph-mpl.com/s13,ONIC,ONIC Philippines | Fnatic ONIC PH,,,True,https://ph-mpl.com/s13
-13,rsg_philippines,RSG Philippines,https://ph-mpl.com/s13,RSG,RSG Philippines,,,True,https://ph-mpl.com/s13
-13,smart_omega,Smart Omega,https://ph-mpl.com/s13,OMG,Smart Omega,,,True,https://ph-mpl.com/s13
-13,team_liquid_ph,Team Liquid ECHO PH,https://ph-mpl.com/s13,TLPH,ECHO | Team Liquid ECHO PH,,,True,https://ph-mpl.com/s13
-13,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s13,TNC,TNC Pro Team,,,True,https://ph-mpl.com/s13
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,participant_id,competition_regime,franchise_slot_status,identity_review_required,source_url
+13,ap_bren,Falcons APBren,https://ph-mpl.com/s13,APBR,AP.Bren | Falcons APBren,,,ph_s13_apbr,franchise,unverified,True,https://ph-mpl.com/s13
+13,blacklist_international,Blacklist International,https://ph-mpl.com/s13,BLCK,Blacklist International,,,ph_s13_blck,franchise,unverified,True,https://ph-mpl.com/s13
+13,minana_evos,Minana EVOS,https://ph-mpl.com/s13,MNNE,Minana EVOS,,,ph_s13_mnne,franchise,unverified,True,https://ph-mpl.com/s13
+13,onic_philippines,Fnatic ONIC PH,https://ph-mpl.com/s13,ONIC,ONIC Philippines | Fnatic ONIC PH,,,ph_s13_onic,franchise,unverified,True,https://ph-mpl.com/s13
+13,rsg_philippines,RSG Philippines,https://ph-mpl.com/s13,RSG,RSG Philippines,,,ph_s13_rsg,franchise,unverified,True,https://ph-mpl.com/s13
+13,smart_omega,Smart Omega,https://ph-mpl.com/s13,OMG,Smart Omega,,,ph_s13_omg,franchise,unverified,True,https://ph-mpl.com/s13
+13,team_liquid_ph,Team Liquid ECHO PH,https://ph-mpl.com/s13,TLPH,ECHO | Team Liquid ECHO PH,,,ph_s13_tlph,franchise,unverified,True,https://ph-mpl.com/s13
+13,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s13,TNC,TNC Pro Team,,,ph_s13_tnc,franchise,unverified,True,https://ph-mpl.com/s13

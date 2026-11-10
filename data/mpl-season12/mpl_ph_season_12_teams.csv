@@ -1,9 +1,9 @@
-season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
-12,ap_bren,AP BREN,https://ph-mpl.com/s12,APBR,AP BREN,,,True,https://ph-mpl.com/s12
-12,blacklist_international,Blacklist International,https://ph-mpl.com/s12,BLCK,Blacklist International,,,True,https://ph-mpl.com/s12
-12,echo,ECHO,https://ph-mpl.com/s12,ECHO,ECHO,,,True,https://ph-mpl.com/s12
-12,minana_evos,Minana EVOS,https://ph-mpl.com/s12,MNNE,Minana EVOS,,,True,https://ph-mpl.com/s12
-12,onic_philippines,ONIC Philippines,https://ph-mpl.com/s12,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s12
-12,rsg_philippines,RSG Philippines,https://ph-mpl.com/s12,RSG,RSG Philippines,,,True,https://ph-mpl.com/s12
-12,smart_omega,Smart Omega,https://ph-mpl.com/s12,OMG,Smart Omega,,,True,https://ph-mpl.com/s12
-12,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s12,TNC,TNC Pro Team,,,True,https://ph-mpl.com/s12
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,participant_id,competition_regime,franchise_slot_status,identity_review_required,source_url
+12,ap_bren,AP BREN,https://ph-mpl.com/s12,APBR,AP BREN,,,ph_s12_apbr,franchise,unverified,True,https://ph-mpl.com/s12
+12,blacklist_international,Blacklist International,https://ph-mpl.com/s12,BLCK,Blacklist International,,,ph_s12_blck,franchise,unverified,True,https://ph-mpl.com/s12
+12,echo,ECHO,https://ph-mpl.com/s12,ECHO,ECHO,,,ph_s12_echo,franchise,unverified,True,https://ph-mpl.com/s12
+12,minana_evos,Minana EVOS,https://ph-mpl.com/s12,MNNE,Minana EVOS,,,ph_s12_mnne,franchise,unverified,True,https://ph-mpl.com/s12
+12,onic_philippines,ONIC Philippines,https://ph-mpl.com/s12,ONIC,ONIC Philippines,,,ph_s12_onic,franchise,unverified,True,https://ph-mpl.com/s12
+12,rsg_philippines,RSG Philippines,https://ph-mpl.com/s12,RSG,RSG Philippines,,,ph_s12_rsg,franchise,unverified,True,https://ph-mpl.com/s12
+12,smart_omega,Smart Omega,https://ph-mpl.com/s12,OMG,Smart Omega,,,ph_s12_omg,franchise,unverified,True,https://ph-mpl.com/s12
+12,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s12,TNC,TNC Pro Team,,,ph_s12_tnc,franchise,unverified,True,https://ph-mpl.com/s12

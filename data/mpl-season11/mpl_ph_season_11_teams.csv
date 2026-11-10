@@ -1,9 +1,9 @@
-season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
-11,blacklist_international,Blacklist International,https://ph-mpl.com/s11,BLCK,Blacklist International,,,True,https://ph-mpl.com/s11
-11,bren_esports,Bren Esports,https://ph-mpl.com/s11,BREN,Bren Esports,,,True,https://ph-mpl.com/s11
-11,echo,ECHO,https://ph-mpl.com/s11,ECHO,ECHO,,,True,https://ph-mpl.com/s11
-11,nexplay_evos,Nexplay EVOS,https://ph-mpl.com/s11,NXPE,Nexplay EVOS,,,True,https://ph-mpl.com/s11
-11,onic_philippines,ONIC Philippines,https://ph-mpl.com/s11,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s11
-11,rsg_philippines,RSG Philippines,https://ph-mpl.com/s11,RSG,RSG Philippines,,,True,https://ph-mpl.com/s11
-11,smart_omega,Smart Omega,https://ph-mpl.com/s11,OMG,Smart Omega,,,True,https://ph-mpl.com/s11
-11,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s11,TNC,TNC Pro Team,,,True,https://ph-mpl.com/s11
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,participant_id,competition_regime,franchise_slot_status,identity_review_required,source_url
+11,blacklist_international,Blacklist International,https://ph-mpl.com/s11,BLCK,Blacklist International,,,ph_s11_blck,franchise,unverified,True,https://ph-mpl.com/s11
+11,bren_esports,Bren Esports,https://ph-mpl.com/s11,BREN,Bren Esports,,,ph_s11_bren,franchise,unverified,True,https://ph-mpl.com/s11
+11,echo,ECHO,https://ph-mpl.com/s11,ECHO,ECHO,,,ph_s11_echo,franchise,unverified,True,https://ph-mpl.com/s11
+11,nexplay_evos,Nexplay EVOS,https://ph-mpl.com/s11,NXPE,Nexplay EVOS,,,ph_s11_nxpe,franchise,unverified,True,https://ph-mpl.com/s11
+11,onic_philippines,ONIC Philippines,https://ph-mpl.com/s11,ONIC,ONIC Philippines,,,ph_s11_onic,franchise,unverified,True,https://ph-mpl.com/s11
+11,rsg_philippines,RSG Philippines,https://ph-mpl.com/s11,RSG,RSG Philippines,,,ph_s11_rsg,franchise,unverified,True,https://ph-mpl.com/s11
+11,smart_omega,Smart Omega,https://ph-mpl.com/s11,OMG,Smart Omega,,,ph_s11_omg,franchise,unverified,True,https://ph-mpl.com/s11
+11,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s11,TNC,TNC Pro Team,,,ph_s11_tnc,franchise,unverified,True,https://ph-mpl.com/s11

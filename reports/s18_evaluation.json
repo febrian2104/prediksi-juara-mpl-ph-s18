@@ -3,14 +3,14 @@
   "honesty_note": "Prediksi dibangun ulang saat pipeline dijalankan dengan state sebelum laga; bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan.",
   "all_s18": {
     "rows": 64,
-    "accuracy": 0.796875,
-    "log_loss": 0.4676063689190399,
-    "brier_score": 0.15185704662526894
+    "accuracy": 0.8125,
+    "log_loss": 0.4673387619660771,
+    "brier_score": 0.15185270660661876
   },
   "regular_season": {
     "rows": 56,
-    "accuracy": 0.8214285714285714,
-    "log_loss": 0.4363006191019428,
-    "brier_score": 0.1386257439580378
+    "accuracy": 0.8392857142857143,
+    "log_loss": 0.43636773479155544,
+    "brier_score": 0.13877813841653447
   }
 }

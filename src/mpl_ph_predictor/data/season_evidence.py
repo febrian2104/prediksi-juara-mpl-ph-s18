@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 
 from mpl_ph_predictor.archive import sha256, utc_now
 from mpl_ph_predictor.data.contracts import conform_table
+from mpl_ph_predictor.data.league_history import load_league_history
 
 ROOT = Path(__file__).resolve().parents[3]
 RECONCILED_STATUSES = {
@@ -356,6 +357,12 @@ def collect_season_evidence(
     for transition in history["transitions"]:
         for url in transition["source_urls"]:
             urls[url] = transition["season"]
+    league = load_league_history(root)
+    for source in league["verification_sources"]:
+        urls[source["url"]] = source["season"]
+    for event in league["events"]:
+        for url in event["source_urls"]:
+            urls[url] = event["season"]
     manifest_path = root / "data/raw/season_evidence_source_manifest.csv"
     previous = pd.read_csv(manifest_path) if manifest_path.exists() else pd.DataFrame()
     cache, last_attempts = {}, {}

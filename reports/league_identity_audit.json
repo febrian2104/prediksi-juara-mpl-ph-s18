@@ -1,0 +1,383 @@
+{
+  "generated_at": "2026-11-10T03:38:45.906648+00:00",
+  "franchise_start_season": 8,
+  "participant_rows": 136,
+  "unique_participant_ids": 136,
+  "rating_policy": {
+    "version": "ph_franchise_boundary_v1",
+    "pre_franchise": "reset_rating_and_history_each_season",
+    "franchise_boundary": "reset_rating_and_history",
+    "post_franchise": "code_scoped_carryover_with_season_regression",
+    "acquisitions": "never_merge_different_codes_without_reviewed_roster_continuity",
+    "note": "This conservative modeling policy is not a league rule. A participant code is neither a legal organization ID nor a franchise slot ID. Same-code carryover after S8 is a modeling assumption, not verified unchanged ownership or roster."
+  },
+  "source_evidence": [
+    {
+      "url": "https://ph-mpl.com/news/whos-who-in-season-8-of-mpl-ph",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T03:16:54.530810+00:00",
+      "snapshot_path": "data/raw/source_snapshots/156db29e09bb2ff0f3830a58bcf24b4a3bb4eae21ab4a4bc6ee6d1d4e87d1c24.html",
+      "sha256": "156db29e09bb2ff0f3830a58bcf24b4a3bb4eae21ab4a4bc6ee6d1d4e87d1c24"
+    },
+    {
+      "url": "https://ph-mpl.com/news/preview-teams-competing-in-the-mpl-philippines-season-8-playoffs",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T03:16:54.532420+00:00",
+      "snapshot_path": "data/raw/source_snapshots/757c99f2755ae08d19d5eec2e12bfd05a57efa2d08297d7c4cdbc2dd5a0b4481.html",
+      "sha256": "757c99f2755ae08d19d5eec2e12bfd05a57efa2d08297d7c4cdbc2dd5a0b4481"
+    },
+    {
+      "url": "https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T01:55:41.539216+00:00",
+      "snapshot_path": "data/raw/source_snapshots/570c2b7f9c82ceaa4883d5a5a7807e063372bf6108d1182b668b2f99239d0049.html",
+      "sha256": "570c2b7f9c82ceaa4883d5a5a7807e063372bf6108d1182b668b2f99239d0049"
+    },
+    {
+      "url": "https://teamliquid.com/articles/the-5-steps-of-recovering-from-mobile-esports-denial",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T01:55:41.547872+00:00",
+      "snapshot_path": "data/raw/source_snapshots/44de7a1294d47108aaaa925ba9b7c4e1299b15e1731fb5672ee02386c2c28b96.html",
+      "sha256": "44de7a1294d47108aaaa925ba9b7c4e1299b15e1731fb5672ee02386c2c28b96"
+    },
+    {
+      "url": "https://fnatic.com/news/fnatic-partners-with-onic-esports",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T02:48:49.800883+00:00",
+      "snapshot_path": "data/raw/source_snapshots/6ffca75b8882aa58abfe90f6e30244474dcb7bbde5e2996477c7b8c7c19d7c2b.html",
+      "sha256": "6ffca75b8882aa58abfe90f6e30244474dcb7bbde5e2996477c7b8c7c19d7c2b"
+    },
+    {
+      "url": "https://en.moonton.com/news/93.html",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T01:55:41.560652+00:00",
+      "snapshot_path": "data/raw/source_snapshots/17cf783db55d5bb432219a307cded9341694d88a3bec6999d86461632d827e9b.html",
+      "sha256": "17cf783db55d5bb432219a307cded9341694d88a3bec6999d86461632d827e9b"
+    },
+    {
+      "url": "https://ph-mpl.com/news/press-release-major-tournament-upgrades-mark-the-return-of-mpl-philippines-on-august-16",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T03:16:54.545272+00:00",
+      "snapshot_path": "data/raw/source_snapshots/f03448911c779c705574dbc539a044cf0b88e599a0d46150675348b727339ad3.html",
+      "sha256": "f03448911c779c705574dbc539a044cf0b88e599a0d46150675348b727339ad3"
+    },
+    {
+      "url": "https://en.moonton.com/news/168.html",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T03:16:54.599851+00:00",
+      "snapshot_path": "data/raw/source_snapshots/048c1c7d7c61bdc32ad99714b8484a16a7a78c2eea8b71a6a16a7079d5bdc000.html",
+      "sha256": "048c1c7d7c61bdc32ad99714b8484a16a7a78c2eea8b71a6a16a7079d5bdc000"
+    },
+    {
+      "url": "https://en.moonton.com/news/171.html",
+      "status": "checksum_verified",
+      "retrieved_at": "2026-11-10T03:16:55.211362+00:00",
+      "snapshot_path": "data/raw/source_snapshots/2a30193c94a44e6f6378e0326ba1b8c16cbe87101b15a297beabd6a92b4ed704.html",
+      "sha256": "2a30193c94a44e6f6378e0326ba1b8c16cbe87101b15a297beabd6a92b4ed704"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "s13_echo_liquid",
+      "season": 13,
+      "event_type": "organization_acquisition_and_rebrand",
+      "announcement_date": "2024-05-21",
+      "previous_codes": [
+        "ECHO"
+      ],
+      "current_codes": [
+        "TLPH"
+      ],
+      "slot_mapping_status": "not_established_by_this_registry",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "keep_separate",
+      "source_urls": [
+        "https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs",
+        "https://teamliquid.com/articles/the-5-steps-of-recovering-from-mobile-esports-denial"
+      ]
+    },
+    {
+      "event_id": "s13_onic_fnatic",
+      "season": 13,
+      "event_type": "partnership_and_display_name_change",
+      "announcement_date": "2024-05-21",
+      "previous_codes": [
+        "ONIC"
+      ],
+      "current_codes": [
+        "ONIC"
+      ],
+      "slot_mapping_status": "not_established_by_this_registry",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "same_code_model_assumption_not_slot_evidence",
+      "source_urls": [
+        "https://fnatic.com/news/fnatic-partners-with-onic-esports"
+      ]
+    },
+    {
+      "event_id": "s13_apbren_falcons_partnership",
+      "season": 13,
+      "event_type": "partnership_and_display_name_change",
+      "announcement_date": "2024-05-19",
+      "previous_codes": [
+        "APBR"
+      ],
+      "current_codes": [
+        "APBR"
+      ],
+      "slot_mapping_status": "not_a_merger_with_s15_flcn",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "never_merge_apbr_with_flcn",
+      "source_urls": [
+        "https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs",
+        "https://en.moonton.com/news/93.html"
+      ]
+    },
+    {
+      "event_id": "s14_aurora_entry",
+      "season": 14,
+      "event_type": "new_franchise_participant",
+      "evidence_published_date": "2024-08-13",
+      "previous_codes": [],
+      "current_codes": [
+        "RORA"
+      ],
+      "slot_mapping_status": "predecessor_not_established_by_primary_source",
+      "roster_continuity_status": "new_lineup_not_effective_dated",
+      "rating_action": "keep_separate_from_mnne_and_blck",
+      "source_urls": [
+        "https://ph-mpl.com/news/press-release-major-tournament-upgrades-mark-the-return-of-mpl-philippines-on-august-16"
+      ]
+    },
+    {
+      "event_id": "s15_twisted_falcons_entries",
+      "season": 15,
+      "event_type": "new_franchise_participants",
+      "announcement_date": "2025-01-24",
+      "previous_codes": [],
+      "current_codes": [
+        "TWIS",
+        "FLCN"
+      ],
+      "slot_mapping_status": "individual_predecessor_slots_not_established_by_primary_source",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "new_code_cold_start_no_automatic_rating_transfer",
+      "source_urls": [
+        "https://en.moonton.com/news/168.html",
+        "https://en.moonton.com/news/171.html"
+      ]
+    }
+  ],
+  "season_participant_changes": [
+    {
+      "season": 2,
+      "observed_new_codes": [
+        "AAOWN",
+        "AAWM",
+        "AEM2",
+        "BREN",
+        "CIG",
+        "EXE",
+        "SXC"
+      ],
+      "observed_absent_codes": [
+        "AEM",
+        "DDPG",
+        "IG",
+        "OBSG",
+        "OR",
+        "VD",
+        "WR"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": true
+    },
+    {
+      "season": 3,
+      "observed_new_codes": [
+        "AA"
+      ],
+      "observed_absent_codes": [
+        "AAOWN",
+        "AAWM",
+        "AEM2",
+        "CIG",
+        "EXE",
+        "SXC"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": true
+    },
+    {
+      "season": 4,
+      "observed_new_codes": [
+        "ONIC",
+        "SS"
+      ],
+      "observed_absent_codes": [
+        "AA",
+        "BREN"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": true
+    },
+    {
+      "season": 5,
+      "observed_new_codes": [
+        "BLCK",
+        "BREN",
+        "BSB",
+        "EXE",
+        "GF",
+        "SGD",
+        "STI",
+        "ULVL"
+      ],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": true
+    },
+    {
+      "season": 6,
+      "observed_new_codes": [
+        "AURA",
+        "BNK",
+        "CIG",
+        "NXP",
+        "OMG"
+      ],
+      "observed_absent_codes": [
+        "GF",
+        "SGD",
+        "SS",
+        "STI",
+        "ULVL"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": true
+    },
+    {
+      "season": 7,
+      "observed_new_codes": [
+        "LPE",
+        "WORK"
+      ],
+      "observed_absent_codes": [
+        "BNK",
+        "BSB"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 8,
+      "observed_new_codes": [
+        "ECHO",
+        "NXPE",
+        "RSG",
+        "TNC"
+      ],
+      "observed_absent_codes": [
+        "AURA",
+        "CIG",
+        "EXE",
+        "LPE",
+        "NXP",
+        "WORK"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 9,
+      "observed_new_codes": [],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 10,
+      "observed_new_codes": [],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 11,
+      "observed_new_codes": [],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 12,
+      "observed_new_codes": [
+        "APBR",
+        "MNNE"
+      ],
+      "observed_absent_codes": [
+        "BREN",
+        "NXPE"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 13,
+      "observed_new_codes": [
+        "TLPH"
+      ],
+      "observed_absent_codes": [
+        "ECHO"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 14,
+      "observed_new_codes": [
+        "RORA"
+      ],
+      "observed_absent_codes": [
+        "MNNE"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 15,
+      "observed_new_codes": [
+        "FLCN",
+        "TWIS"
+      ],
+      "observed_absent_codes": [
+        "BLCK",
+        "RSG"
+      ],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 16,
+      "observed_new_codes": [],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 17,
+      "observed_new_codes": [],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    },
+    {
+      "season": 18,
+      "observed_new_codes": [],
+      "observed_absent_codes": [],
+      "basis": "collected_participant_difference_not_acquisition_or_slot_evidence",
+      "coverage_partial": false
+    }
+  ],
+  "limitation": "Nama, organisasi, slot, roster dan rating berbeda. S1–S5 parsial; pergantian kode peserta bukan bukti akuisisi. Slot tetap null sampai rantai kepemilikan diverifikasi; tidak menganggap delapan organisasi selalu sama sejak S8."
+}

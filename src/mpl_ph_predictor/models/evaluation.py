@@ -16,6 +16,7 @@ from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
 from mpl_ph_predictor.archive import utc_now
+from mpl_ph_predictor.data.league_history import load_league_history
 from mpl_ph_predictor.features import load_model_config
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -205,6 +206,8 @@ def fit_production_model(
         "training_rows_original": int(len(training)),
         "selection_method": "lowest walk-forward log loss, then Brier score",
         "s18_used_for_selection_or_training": False,
+        "feature_version": "ph_3_franchise_boundary",
+        "rating_identity_policy": load_league_history()["rating_policy"],
     }
     return selected, model, artifact
 

@@ -1,9 +1,9 @@
-season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
-15,ap_bren,AP BREN,https://ph-mpl.com/s15,APBR,AP BREN,,,True,https://ph-mpl.com/s15
-15,aurora_gaming_ph,Aurora Gaming PH,https://ph-mpl.com/s15,RORA,Aurora Gaming PH,,,True,https://ph-mpl.com/s15
-15,onic_philippines,ONIC Philippines,https://ph-mpl.com/s15,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s15
-15,smart_omega,Smart Omega,https://ph-mpl.com/s15,OMG,Smart Omega,,,True,https://ph-mpl.com/s15
-15,team_falcons_ph,Team Falcons PH,https://ph-mpl.com/s15,FLCN,Team Falcons PH,,,True,https://ph-mpl.com/s15
-15,team_liquid_ph,Team Liquid PH,https://ph-mpl.com/s15,TLPH,Team Liquid PH,,,True,https://ph-mpl.com/s15
-15,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s15,TNC,TNC Pro Team,,,True,https://ph-mpl.com/s15
-15,twisted_minds_ph,Twisted Minds PH,https://ph-mpl.com/s15,TWIS,Twisted Minds PH,,,True,https://ph-mpl.com/s15
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,participant_id,competition_regime,franchise_slot_status,identity_review_required,source_url
+15,ap_bren,AP BREN,https://ph-mpl.com/s15,APBR,AP BREN,,,ph_s15_apbr,franchise,unverified,True,https://ph-mpl.com/s15
+15,aurora_gaming_ph,Aurora Gaming PH,https://ph-mpl.com/s15,RORA,Aurora Gaming PH,,,ph_s15_rora,franchise,unverified,True,https://ph-mpl.com/s15
+15,onic_philippines,ONIC Philippines,https://ph-mpl.com/s15,ONIC,ONIC Philippines,,,ph_s15_onic,franchise,unverified,True,https://ph-mpl.com/s15
+15,smart_omega,Smart Omega,https://ph-mpl.com/s15,OMG,Smart Omega,,,ph_s15_omg,franchise,unverified,True,https://ph-mpl.com/s15
+15,team_falcons_ph,Team Falcons PH,https://ph-mpl.com/s15,FLCN,Team Falcons PH,,,ph_s15_flcn,franchise,unverified,True,https://ph-mpl.com/s15
+15,team_liquid_ph,Team Liquid PH,https://ph-mpl.com/s15,TLPH,Team Liquid PH,,,ph_s15_tlph,franchise,unverified,True,https://ph-mpl.com/s15
+15,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s15,TNC,TNC Pro Team,,,ph_s15_tnc,franchise,unverified,True,https://ph-mpl.com/s15
+15,twisted_minds_ph,Twisted Minds PH,https://ph-mpl.com/s15,TWIS,Twisted Minds PH,,,ph_s15_twis,franchise,unverified,True,https://ph-mpl.com/s15

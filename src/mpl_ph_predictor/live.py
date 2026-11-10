@@ -12,6 +12,7 @@ import numpy as np
 import pandas as pd
 
 from mpl_ph_predictor.archive import read_snapshot, save_snapshot, sha256, utc_now
+from mpl_ph_predictor.data.league_history import load_league_history
 from mpl_ph_predictor.features import replay_state
 from mpl_ph_predictor.models import predict_probability
 from mpl_ph_predictor.simulation import adjust_best_of
@@ -88,6 +89,9 @@ def build_live_predictions(
             raise ValueError(f"Provenance waktu model belum valid: {column}.")
     if max(artifact["training_seasons"]) >= season:
         raise ValueError("Model pramusim harus dilatih pada musim yang lebih lama.")
+    expected_policy = load_league_history()["rating_policy"]["version"]
+    if artifact.get("rating_identity_policy", {}).get("version") != expected_policy:
+        raise ValueError("Kebijakan identitas model berbeda; jalankan rebuild sebelum forecast.")
 
     known = history.copy()
     if "result_observed_at" not in known:

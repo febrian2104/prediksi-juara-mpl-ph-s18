@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "competition": "MPL Philippines",
+  "franchise_start_season": 8,
+  "verification_sources": [
+    {"season": 8, "published_date": "2021-09-09", "url": "https://ph-mpl.com/news/whos-who-in-season-8-of-mpl-ph"},
+    {"season": 8, "published_date": "2021-10-21", "url": "https://ph-mpl.com/news/preview-teams-competing-in-the-mpl-philippines-season-8-playoffs"}
+  ],
+  "rating_policy": {
+    "version": "ph_franchise_boundary_v1",
+    "pre_franchise": "reset_rating_and_history_each_season",
+    "franchise_boundary": "reset_rating_and_history",
+    "post_franchise": "code_scoped_carryover_with_season_regression",
+    "acquisitions": "never_merge_different_codes_without_reviewed_roster_continuity",
+    "note": "This conservative modeling policy is not a league rule. A participant code is neither a legal organization ID nor a franchise slot ID. Same-code carryover after S8 is a modeling assumption, not verified unchanged ownership or roster."
+  },
+  "events": [
+    {
+      "event_id": "s13_echo_liquid",
+      "season": 13,
+      "event_type": "organization_acquisition_and_rebrand",
+      "announcement_date": "2024-05-21",
+      "previous_codes": ["ECHO"],
+      "current_codes": ["TLPH"],
+      "slot_mapping_status": "not_established_by_this_registry",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "keep_separate",
+      "source_urls": ["https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs", "https://teamliquid.com/articles/the-5-steps-of-recovering-from-mobile-esports-denial"]
+    },
+    {
+      "event_id": "s13_onic_fnatic",
+      "season": 13,
+      "event_type": "partnership_and_display_name_change",
+      "announcement_date": "2024-05-21",
+      "previous_codes": ["ONIC"],
+      "current_codes": ["ONIC"],
+      "slot_mapping_status": "not_established_by_this_registry",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "same_code_model_assumption_not_slot_evidence",
+      "source_urls": ["https://fnatic.com/news/fnatic-partners-with-onic-esports"]
+    },
+    {
+      "event_id": "s13_apbren_falcons_partnership",
+      "season": 13,
+      "event_type": "partnership_and_display_name_change",
+      "announcement_date": "2024-05-19",
+      "previous_codes": ["APBR"],
+      "current_codes": ["APBR"],
+      "slot_mapping_status": "not_a_merger_with_s15_flcn",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "never_merge_apbr_with_flcn",
+      "source_urls": ["https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs", "https://en.moonton.com/news/93.html"]
+    },
+    {
+      "event_id": "s14_aurora_entry",
+      "season": 14,
+      "event_type": "new_franchise_participant",
+      "evidence_published_date": "2024-08-13",
+      "previous_codes": [],
+      "current_codes": ["RORA"],
+      "slot_mapping_status": "predecessor_not_established_by_primary_source",
+      "roster_continuity_status": "new_lineup_not_effective_dated",
+      "rating_action": "keep_separate_from_mnne_and_blck",
+      "source_urls": ["https://ph-mpl.com/news/press-release-major-tournament-upgrades-mark-the-return-of-mpl-philippines-on-august-16"]
+    },
+    {
+      "event_id": "s15_twisted_falcons_entries",
+      "season": 15,
+      "event_type": "new_franchise_participants",
+      "announcement_date": "2025-01-24",
+      "previous_codes": [],
+      "current_codes": ["TWIS", "FLCN"],
+      "slot_mapping_status": "individual_predecessor_slots_not_established_by_primary_source",
+      "roster_continuity_status": "not_effective_dated",
+      "rating_action": "new_code_cold_start_no_automatic_rating_transfer",
+      "source_urls": ["https://en.moonton.com/news/168.html", "https://en.moonton.com/news/171.html"]
+    }
+  ]
+}

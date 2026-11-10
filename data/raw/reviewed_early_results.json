@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-10",
+  "source_url": "https://pinoygamer.ph/articles/mobile-legends-professional-league-philippines-season-5-week-2-results.8221/",
+  "source_title": "Mobile Legends Professional League Philippines Season 5 Week 2 Results",
+  "published_date": "2020-03-10",
+  "source_access_method": "web_reader",
+  "direct_http_observation": "403 challenge; not represented as a successful HTML download",
+  "evidence_kind": "reviewed_facts_extracted_from_contemporary_secondary_report_not_raw_html",
+  "season": 5,
+  "stage": "regular_season",
+  "week": 2,
+  "date_range_start": "2020-03-06",
+  "date_range_end": "2020-03-08",
+  "exact_match_date_status": "not_specified_per_match_in_report",
+  "training_eligible": false,
+  "results": [
+    {"team_a_code": "STI", "team_a_name": "STI e-Olympians", "team_b_code": "BSB", "team_b_name": "BSB", "team_a_score": 0, "team_b_score": 2},
+    {"team_a_code": "SS", "team_a_name": "Sunsparks", "team_b_code": "GF", "team_b_name": "Geek Fam PH", "team_a_score": 2, "team_b_score": 0},
+    {"team_a_code": "BLCK", "team_a_name": "Blacklist International", "team_b_code": "ULVL", "team_b_name": "ULVL", "team_a_score": 2, "team_b_score": 0},
+    {"team_a_code": "SGD", "team_a_name": "SGD Omega", "team_b_code": "STI", "team_b_name": "STI e-Olympians", "team_a_score": 2, "team_b_score": 0},
+    {"team_a_code": "ONIC", "team_a_name": "ONIC Philippines", "team_b_code": "BREN", "team_b_name": "Bren Esports", "team_a_score": 1, "team_b_score": 2},
+    {"team_a_code": "SS", "team_a_name": "Sunsparks", "team_b_code": "BSB", "team_b_name": "BSB", "team_a_score": 2, "team_b_score": 0},
+    {"team_a_code": "BREN", "team_a_name": "Bren Esports", "team_b_code": "GF", "team_b_name": "Geek Fam PH", "team_a_score": 2, "team_b_score": 0},
+    {"team_a_code": "SGD", "team_a_name": "SGD Omega", "team_b_code": "EXE", "team_b_name": "Execration", "team_a_score": 1, "team_b_score": 2}
+  ]
+}

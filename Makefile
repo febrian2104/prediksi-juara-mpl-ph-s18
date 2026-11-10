@@ -7,11 +7,16 @@ RUNTIME_STAMP := $(VENV)/.runtime-ready
 DEV_STAMP := $(VENV)/.dev-ready
 HOST ?= 127.0.0.1
 PORT ?= 8501
+PROJECT_CACHE := $(CURDIR)/.cache
+export PIP_CACHE_DIR := $(PROJECT_CACHE)/pip
+export TMPDIR := $(PROJECT_CACHE)/tmp
+export XDG_CACHE_HOME := $(PROJECT_CACHE)
 
 .PHONY: run setup dev-setup update rebuild test lint check help archive verify-history forecast evaluate collect-history collect-details collect-season-data audit-game-data dashboard verify
+.PHONY: smoke verify-release cache-dir
 
 run: setup
-	$(PYTHON) -m streamlit run streamlit_app.py --server.address $(HOST) --server.port $(PORT)
+	$(PYTHON) -m streamlit run streamlit_app.py --server.address $(HOST) --server.port $(PORT) --server.headless true --browser.gatherUsageStats false
 
 dashboard: run
 
@@ -19,10 +24,13 @@ setup: $(RUNTIME_STAMP)
 
 dev-setup: $(DEV_STAMP)
 
-$(PYTHON):
+cache-dir:
+	mkdir -p "$(PROJECT_CACHE)/tmp"
+
+$(PYTHON): | cache-dir
 	$(SYSTEM_PYTHON) -m venv $(VENV)
 
-$(RUNTIME_STAMP): requirements.txt $(PYTHON)
+$(RUNTIME_STAMP): requirements.txt $(PYTHON) | cache-dir
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 	touch $(RUNTIME_STAMP)
@@ -46,6 +54,12 @@ lint: dev-setup
 check: lint test
 
 verify: check verify-history
+
+smoke: dev-setup
+	$(PYTHON) scripts/smoke_dashboard.py
+
+verify-release: dev-setup
+	$(PYTHON) scripts/verify_release.py $(RELEASE_ARGS)
 
 collect-history: setup
 	$(PYTHON) scripts/collect_history.py
@@ -80,6 +94,8 @@ help:
 		'make update    Ambil data resmi lalu perbarui seluruh artefak' \
 		'make rebuild   Bangun ulang artefak dari data mentah lokal' \
 		'make check     Jalankan lint dan seluruh pengujian' \
+		'make smoke     Uji tiga halaman offline tanpa training atau kolektor' \
+		'make verify-release RELEASE_ARGS=--fresh-env  Uji salinan Git dengan venv baru' \
 		'make archive   Simpan arsip artefak saat ini tanpa menimpa riwayat' \
 		'make collect-history  Periksa ulang sumber historis Season 1-5' \
 		'make collect-details  Ambil scoreboard game resmi tanpa training ulang' \

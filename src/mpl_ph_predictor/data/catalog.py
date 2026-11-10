@@ -10,20 +10,25 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from mpl_ph_predictor.data.contracts import conform_table, load_dataset_schema, variable_coverage
+from mpl_ph_predictor.data.league_history import annotate_match_participants, participant_id
 from mpl_ph_predictor.data.normalization import slug
 
 ROOT = Path(__file__).resolve().parents[3]
 
 
 def match_table(frame: pd.DataFrame) -> pd.DataFrame:
-    result = frame.copy()
-    if "match_id" not in result:
-        result["match_id"] = result.apply(
+    result = annotate_match_participants(frame)
+    if "match_id" not in result or result["match_id"].isna().any():
+        generated = result.apply(
             lambda row: f"PH-S{int(row.season):02}-{row.stage}-{row.match_date}-"
             f"{row.team_a_code}-{row.team_b_code}",
             axis=1,
         )
-        result["match_id_basis"] = "local_key_from_verified_match_facts"
+        result["match_id"] = (
+            result["match_id"].fillna(generated) if "match_id" in result else generated
+        )
+        basis = result.get("match_id_basis", pd.Series(index=result.index, dtype="string"))
+        result["match_id_basis"] = basis.fillna("local_key_from_verified_match_facts")
     if "match_date" in result:
         result["date"] = result["match_date"]
     else:
@@ -83,6 +88,16 @@ def team_table(matches: pd.DataFrame) -> pd.DataFrame:
     )
     result["organization_id"] = pd.NA
     result["franchise_slot_id"] = pd.NA
+    result["participant_id"] = [
+        participant_id(season, code)
+        for season, code in zip(result["season"], result["team_code"], strict=True)
+    ]
+    result["competition_regime"] = result["season"].map(
+        lambda season: "pre_franchise" if season < 8 else "franchise"
+    )
+    result["franchise_slot_status"] = result["season"].map(
+        lambda season: "not_applicable_pre_franchise" if season < 8 else "unverified"
+    )
     result["identity_review_required"] = True
     result["source_url"] = result["source"]
     return conform_table(result, "teams")

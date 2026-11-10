@@ -1,11 +1,11 @@
-season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
-6,aura_ph,Aura PH,https://ph-mpl.com/s6,AURA,Aura PH,,,True,https://ph-mpl.com/s6
-6,blacklist_international,Blacklist International,https://ph-mpl.com/s6,BLCK,Blacklist International,,,True,https://ph-mpl.com/s6
-6,blu_fire,Blu Fire,https://ph-mpl.com/s6,BNK,Blu Fire,,,True,https://ph-mpl.com/s6
-6,bren_esports,Bren Esports,https://ph-mpl.com/s6,BREN,Bren Esports,,,True,https://ph-mpl.com/s6
-6,bsb,Bsb,https://ph-mpl.com/s6,BSB,Bsb,,,True,https://ph-mpl.com/s6
-6,cignal_ultra,Cignal Ultra,https://ph-mpl.com/s6,CIG,Cignal Ultra,,,True,https://ph-mpl.com/s6
-6,execration,Execration,https://ph-mpl.com/s6,EXE,Execration,,,True,https://ph-mpl.com/s6
-6,nexplay_solid,Nexplay Solid,https://ph-mpl.com/s6,NXP,Nexplay Solid,,,True,https://ph-mpl.com/s6
-6,onic_philippines,ONIC Philippines,https://ph-mpl.com/s6,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s6
-6,smart_omega,Smart Omega,https://ph-mpl.com/s6,OMG,Smart Omega,,,True,https://ph-mpl.com/s6
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,participant_id,competition_regime,franchise_slot_status,identity_review_required,source_url
+6,aura_ph,Aura PH,https://ph-mpl.com/s6,AURA,Aura PH,,,ph_s06_aura,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,blacklist_international,Blacklist International,https://ph-mpl.com/s6,BLCK,Blacklist International,,,ph_s06_blck,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,blu_fire,Blu Fire,https://ph-mpl.com/s6,BNK,Blu Fire,,,ph_s06_bnk,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,bren_esports,Bren Esports,https://ph-mpl.com/s6,BREN,Bren Esports,,,ph_s06_bren,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,bsb,Bsb,https://ph-mpl.com/s6,BSB,Bsb,,,ph_s06_bsb,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,cignal_ultra,Cignal Ultra,https://ph-mpl.com/s6,CIG,Cignal Ultra,,,ph_s06_cig,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,execration,Execration,https://ph-mpl.com/s6,EXE,Execration,,,ph_s06_exe,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,nexplay_solid,Nexplay Solid,https://ph-mpl.com/s6,NXP,Nexplay Solid,,,ph_s06_nxp,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,onic_philippines,ONIC Philippines,https://ph-mpl.com/s6,ONIC,ONIC Philippines,,,ph_s06_onic,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6
+6,smart_omega,Smart Omega,https://ph-mpl.com/s6,OMG,Smart Omega,,,ph_s06_omg,pre_franchise,not_applicable_pre_franchise,True,https://ph-mpl.com/s6

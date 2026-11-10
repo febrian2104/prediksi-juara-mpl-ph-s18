@@ -12,8 +12,10 @@ from mpl_ph_predictor.archive import archive_project_state, verify_history
 from mpl_ph_predictor.collector import collect_official_data, write_raw_data
 from mpl_ph_predictor.data import build_canonical_data, write_canonical_data
 from mpl_ph_predictor.data.catalog import export_processed_outputs, export_reference_layout
+from mpl_ph_predictor.data.early_results import import_reviewed_early_results
 from mpl_ph_predictor.data.game_audit import audit_game_summaries
 from mpl_ph_predictor.data.game_details import collect_game_details
+from mpl_ph_predictor.data.league_history import write_league_identity_audit
 from mpl_ph_predictor.data.research import collect_historical_source_availability
 from mpl_ph_predictor.data.season_evidence import collect_season_evidence
 from mpl_ph_predictor.features import build_match_features, write_features
@@ -70,6 +72,7 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
     required = ROOT / "data" / "raw" / "official_matches.csv"
     if not required.exists():
         raise FileNotFoundError("Data mentah belum ada; jalankan pipeline tanpa --no-fetch.")
+    import_reviewed_early_results()
 
     matches, teams, rosters, quality = build_canonical_data()
     write_canonical_data(matches, teams, rosters, quality)
@@ -81,6 +84,7 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
     else:
         audit_game_summaries()
     coverage = export_reference_layout(matches, teams, rosters)
+    league_identity = write_league_identity_audit()
 
     features = build_match_features(matches)
     feature_report = write_features(features)
@@ -101,6 +105,7 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
         "season_coverage": coverage.to_dict(orient="records"),
         "previous_snapshot": str(before.relative_to(ROOT)) if before else None,
         "data_quality": quality,
+        "league_identity_audit": league_identity,
         "feature_audit": feature_report,
         "production_model": artifact,
         "walk_forward_metrics": metrics.to_dict(orient="records"),

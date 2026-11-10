@@ -105,6 +105,8 @@ def _rank_teams(
     rng: np.random.Generator,
     bo1_probabilities: dict[tuple[str, str], float] | None = None,
     diagnostics: dict[str, int] | None = None,
+    victory_duration_totals: dict[str, float] | None = None,
+    strict_durations: bool = False,
 ) -> list[str]:
     grouped: dict[tuple[int, int], list[str]] = {}
     for team in teams:
@@ -127,14 +129,45 @@ def _rank_teams(
             if len(group) > 1:
                 if diagnostics is not None:
                     diagnostics["bo1_tiebreak_events"] += 1
-                    if len(group) > 2:
+                    if len(group) > 2 and not _durations_available(group, victory_duration_totals):
                         diagnostics["missing_victory_duration_events"] += 1
-                # Victory-duration totals are unavailable. For 3+ teams only, the
-                # starting order is a seeded draw; the BO1 bracket itself follows 2.2.2.3.
-                group = list(rng.permutation(group)) if len(group) > 2 else group
+                if len(group) > 2:
+                    group = _tiebreak_start_order(
+                        group, victory_duration_totals, rng, strict=strict_durations
+                    )
                 group = _bo1_tie_ranking(group, bo1_probabilities or {}, rng)
             ranked.extend(group)
     return ranked
+
+
+def _durations_available(teams: list[str], durations: dict[str, float] | None) -> bool:
+    try:
+        return durations is not None and all(
+            team in durations and math.isfinite(durations[team]) and durations[team] >= 0
+            for team in teams
+        )
+    except (TypeError, ValueError):
+        return False  # JSON null and nonnumeric observations are unknown, not zero.
+
+
+def _tiebreak_start_order(
+    teams: list[str], durations: dict[str, float] | None, rng: np.random.Generator,
+    *, strict: bool = False,
+) -> list[str]:
+    """Shortest verified victory duration first; equal durations use a seeded draw.
+
+    Callers must provide totals for the same information cutoff and full scope.
+    Future actual game durations must never seed a reconstructed earlier snapshot.
+    Production currently supplies no totals: its approximation remains explicit.
+    """
+    if not _durations_available(teams, durations):
+        if strict:
+            raise ValueError("Total durasi kemenangan semua tim tiebreak belum terverifikasi.")
+        return list(rng.permutation(teams))
+    groups: dict[float, list[str]] = {}
+    for team in teams:
+        groups.setdefault(durations[team], []).append(team)
+    return [team for value in sorted(groups) for team in rng.permutation(groups[value])]
 
 
 def _bo1_tie_ranking(

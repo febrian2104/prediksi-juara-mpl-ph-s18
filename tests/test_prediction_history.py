@@ -7,9 +7,10 @@ import pandas as pd
 import pytest
 
 from mpl_ph_predictor.archive import read_snapshot, save_snapshot
+from mpl_ph_predictor.data.league_history import load_league_history
 from mpl_ph_predictor.live import build_live_predictions, evaluate_saved_predictions, project_path
 from mpl_ph_predictor.models import EloBaselineModel
-from mpl_ph_predictor.models.simulation import _bo1_tie_ranking
+from mpl_ph_predictor.models.simulation import _bo1_tie_ranking, _tiebreak_start_order
 
 NOW = pd.Timestamp("2026-11-09T08:00:00Z")
 
@@ -52,6 +53,7 @@ def inputs():
         "trained_at": "2026-11-01T10:00:00Z",
         "training_latest_match_at": "2026-05-01T10:00:00Z",
         "training_data_observed_at": "2026-05-01T12:00:00Z",
+        "rating_identity_policy": load_league_history()["rating_policy"],
     }
     rules = {
         "competition": "MPL Philippines",
@@ -104,6 +106,12 @@ def test_rules_from_another_season_are_rejected(inputs) -> None:
 def test_model_from_the_future_is_rejected(inputs) -> None:
     inputs[2]["trained_at"] = "2026-12-02T00:00:00Z"
     with pytest.raises(ValueError, match="Provenance waktu model"):
+        predict(inputs)
+
+
+def test_live_rejects_artifact_trained_with_another_identity_policy(inputs) -> None:
+    inputs[2]["rating_identity_policy"] = {"version": "old_policy"}
+    with pytest.raises(ValueError, match="Kebijakan identitas"):
         predict(inputs)
 
 
@@ -169,3 +177,26 @@ def test_bo1_brackets_produce_one_complete_ranking(count) -> None:
 def test_bo1_tiebreak_uses_team_probability() -> None:
     probabilities = {("a", "b"): 1.0}
     assert _bo1_tie_ranking(["a", "b"], probabilities, np.random.default_rng(2)) == ["a", "b"]
+
+
+def test_tiebreak_duration_order_is_exact_when_complete_and_strict_rejects_unknowns():
+    rng = np.random.default_rng(42)
+    teams = ["fixture_a", "fixture_b", "fixture_c"]
+    durations = {"fixture_a": 50.0, "fixture_b": 20.0, "fixture_c": 30.0}
+    assert _tiebreak_start_order(teams, durations, rng, strict=True) == [
+        "fixture_b", "fixture_c", "fixture_a",
+    ]
+    for incomplete in (None, {}, {"fixture_a": float("nan")},
+                       {"fixture_a": -1.0}, {"fixture_a": None}):
+        with pytest.raises(ValueError, match="durasi kemenangan"):
+            _tiebreak_start_order(teams, incomplete, rng, strict=True)
+    assert set(_tiebreak_start_order(teams, None, rng)) == set(teams)
+
+
+def test_equal_victory_durations_draw_only_within_the_equal_duration_group():
+    teams = ["fixture_a", "fixture_b", "fixture_c", "fixture_d"]
+    durations = dict(zip(teams, [10.0, 20.0, 20.0, 30.0], strict=True))
+    for seed in range(5):
+        order = _tiebreak_start_order(teams, durations, np.random.default_rng(seed), strict=True)
+        assert order[0] == "fixture_a" and order[-1] == "fixture_d"
+        assert set(order[1:3]) == {"fixture_b", "fixture_c"}

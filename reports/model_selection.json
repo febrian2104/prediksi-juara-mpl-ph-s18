@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-11-10T02:58:32.292959+00:00",
+  "trained_at": "2026-11-10T03:38:59.260054+00:00",
   "training_latest_match_at": "2026-05-31 09:00:00+00:00",
   "training_data_observed_at": "2026-11-09T08:08:42.496740+00:00",
   "model_name": "logistic_regression",
@@ -28,5 +28,14 @@
   ],
   "training_rows_original": 788,
   "selection_method": "lowest walk-forward log loss, then Brier score",
-  "s18_used_for_selection_or_training": false
+  "s18_used_for_selection_or_training": false,
+  "feature_version": "ph_3_franchise_boundary",
+  "rating_identity_policy": {
+    "version": "ph_franchise_boundary_v1",
+    "pre_franchise": "reset_rating_and_history_each_season",
+    "franchise_boundary": "reset_rating_and_history",
+    "post_franchise": "code_scoped_carryover_with_season_regression",
+    "acquisitions": "never_merge_different_codes_without_reviewed_roster_continuity",
+    "note": "This conservative modeling policy is not a league rule. A participant code is neither a legal organization ID nor a franchise slot ID. Same-code carryover after S8 is a modeling assumption, not verified unchanged ownership or roster."
+  }
 }

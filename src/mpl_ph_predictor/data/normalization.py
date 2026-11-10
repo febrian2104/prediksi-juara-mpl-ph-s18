@@ -8,6 +8,7 @@ from typing import Any
 import pandas as pd
 
 from mpl_ph_predictor.data.identity import apply_team_name_history
+from mpl_ph_predictor.data.league_history import annotate_match_participants
 
 ROOT = Path(__file__).resolve().parents[3]
 
@@ -57,6 +58,7 @@ def build_canonical_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, di
         matches[f"team_{side}_id"] = matches[code].map(lookup_id)
         matches[f"team_{side}_name"] = matches[code].map(lookup_name).fillna(matches[code])
     matches = apply_team_name_history(matches)
+    matches = annotate_match_participants(matches)
     matches["winner_side"] = matches.apply(
         lambda row: "team_a" if row.team_a_score > row.team_b_score else "team_b", axis=1
     )
