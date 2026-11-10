@@ -218,6 +218,13 @@ def export_reference_layout(
     historical_rosters = pd.read_csv(ROOT / "data/raw/historical_roster_observations.csv")
     s18_players = player_table(rosters)
     stats = official_player_stats(s18_players)
+    details = {}
+    for table in ("games", "drafts"):
+        path = ROOT / f"data/raw/official_{table}.csv"
+        details[table] = (
+            conform_table(pd.read_csv(path), table)
+            if path.exists() else conform_table(pd.DataFrame(), table)
+        )
     stats.to_csv(ROOT / "data/raw/official_s18_player_season_stats.csv", index=False)
     all_tables: dict[str, list[pd.DataFrame]] = {
         table: [] for table in load_dataset_schema()["tables"]
@@ -240,8 +247,8 @@ def export_reference_layout(
             "teams": season_teams,
             "players": season_players,
             "championships": championship_table(season_matches, season_teams),
-            "games": conform_table(pd.DataFrame(), "games"),
-            "drafts": conform_table(pd.DataFrame(), "drafts"),
+            "games": details["games"].loc[details["games"]["season"].eq(season)],
+            "drafts": details["drafts"].loc[details["drafts"]["season"].eq(season)],
             "player_season_stats": stats
             if season == 18
             else conform_table(pd.DataFrame(), "player_season_stats"),
@@ -280,8 +287,8 @@ def export_reference_layout(
             "regular_season_rows": int(season_matches["stage"].eq("regular_season").sum()),
             "playoff_rows": int(season_matches["stage"].isin(["playoffs", "grand_final"]).sum()),
             "player_rows": len(season_players),
-            "games_rows": 0,
-            "drafts_rows": 0,
+            "games_rows": len(tables["games"]),
+            "drafts_rows": len(tables["drafts"]),
             "player_stat_rows": len(tables["player_season_stats"]),
             "limitation": (
                 "Hasil parsial; waktu mulai dan seluruh laga belum terverifikasi. Tidak dipakai "
@@ -315,6 +322,13 @@ def export_reference_layout(
             if layer == "processed/canonical" and name == "matches":
                 target = combined.loc[combined["training_eligible"].eq(True)]
             target.to_parquet(folder / f"{name}.parquet", index=False)
+    player_games = ROOT / "data/raw/official_player_game_stats.csv"
+    if player_games.exists():
+        player_frame = pd.read_csv(player_games)
+        for layer in ("interim/normalized", "processed/canonical"):
+            player_frame.to_parquet(
+                ROOT / "data" / layer / "player_game_stats.parquet", index=False
+            )
     return frame
 
 

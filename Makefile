@@ -8,7 +8,7 @@ DEV_STAMP := $(VENV)/.dev-ready
 HOST ?= 127.0.0.1
 PORT ?= 8501
 
-.PHONY: run setup dev-setup update rebuild test lint check help archive verify-history forecast evaluate collect-history dashboard verify
+.PHONY: run setup dev-setup update rebuild test lint check help archive verify-history forecast evaluate collect-history collect-details dashboard verify
 
 run: setup
 	$(PYTHON) -m streamlit run streamlit_app.py --server.address $(HOST) --server.port $(PORT)
@@ -50,6 +50,9 @@ verify: check verify-history
 collect-history: setup
 	$(PYTHON) scripts/collect_history.py
 
+collect-details: setup
+	$(PYTHON) scripts/collect_game_details.py $(DETAIL_ARGS)
+
 archive: setup
 	$(PYTHON) scripts/update_project.py --archive-only
 
@@ -73,6 +76,7 @@ help:
 		'make check     Jalankan lint dan seluruh pengujian' \
 		'make archive   Simpan arsip artefak saat ini tanpa menimpa riwayat' \
 		'make collect-history  Periksa ulang sumber historis Season 1-5' \
+		'make collect-details  Ambil scoreboard game resmi tanpa training ulang' \
 		'make verify-history  Periksa integritas seluruh snapshot' \
 		'make forecast SCHEDULE=... PERIOD=... RULES=...  Simpan prediksi mendatang' \
 		'make evaluate SNAPSHOT=...  Evaluasi prediksi live secara terpisah' \

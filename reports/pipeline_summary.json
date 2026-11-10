@@ -99,8 +99,8 @@
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 1,
-      "games_rows": 0,
-      "drafts_rows": 0,
+      "games_rows": 137,
+      "drafts_rows": 1370,
       "player_stat_rows": 0,
       "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim dan tidak digunakan sebagai fitur S18."
     },
@@ -229,13 +229,13 @@
       "regular_season_rows": 56,
       "playoff_rows": 8,
       "player_rows": 66,
-      "games_rows": 0,
-      "drafts_rows": 0,
+      "games_rows": 172,
+      "drafts_rows": 1720,
       "player_stat_rows": 49,
       "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim dan tidak digunakan sebagai fitur S18."
     }
   ],
-  "previous_snapshot": "data/predictions/history/20261109T081940467205Z-ad7f1fed5de1.json",
+  "previous_snapshot": "data/predictions/history/20261110T013803340064Z-9fda47f014ac.json",
   "data_quality": {
     "raw_match_rows": 852,
     "canonical_match_rows": 852,
@@ -308,7 +308,7 @@
     "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap."
   },
   "production_model": {
-    "trained_at": "2026-11-09T08:20:01.018654+00:00",
+    "trained_at": "2026-11-10T01:38:20.249836+00:00",
     "training_latest_match_at": "2026-05-31 09:00:00+00:00",
     "training_data_observed_at": "2026-11-09T08:08:42.496740+00:00",
     "model_name": "logistic_regression",
@@ -375,7 +375,7 @@
   ],
   "s18_evaluation": {
     "scope": "reconstructed_pre_match_predictions",
-    "honesty_note": "Prediksi dibuat 9 November 2026 dengan rekonstruksi state sebelum laga; bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan.",
+    "honesty_note": "Prediksi dibangun ulang saat pipeline dijalankan dengan state sebelum laga; bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan.",
     "all_s18": {
       "rows": 64,
       "accuracy": 0.796875,

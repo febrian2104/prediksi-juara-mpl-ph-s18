@@ -41,9 +41,14 @@ def test_s18_standings_recompute_to_official_table() -> None:
     ]
 
 
-def test_source_manifest_uses_cutoff_and_official_domains() -> None:
+def test_source_manifest_records_real_retrieval_dates_and_allowed_domains() -> None:
     sources = pd.read_csv(ROOT / "data" / "raw" / "source_manifest.csv")
-    assert set(sources["accessed_at"]) == {"2026-11-09"}
+    accessed = pd.to_datetime(sources["accessed_at"], utc=True)
+    assert accessed.notna().all() and accessed.le(pd.Timestamp.now(tz="UTC")).all()
+    cutoff = json.loads((ROOT / "config/competition.json").read_text())["data_cutoff"]
+    matches = pd.read_csv(ROOT / "data/clean/matches.csv")
+    dates = pd.to_datetime(matches["scheduled_at"], utc=True).dt.tz_convert("Asia/Manila")
+    assert dates.lt(pd.Timestamp(cutoff, tz="Asia/Manila") + pd.Timedelta(days=1)).all()
     from urllib.parse import urlparse
 
     allowed = {

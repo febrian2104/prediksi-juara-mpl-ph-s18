@@ -29,7 +29,10 @@ def test_s18_predictions_are_marked_reconstructed() -> None:
     assert len(matches) == 64
     assert set(matches["prediction_origin"]) == {"reconstructed"}
     assert set(summary["prediction_origin"]) == {"reconstructed"}
-    assert set(matches["created_at"]) == {"2026-11-09"}
+    created_at = pd.to_datetime(matches["created_at"], utc=True)
+    assert created_at.notna().all()
+    assert created_at.le(pd.Timestamp.now(tz="UTC")).all()
+    assert matches["information_cutoff"].eq("2026-11-09").all()
 
 
 def test_playoff_bracket_and_actual_champion() -> None:

@@ -56,7 +56,9 @@ def test_reference_numeric_types_preserve_missing_values() -> None:
 def test_official_player_stats_are_postseason_and_do_not_become_s18_features() -> None:
     stats = pd.read_csv(ROOT / "data/season18/mpl_ph_season_18_player_season_stats.csv")
     assert len(stats) == 49
-    assert stats["snapshot_date"].eq("2026-11-09").all()
+    sources = pd.read_csv(ROOT / "data/raw/source_manifest.csv")
+    accessed_at = sources.loc[sources["url"].eq("https://ph-mpl.com/data"), "accessed_at"].iloc[0]
+    assert stats["snapshot_date"].eq(accessed_at).all()
     assert not stats["feature_eligible_for_s18"].any()
     assert stats["games_played"].isna().all()  # Not reverse-engineered from rounded averages.
     assert stats["kill_participation_pct"].dropna().between(0, 100).all()
@@ -70,7 +72,10 @@ def test_variable_coverage_reports_unavailable_optional_data_honestly() -> None:
     coverage = pd.read_csv(ROOT / "reports/dataset_variable_coverage.csv")
     assert set(coverage["season"]) == set(range(1, 19))
     games = coverage.loc[coverage["table"].eq("games")]
-    assert games["availability"].eq("unavailable").all()
+    assert games.query("season == 18 and variable == 'game_number'")["non_null_rows"].sum() > 0
+    assert games.loc[games["variable"].isin(["winner", "duration_minutes"])][
+        "availability"
+    ].eq("unavailable").all()
     stats = coverage.query("season == 18 and table == 'player_season_stats'")
     assert stats.set_index("variable").loc["total_kills", "non_null_rows"] > 0
     assert stats.set_index("variable").loc["games_played", "availability"] == "unavailable"

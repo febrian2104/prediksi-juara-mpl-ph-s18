@@ -6,8 +6,8 @@
   "regular_season_rows": 56,
   "playoff_rows": 8,
   "player_rows": 66,
-  "games_rows": 0,
-  "drafts_rows": 0,
+  "games_rows": 172,
+  "drafts_rows": 1720,
   "player_stat_rows": 49,
   "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim dan tidak digunakan sebagai fitur S18."
 }

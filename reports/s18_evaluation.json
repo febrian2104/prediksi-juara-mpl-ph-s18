@@ -1,6 +1,6 @@
 {
   "scope": "reconstructed_pre_match_predictions",
-  "honesty_note": "Prediksi dibuat 9 November 2026 dengan rekonstruksi state sebelum laga; bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan.",
+  "honesty_note": "Prediksi dibangun ulang saat pipeline dijalankan dengan state sebelum laga; bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan.",
   "all_s18": {
     "rows": 64,
     "accuracy": 0.796875,

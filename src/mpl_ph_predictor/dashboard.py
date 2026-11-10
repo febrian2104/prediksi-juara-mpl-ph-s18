@@ -36,7 +36,7 @@ def _header(title: str, subtitle: str) -> None:
     st.title(title)
     st.caption(subtitle)
     st.info(
-        "Data resmi diambil sampai 9 November 2026. Prediksi S18 berstatus rekonstruksi, "
+        "Batas informasi kompetisi: 9 November 2026. Prediksi S18 berstatus rekonstruksi, "
         "bukan arsip prediksi live yang disimpan sebelum pertandingan.",
         icon="ℹ️",
     )
@@ -335,12 +335,15 @@ def page_results() -> None:
         coverage = pd.read_csv(ROOT / "reports/season_coverage.csv")
         st.dataframe(
             coverage[
-                ["season", "collected_match_rows", "model_eligible_rows", "coverage_status"]
+                ["season", "collected_match_rows", "model_eligible_rows", "games_rows",
+                 "drafts_rows", "coverage_status"]
             ].rename(
                 columns={
                     "season": "Season",
                     "collected_match_rows": "Laga terkumpul",
                     "model_eligible_rows": "Laga layak model",
+                    "games_rows": "Game terverifikasi",
+                    "drafts_rows": "Observasi hero",
                     "coverage_status": "Status cakupan",
                 }
             ),
@@ -351,6 +354,11 @@ def page_results() -> None:
         st.caption(
             f"Snapshot pra-laga yang benar-benar disimpan: {live_count}. "
             "S1–S5 masih parsial dan belum masuk model. Roster bertanggal belum lengkap."
+        )
+        st.caption(
+            "Observasi hero berasal dari scoreboard, bukan urutan draft. Ban, urutan pick, "
+            "winner per game, dan durasi belum terverifikasi. Detail pascamusim tidak "
+            "digunakan sebagai fitur prediksi S18."
         )
         st.caption(
             "Simulasi tiebreak tiga tim atau lebih masih memakai undian urutan awal "

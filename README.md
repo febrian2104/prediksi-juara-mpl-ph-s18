@@ -40,6 +40,8 @@ halaman roster resmi masing-masing tim, serta
 [rilis juara dari MOONTON Games](https://en.moonton.com/news/391.html). Seluruh sumber
 dicatat di `data/raw/source_manifest.csv`; pemeriksaan sumber awal dicatat di
 `data/raw/historical_source_manifest.csv`, dengan tanggal akses 9 November 2026.
+Pengambilan detail game berikutnya pada 10 November 2026 dicatat terpisah di
+`data/raw/game_detail_source_manifest.csv`; batas informasi kompetisi tetap 9 November.
 
 Format yang diterapkan:
 
@@ -63,6 +65,11 @@ Katalog mencakup **Season 1–18**, dengan status yang berbeda per musim:
   tersedia sebagai observasi pascamusim; kolom yang tidak tersedia tetap null dan statistik
   tersebut tidak digunakan untuk fitur S18. [Kamus variabel](docs/DATA_DICTIONARY.md)
   menjelaskan pemetaan dan tipe data.
+- Detail scoreboard resmi: 309 game (172 S18 dan 137 S8), 3.090 observasi pemain serta
+  hero yang dimainkan. Seluruh 64 seri S18 lolos audit jumlah game dan lima pemain per tim;
+  sembilan seri S8 ditolak karena data detail tidak cocok/tidak lengkap. Ini bukan transkrip
+  draft: ban, urutan pick, winner per game, dan durasi belum terverifikasi dan tetap null.
+  Observasi pascamusim ini tidak dipakai sebagai fitur S18.
 
 Cakupan dan kekurangan setiap musim tercatat di `reports/season_coverage.csv`.
 Data per musim memakai `data/mpl-season1` sampai `data/mpl-season17` dan `data/season18`,
@@ -114,6 +121,10 @@ Membangun ulang dari data mentah lokal tanpa mengakses web:
 ```bash
 make rebuild
 ```
+
+Mengambil detail game resmi tanpa training ulang: `make collect-details`.
+Data cache diperiksa dengan SHA-256; gunakan
+`make collect-details DETAIL_ARGS="--seasons 18 --cache-only"` untuk ekspor offline.
 
 Jumlah simulasi dapat diubah melalui `simulation.iterations` di `config/model.json`.
 Setiap pembaruan otomatis mengarsipkan keadaan sebelum dan sesudah pipeline di

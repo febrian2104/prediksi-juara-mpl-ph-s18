@@ -311,7 +311,9 @@ def build_s18_outputs(
         s18_features["actual_winner_code"]
     )
     s18_features["prediction_origin"] = "reconstructed"
-    s18_features["created_at"] = "2026-11-09"
+    created_at = pd.Timestamp.now(tz="UTC").isoformat()
+    s18_features["created_at"] = created_at
+    s18_features["information_cutoff"] = _competition_config()["data_cutoff"]
     s18_features["model_name"] = artifact["model_name"]
     s18_predictions = s18_features.merge(
         matches[["match_id", "bracket_match_id", "team_a_name", "team_b_name", "best_of"]],
@@ -404,6 +406,9 @@ def build_s18_outputs(
             },
         ]
     )
+    for frame in (snapshots, playoff, summary):
+        frame["created_at"] = created_at
+        frame["information_cutoff"] = _competition_config()["data_cutoff"]
     return {
         "s18_match_predictions": s18_predictions,
         "s18_snapshot_probabilities": snapshots,

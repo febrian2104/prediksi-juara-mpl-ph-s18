@@ -12,6 +12,7 @@ from mpl_ph_predictor.archive import archive_project_state, verify_history
 from mpl_ph_predictor.collector import collect_official_data, write_raw_data
 from mpl_ph_predictor.data import build_canonical_data, write_canonical_data
 from mpl_ph_predictor.data.catalog import export_processed_outputs, export_reference_layout
+from mpl_ph_predictor.data.game_details import collect_game_details
 from mpl_ph_predictor.data.research import collect_historical_source_availability
 from mpl_ph_predictor.features import build_match_features, write_features
 from mpl_ph_predictor.models import (
@@ -31,7 +32,7 @@ def _evaluate_s18(predictions: pd.DataFrame) -> dict[str, Any]:
     return {
         "scope": "reconstructed_pre_match_predictions",
         "honesty_note": (
-            "Prediksi dibuat 9 November 2026 dengan rekonstruksi state sebelum laga; "
+            "Prediksi dibangun ulang saat pipeline dijalankan dengan state sebelum laga; "
             "bukan arsip prediksi yang benar-benar disimpan pada tanggal pertandingan."
         ),
         "all_s18": {
@@ -72,6 +73,8 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
     write_canonical_data(matches, teams, rosters, quality)
     if quality["status"] != "pass":
         raise RuntimeError(f"Audit canonical dataset gagal: {quality}")
+    if fetch:
+        collect_game_details()
     coverage = export_reference_layout(matches, teams, rosters)
 
     features = build_match_features(matches)
