@@ -14,6 +14,7 @@ from mpl_ph_predictor.data import build_canonical_data, write_canonical_data
 from mpl_ph_predictor.data.catalog import export_processed_outputs, export_reference_layout
 from mpl_ph_predictor.data.game_details import collect_game_details
 from mpl_ph_predictor.data.research import collect_historical_source_availability
+from mpl_ph_predictor.data.season_evidence import collect_season_evidence
 from mpl_ph_predictor.features import build_match_features, write_features
 from mpl_ph_predictor.models import (
     fit_production_model,
@@ -74,6 +75,7 @@ def run_pipeline(*, fetch: bool = True) -> dict[str, Any]:
     if quality["status"] != "pass":
         raise RuntimeError(f"Audit canonical dataset gagal: {quality}")
     if fetch:
+        collect_season_evidence()
         collect_game_details()
     coverage = export_reference_layout(matches, teams, rosters)
 

@@ -1,0 +1,496 @@
+"""Historical archive observations and independent standings reconciliation.
+
+Archive observations are not assumed to be complete or valid pre-match features.
+Conflicting standings never overwrite verified match results automatically.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import re
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from typing import Any
+from urllib.parse import urlparse
+
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+
+from mpl_ph_predictor.archive import sha256, utc_now
+from mpl_ph_predictor.data.contracts import conform_table
+
+ROOT = Path(__file__).resolve().parents[3]
+NUMERIC_STATS = [
+    "total_kills",
+    "avg_kills",
+    "total_deaths",
+    "avg_deaths",
+    "total_assists",
+    "avg_assists",
+    "avg_kda",
+    "kill_participation_pct",
+]
+STANDING_COLUMNS = [
+    "season",
+    "table_number",
+    "rank",
+    "team_code",
+    "match_wins",
+    "match_losses",
+    "game_wins",
+    "game_losses",
+    "points",
+    "source",
+    "observed_at",
+    "source_snapshot_path",
+]
+
+
+def normalize_archive_code(code: str, season: int) -> str:
+    if code == "ONIC PH":
+        return "ONIC"
+    return "ECHO" if code == "TLPH" and 8 <= season <= 12 else code
+
+
+def _numeric(value: str) -> float | None:
+    if value in ("", "-", "N/A"):
+        return None
+    number = float(value.replace(",", "").replace("%", ""))
+    if not math.isfinite(number) or number < 0:
+        raise ValueError("Statistik nonfinite/negatif tidak diterima.")
+    return number
+
+
+def parse_archive_statistics(content: bytes, season: int, provenance: dict) -> pd.DataFrame:
+    soup = BeautifulSoup(content, "html.parser")
+    tables = [
+        t
+        for t in soup.select("table")
+        if {"PLAYER", "TEAM"}.issubset(
+            {th.get_text(" ", strip=True).upper() for th in t.select("thead th")}
+        )
+    ]
+    if not tables:
+        return conform_table(pd.DataFrame(), "player_season_stats")
+    if len(tables) != 1:
+        raise ValueError("Lebih dari satu tabel statistik; scope harus diperiksa.")
+    expected = [
+        "Player",
+        "Team",
+        "Total Kills",
+        "AVG Kills",
+        "Total Deaths",
+        "AVG Deaths",
+        "Total Assists",
+        "AVG Assists",
+        "KDA Ratio",
+        "Kill Participation",
+    ]
+    headers = [th.get_text(" ", strip=True).upper() for th in tables[0].select("thead th")]
+    average_headers = [
+        "PLAYER",
+        "TEAM",
+        "AVERAGE",
+        "TOTAL",
+        "KILLS",
+        "DEATHS",
+        "ASSISTS",
+        "KDA",
+        "DAMAGE/GOLD",
+        "TEAMFIGHT",
+        "HERO USED",
+    ]
+    averages_only = headers == average_headers
+    if headers != [value.upper() for value in expected] and not averages_only:
+        raise ValueError("Kontrak header statistik historis berubah.")
+    rows = []
+    for tr in tables[0].select("tbody tr"):
+        cells = [td.get_text(" ", strip=True) for td in tr.find_all("td", recursive=False)]
+        if len(cells) != (9 if averages_only else 10) or not cells[0] or not cells[1]:
+            raise ValueError("Baris statistik historis tidak lengkap.")
+        extras = {}
+        quality_issues = []
+        if averages_only:
+            numbers = dict.fromkeys(NUMERIC_STATS)
+            columns = ["avg_kills", "avg_deaths", "avg_assists", "avg_kda"]
+            numbers.update(zip(columns, map(_numeric, cells[2:6]), strict=True))
+            extras = dict(
+                zip(
+                    ["damage_to_gold_ratio", "teamfight_pct", "heroes_used_count"],
+                    map(_numeric, cells[6:]),
+                    strict=True,
+                )
+            )
+            fight, heroes = extras["teamfight_pct"], extras["heroes_used_count"]
+            if fight is not None and fight > 100:
+                # Quarantine this optional metric, not unrelated valid observations.
+                extras["teamfight_pct"] = None
+                extras["teamfight_pct_source_value"] = cells[7]
+                quality_issues.append("teamfight_pct_out_of_range")
+            if heroes is not None and not heroes.is_integer():
+                raise ValueError("Jumlah hero bukan integer.")
+        else:
+            numbers = dict(zip(NUMERIC_STATS, map(_numeric, cells[2:]), strict=True))
+        kp = numbers["kill_participation_pct"]
+        if kp is not None and kp > 100:
+            raise ValueError("Kill participation di luar 0–100%.")
+        for column in ("total_kills", "total_deaths", "total_assists"):
+            value = numbers[column]
+            if value is not None and not value.is_integer():
+                raise ValueError("Jumlah kills/deaths/assists bukan integer.")
+        code = normalize_archive_code(cells[1], season)
+        rows.append(
+            {
+                "season": season,
+                "team": code,
+                "team_code": code,
+                "raw_team_code": cells[1],
+                "player": cells[0],
+                "role": None,
+                "player_id": None,
+                "stat_scope": "official_archive_aggregate_stage_unverified",
+                "snapshot_label": "post_season_archive_page_observation",
+                "snapshot_date": provenance["retrieved_at"][:10],
+                "observed_at": provenance["retrieved_at"],
+                "information_cutoff": provenance["information_cutoff"],
+                "coverage_status": "archive_observation_team_assignment_and_stage_unverified",
+                "team_name_status": "archive_code_not_verified_full_name",
+                "team_assignment_status": "archive_label_not_effective_dated_roster",
+                "identity_verification": "observed_ign_only",
+                "feature_eligible_for_training": False,
+                "feature_eligible_for_s18": False,
+                "source": provenance["url"],
+                "source_snapshot_path": provenance["snapshot_path"],
+                "source_schema": "average_statistics_with_grouped_headers"
+                if averages_only
+                else "totals_and_averages_flat_headers",
+                "row_quality_issues": " | ".join(quality_issues) if quality_issues else None,
+                **numbers,
+                **extras,
+            }
+        )
+    result = conform_table(pd.DataFrame(rows), "player_season_stats")
+    if result.duplicated(["season", "team_code", "player"]).any():
+        raise ValueError("Observasi IGN ganda dalam tim/musim.")
+    return result
+
+
+def parse_archive_standings(content: bytes, season: int, provenance: dict) -> pd.DataFrame:
+    soup = BeautifulSoup(content, "html.parser")
+    rows = []
+    for index, table in enumerate(soup.select("table"), start=1):
+        headers = [th.get_text(" ", strip=True).upper() for th in table.select("thead th")]
+        if not {"TEAM", "MATCH W-L", "GAMES W-L"}.issubset(headers):
+            continue
+        for tr in table.select("tbody tr"):
+            cells = [td.get_text(" ", strip=True) for td in tr.find_all("td", recursive=False)]
+            if len(cells) != len(headers):
+                raise ValueError("Lebar baris klasemen berubah.")
+            values = dict(zip(headers, cells, strict=True))
+            pairs = [
+                re.fullmatch(r"(\d+)\s*-\s*(\d+)", values[column])
+                for column in ("MATCH W-L", "GAMES W-L")
+            ]
+            if any(pair is None for pair in pairs):
+                raise ValueError("Skor W-L klasemen tidak dapat dibaca.")
+            match, game = pairs
+            rows.append(
+                {
+                    "season": season,
+                    "table_number": index,
+                    "rank": values.get("RANK"),
+                    "team_code": normalize_archive_code(values["TEAM"], season),
+                    "match_wins": int(match[1]),
+                    "match_losses": int(match[2]),
+                    "game_wins": int(game[1]),
+                    "game_losses": int(game[2]),
+                    "points": values.get("POINTS", values.get("MATCH POINT")),
+                    "source": provenance["url"],
+                    "observed_at": provenance["retrieved_at"],
+                    "source_snapshot_path": provenance["snapshot_path"],
+                }
+            )
+    return pd.DataFrame(rows, columns=STANDING_COLUMNS)
+
+
+def reconcile_standings(matches: pd.DataFrame, observed: pd.DataFrame, season: int) -> dict:
+    """Compare raw W/L totals, not the S18 points formula on historical seasons."""
+    regular = matches.loc[matches["season"].eq(season) & matches["stage"].eq("regular_season")]
+    computed = {}
+    for match in regular.itertuples():
+        for side, other in (("a", "b"), ("b", "a")):
+            code = getattr(match, f"team_{side}_code")
+            own, opponent = (
+                getattr(match, f"team_{side}_score"),
+                getattr(match, f"team_{other}_score"),
+            )
+            if code not in computed:
+                computed[code] = [0, 0, 0, 0]
+            computed[code] = [
+                a + b
+                for a, b in zip(
+                    computed[code],
+                    [int(own > opponent), int(own < opponent), int(own), int(opponent)],
+                    strict=True,
+                )
+            ]
+    fields = ["match_wins", "match_losses", "game_wins", "game_losses"]
+    compared = observed.drop_duplicates(["team_code", *fields])
+    conflicts = compared["team_code"].duplicated().any()
+    compared = compared.drop_duplicates("team_code").set_index("team_code")
+    codes = sorted(set(compared.index) | set(computed))
+    differences = []
+    for code in codes:
+        if code not in computed or code not in compared.index:
+            differences.append(
+                {
+                    "team_code": code,
+                    "field": "team_presence",
+                    "canonical": code in computed,
+                    "archive": code in compared.index,
+                }
+            )
+            continue
+        for index, field in enumerate(fields):
+            if computed[code][index] != int(compared.loc[code, field]):
+                differences.append(
+                    {
+                        "team_code": code,
+                        "field": field,
+                        "canonical": computed[code][index],
+                        "archive": int(compared.loc[code, field]),
+                    }
+                )
+    status = (
+        "no_standings_available"
+        if observed.empty
+        else "canonical_regular_matches_missing"
+        if regular.empty
+        else "source_conflict_or_scope_mismatch"
+        if conflicts or differences
+        else "regular_wl_totals_reconciled"
+    )
+    return {
+        "season": season,
+        "status": status,
+        "canonical_regular_rows": len(regular),
+        "standings_team_rows": len(compared),
+        "difference_count": len(differences),
+        "match_wl_totals_reconciled": bool(computed)
+        and not conflicts
+        and not any(
+            item["field"] in ("team_presence", "match_wins", "match_losses") for item in differences
+        ),
+        "game_wl_totals_reconciled": bool(computed)
+        and not conflicts
+        and not any(
+            item["field"] in ("team_presence", "game_wins", "game_losses") for item in differences
+        ),
+        "differences": differences,
+        "conflicting_duplicate_team_rows": bool(conflicts),
+        "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+        "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    }
+
+
+def collect_season_evidence(
+    *,
+    root: Path = ROOT,
+    cache_only: bool = False,
+    refresh: bool = False,
+) -> dict[str, Any]:
+    if cache_only and refresh:
+        raise ValueError("Mode cache-only tidak dapat digabung dengan refresh.")
+    config = json.loads((root / "config/competition.json").read_text())
+    urls = {f"https://ph-mpl.com/s{season}/data": season for season in range(1, 18)}
+    urls["https://ph-mpl.com/data"] = 18
+    history = json.loads((root / "config/team_name_history.json").read_text())
+    for transition in history["transitions"]:
+        for url in transition["source_urls"]:
+            urls[url] = transition["season"]
+    manifest_path = root / "data/raw/season_evidence_source_manifest.csv"
+    previous = pd.read_csv(manifest_path) if manifest_path.exists() else pd.DataFrame()
+    cache, last_attempts = {}, {}
+    if not previous.empty:
+        for row in previous.to_dict(orient="records"):
+            last_attempts[row["url"]] = row
+            if row["retrieval_status"] == "ok":
+                cache[row["url"]] = row
+
+    def retrieve(item: tuple[str, int]) -> tuple[dict, bytes | None, bool]:
+        url, season = item
+        if url in cache and not refresh:
+            record = cache[url]
+            path = root / record["snapshot_path"]
+            if path.is_file() and sha256(path.read_bytes()) == record["sha256"]:
+                return record, path.read_bytes(), False
+            if cache_only:
+                return (
+                    {"url": url, "season": season, "retrieval_status": "invalid_cached_snapshot"},
+                    None,
+                    False,
+                )
+        if cache_only:
+            if url in last_attempts:
+                return last_attempts[url], None, False
+            return {"url": url, "season": season, "retrieval_status": "not_cached"}, None, False
+        record = {
+            "url": url,
+            "season": season,
+            "retrieved_at": utc_now(),
+            "information_cutoff": config["data_cutoff"],
+        }
+        try:
+            response = requests.get(url, timeout=35)
+            record.update(http_status=response.status_code, final_url=response.url)
+            response.raise_for_status()
+            if urlparse(response.url).hostname != urlparse(url).hostname:
+                raise ValueError("Redirect lintas domain; bukti perlu diperiksa.")
+            content = response.content
+            digest = sha256(content)
+            path = root / f"data/raw/source_snapshots/{digest}.html"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                with path.open("xb") as handle:
+                    handle.write(content)
+            except FileExistsError:
+                if sha256(path.read_bytes()) != digest:
+                    raise ValueError("Isi snapshot lokal tidak sesuai hash.") from None
+            record.update(
+                sha256=digest, snapshot_path=str(path.relative_to(root)), retrieval_status="ok"
+            )
+            return record, content, True
+        except (requests.RequestException, ValueError) as error:
+            record.update(retrieval_status="failed", error=str(error))
+            return record, None, True
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        fetched = list(pool.map(retrieve, urls.items()))
+    attempts = [record for record, _, fresh in fetched if fresh]
+    if attempts:
+        pd.concat([previous, pd.DataFrame(attempts)], ignore_index=True).to_csv(
+            manifest_path,
+            index=False,
+        )
+    statistics, standings, audits = [], [], []
+    published_statistics, published_standings = set(), set()
+    matches = pd.read_csv(root / "data/clean/matches.csv")
+    for record, content, _ in fetched:
+        if not record["url"].endswith("/data"):
+            continue
+        season = int(record["season"])
+        row = {
+            "season": season,
+            "source": record["url"],
+            "player_stat_rows": 0,
+        }
+        for key in ("http_status", "retrieved_at", "snapshot_path"):
+            value = record.get(key)
+            row[f"source_{key}"] = value if value is not None and pd.notna(value) else None
+        if content is None:
+            row.update(status=record["retrieval_status"], reason="Sumber belum tersedia.")
+        else:
+            try:
+                observed = parse_archive_standings(content, season, record)
+                standings.append(observed)
+                if len(observed):
+                    published_standings.add(season)
+                row.update(reconcile_standings(matches, observed, season))
+            except ValueError as error:
+                row.update(status="standings_parse_failed", reason=str(error))
+            if season < 18:  # Preserve the separately audited S18 roster-linked export.
+                try:
+                    frame = parse_archive_statistics(content, season, record)
+                    statistics.append(frame)
+                    if len(frame):
+                        published_statistics.add(season)
+                    row["player_stat_rows"] = len(frame)
+                    row["invalid_optional_metric_rows"] = (
+                        int(frame["row_quality_issues"].notna().sum()) if len(frame) else 0
+                    )
+                    row["statistics_status"] = (
+                        "observed_scope_unverified" if len(frame) else "absent"
+                    )
+                except ValueError as error:
+                    row.update(statistics_status="rejected", statistics_error=str(error))
+        audits.append(row)
+    stats = [frame for frame in statistics if len(frame)]
+    combined = pd.concat(stats, ignore_index=True) if stats else pd.DataFrame()
+    stat_path = root / "data/raw/historical_player_season_stats.csv"
+    retained_stat_rows = 0
+    if stat_path.exists():
+        old = pd.read_csv(stat_path)
+        retained = old.loc[~old["season"].isin(published_statistics)]
+        retained_stat_rows = len(retained)
+        if len(retained):
+            combined = (
+                pd.concat([retained, combined], ignore_index=True) if len(combined) else retained
+            )
+    conform_table(combined, "player_season_stats").to_csv(
+        stat_path,
+        index=False,
+    )
+    standing_frame = (
+        pd.concat(standings, ignore_index=True)
+        if standings
+        else pd.DataFrame(columns=STANDING_COLUMNS)
+    )
+    standing_path = root / "data/raw/archive_standings_observations.csv"
+    if standing_path.exists():
+        old = pd.read_csv(standing_path)
+        retained = old.loc[~old["season"].isin(published_standings)]
+        if len(retained):
+            standing_frame = (
+                pd.concat([retained, standing_frame], ignore_index=True)
+                if len(standing_frame)
+                else retained
+            )
+    standing_frame.to_csv(standing_path, index=False)
+    (root / "reports/season_reconciliation.json").write_text(
+        json.dumps(audits, indent=2, ensure_ascii=False, allow_nan=False),
+        encoding="utf-8",
+    )
+    pd.DataFrame([{k: v for k, v in row.items() if k != "differences"} for row in audits]).to_csv(
+        root / "reports/season_reconciliation.csv",
+        index=False,
+    )
+    return {
+        "generated_at": utc_now(),
+        "information_cutoff": config["data_cutoff"],
+        "archive_player_stat_rows": len(combined),
+        "previous_stat_observations_retained": retained_stat_rows,
+        "regular_wl_reconciled_seasons": [
+            r["season"] for r in audits if r["status"] == "regular_wl_totals_reconciled"
+        ],
+        "seasons_requiring_review": [
+            r["season"] for r in audits if r["status"] != "regular_wl_totals_reconciled"
+        ],
+        "all_statistics_excluded_from_training": True,
+    }
+
+
+def main() -> None:
+    from mpl_ph_predictor.archive import archive_project_state
+    from mpl_ph_predictor.data.catalog import export_reference_layout
+    from mpl_ph_predictor.data.normalization import build_canonical_data, write_canonical_data
+
+    parser = argparse.ArgumentParser(description="Ambil observasi arsip dan rekonsiliasi klasemen.")
+    parser.add_argument("--cache-only", action="store_true")
+    parser.add_argument("--refresh", action="store_true")
+    args = parser.parse_args()
+    archive_project_state(reason="before_season_evidence_update")
+    summary = collect_season_evidence(cache_only=args.cache_only, refresh=args.refresh)
+    matches, teams, rosters, quality = build_canonical_data()
+    if quality["status"] != "pass":
+        raise RuntimeError("Audit canonical gagal; ekspor dibatalkan.")
+    write_canonical_data(matches, teams, rosters, quality)
+    export_reference_layout(matches, teams, rosters)
+    archive_project_state(reason="after_season_evidence_update")
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

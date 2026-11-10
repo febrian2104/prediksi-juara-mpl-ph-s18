@@ -70,6 +70,19 @@ Katalog mencakup **Season 1–18**, dengan status yang berbeda per musim:
   sembilan seri S8 ditolak karena data detail tidak cocok/tidak lengkap. Ini bukan transkrip
   draft: ban, urutan pick, winner per game, dan durasi belum terverifikasi dan tetap null.
   Observasi pascamusim ini tidak dipakai sebagai fitur S18.
+- Statistik historis S5–S17: 773 observasi pemain dari halaman arsip resmi. Parser menangani
+  format total/rata-rata dan header bertingkat S11–S13. Cakupan tahap serta penetapan tim
+  belum terverifikasi; observasi ini bukan roster efektif dan tidak dipakai untuk training.
+  Tiga nilai teamfight S12 yang melebihi 100% dikosongkan dengan teks sumber tetap disimpan.
+- Nama ECHO pada pertandingan S13 dibedakan menurut tanggal pengumuman akuisisi:
+  ECHO sebelum 21 Mei 2024 dan Team Liquid ECHO PH setelahnya. Registry nama tidak
+  otomatis menggabungkan rating atau badan hukum tim.
+
+Audit silang total match/game W/L regular season cocok pada S7, S11–S15, S17, dan S18.
+Musim lainnya masih perlu pemeriksaan: sumber S1–S4 mengembalikan HTTP 500, S5 belum
+mempunyai hasil regular season canonical, dan S6/S8–S10/S16 menunjukkan konflik atau
+perbedaan cakupan. Kecocokan total tidak membuktikan seluruh laga/playoff lengkap.
+Laporan rinci: `reports/season_reconciliation.json`; konflik tidak mengubah skor otomatis.
 
 Cakupan dan kekurangan setiap musim tercatat di `reports/season_coverage.csv`.
 Data per musim memakai `data/mpl-season1` sampai `data/mpl-season17` dan `data/season18`,
@@ -125,6 +138,8 @@ make rebuild
 Mengambil detail game resmi tanpa training ulang: `make collect-details`.
 Data cache diperiksa dengan SHA-256; gunakan
 `make collect-details DETAIL_ARGS="--seasons 18 --cache-only"` untuk ekspor offline.
+Statistik arsip dan audit silang klasemen tersedia melalui `make collect-season-data`,
+atau `make collect-season-data EVIDENCE_ARGS=--cache-only` untuk memakai bukti lokal.
 
 Jumlah simulasi dapat diubah melalui `simulation.iterations` di `config/model.json`.
 Setiap pembaruan otomatis mengarsipkan keadaan sebelum dan sesudah pipeline di

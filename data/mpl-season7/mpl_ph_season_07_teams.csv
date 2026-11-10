@@ -1,11 +1,11 @@
-season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
-7,aura_ph,Aura PH,https://ph-mpl.com/s7,AURA,,,True,https://ph-mpl.com/s7
-7,blacklist_international,Blacklist International,https://ph-mpl.com/s7,BLCK,,,True,https://ph-mpl.com/s7
-7,bren_esports,Bren Esports,https://ph-mpl.com/s7,BREN,,,True,https://ph-mpl.com/s7
-7,cignal_ultra,Cignal Ultra,https://ph-mpl.com/s7,CIG,,,True,https://ph-mpl.com/s7
-7,execration,Execration,https://ph-mpl.com/s7,EXE,,,True,https://ph-mpl.com/s7
-7,laus_playbook_esports,Laus Playbook Esports,https://ph-mpl.com/s7,LPE,,,True,https://ph-mpl.com/s7
-7,nexplay_solid,Nexplay Solid,https://ph-mpl.com/s7,NXP,,,True,https://ph-mpl.com/s7
-7,onic_philippines,ONIC Philippines,https://ph-mpl.com/s7,ONIC,,,True,https://ph-mpl.com/s7
-7,smart_omega,Smart Omega,https://ph-mpl.com/s7,OMG,,,True,https://ph-mpl.com/s7
-7,work_auster_force,Work Auster Force,https://ph-mpl.com/s7,WORK,,,True,https://ph-mpl.com/s7
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
+7,aura_ph,Aura PH,https://ph-mpl.com/s7,AURA,Aura PH,,,True,https://ph-mpl.com/s7
+7,blacklist_international,Blacklist International,https://ph-mpl.com/s7,BLCK,Blacklist International,,,True,https://ph-mpl.com/s7
+7,bren_esports,Bren Esports,https://ph-mpl.com/s7,BREN,Bren Esports,,,True,https://ph-mpl.com/s7
+7,cignal_ultra,Cignal Ultra,https://ph-mpl.com/s7,CIG,Cignal Ultra,,,True,https://ph-mpl.com/s7
+7,execration,Execration,https://ph-mpl.com/s7,EXE,Execration,,,True,https://ph-mpl.com/s7
+7,laus_playbook_esports,Laus Playbook Esports,https://ph-mpl.com/s7,LPE,Laus Playbook Esports,,,True,https://ph-mpl.com/s7
+7,nexplay_solid,Nexplay Solid,https://ph-mpl.com/s7,NXP,Nexplay Solid,,,True,https://ph-mpl.com/s7
+7,onic_philippines,ONIC Philippines,https://ph-mpl.com/s7,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s7
+7,smart_omega,Smart Omega,https://ph-mpl.com/s7,OMG,Smart Omega,,,True,https://ph-mpl.com/s7
+7,work_auster_force,Work Auster Force,https://ph-mpl.com/s7,WORK,Work Auster Force,,,True,https://ph-mpl.com/s7

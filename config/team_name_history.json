@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "policy": "Dated display names only. Local team codes are not legal organization IDs. Rating continuity across acquisitions is not changed by this registry.",
+  "transitions": [
+    {
+      "season": 13,
+      "team_code": "TLPH",
+      "announcement_date": "2024-05-21",
+      "name_before": "ECHO",
+      "name_after": "Team Liquid ECHO PH",
+      "precision": "date_only_no_match_on_announcement_date",
+      "source_urls": [
+        "https://ph-mpl.com/news/esports-titans-team-falcons-fnatic-team-liquid-enter-mpl-ph-season-13-playoffs",
+        "https://teamliquid.com/articles/the-5-steps-of-recovering-from-mobile-esports-denial",
+        "https://en.moonton.com/news/93.html"
+      ]
+    }
+  ]
+}

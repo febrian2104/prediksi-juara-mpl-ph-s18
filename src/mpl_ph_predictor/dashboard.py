@@ -360,6 +360,22 @@ def page_results() -> None:
             "winner per game, dan durasi belum terverifikasi. Detail pascamusim tidak "
             "digunakan sebagai fitur prediksi S18."
         )
+        reconciliation_path = ROOT / "reports/season_reconciliation.csv"
+        if reconciliation_path.is_file():
+            audit = pd.read_csv(reconciliation_path)
+            agreed = audit.loc[audit["status"].eq("regular_wl_totals_reconciled"), "season"]
+            review = audit.loc[audit["status"].ne("regular_wl_totals_reconciled"), "season"]
+            st.caption(
+                "Audit silang total W/L regular season cocok pada S"
+                + ", S".join(agreed.astype(str))
+                + ". Perlu pemeriksaan pada S"
+                + ", S".join(review.astype(str))
+                + "; kecocokan total bukan bukti semua pertandingan/playoff sudah lengkap."
+            )
+            st.caption(
+                "Statistik pemain arsip merupakan observasi pascamusim: cakupan tahap dan "
+                "penetapan tim belum terverifikasi, sehingga tidak dipakai untuk training."
+            )
         st.caption(
             "Simulasi tiebreak tiga tim atau lebih masih memakai undian urutan awal "
             "karena total durasi kemenangan belum tersedia. Hasil mingguan direkonstruksi "

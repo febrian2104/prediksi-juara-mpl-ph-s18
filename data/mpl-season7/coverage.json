@@ -3,11 +3,12 @@
   "collected_match_rows": 75,
   "model_eligible_rows": 75,
   "coverage_status": "available_archive_loaded",
+  "regular_wl_reconciliation": "regular_wl_totals_reconciled",
   "regular_season_rows": 65,
   "playoff_rows": 10,
   "player_rows": 0,
   "games_rows": 0,
   "drafts_rows": 0,
-  "player_stat_rows": 0,
-  "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim dan tidak digunakan sebagai fitur S18."
+  "player_stat_rows": 62,
+  "limitation": "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah observasi pascamusim; statistik arsip belum terverifikasi scope/penetapan tim. Observasi statistik ini tidak digunakan sebagai fitur S18."
 }

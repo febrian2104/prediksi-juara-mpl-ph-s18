@@ -1,3 +1,3 @@
-season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
-3,ph_s03_aa,ArkAngel,https://liquipedia.net/mobilelegends/ArkAngel,AA,,,True,https://liquipedia.net/mobilelegends/ArkAngel
-3,ph_s03_bren,Bren Esports,https://liquipedia.net/mobilelegends/ArkAngel,BREN,,,True,https://liquipedia.net/mobilelegends/ArkAngel
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
+3,ph_s03_aa,ArkAngel,https://liquipedia.net/mobilelegends/ArkAngel,AA,ArkAngel,,,True,https://liquipedia.net/mobilelegends/ArkAngel
+3,ph_s03_bren,Bren Esports,https://liquipedia.net/mobilelegends/ArkAngel,BREN,Bren Esports,,,True,https://liquipedia.net/mobilelegends/ArkAngel

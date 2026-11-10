@@ -289,6 +289,9 @@ def write_features(features: pd.DataFrame) -> dict[str, Any]:
         ],
         "completion_time_status": "unverified_kept_null",
         "roster_features_used": False,
+        "player_statistics_features_used": False,
+        "player_statistics_reason": "Observasi arsip pascamusim; scope dan tanggal efektif belum "
+        "terverifikasi. Tidak dipakai sebagai fitur training.",
         "roster_feature_reason": "Roster historis bertanggal belum cukup lengkap.",
     }
     (ROOT / "reports" / "feature_audit.json").write_text(

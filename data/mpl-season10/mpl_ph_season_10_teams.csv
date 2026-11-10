@@ -1,9 +1,9 @@
-season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
-10,blacklist_international,Blacklist International,https://ph-mpl.com/s10,BLCK,,,True,https://ph-mpl.com/s10
-10,bren_esports,Bren Esports,https://ph-mpl.com/s10,BREN,,,True,https://ph-mpl.com/s10
-10,echo,ECHO,https://ph-mpl.com/s10,ECHO,,,True,https://ph-mpl.com/s10
-10,nexplay_evos,Nexplay EVOS,https://ph-mpl.com/s10,NXPE,,,True,https://ph-mpl.com/s10
-10,onic_philippines,ONIC Philippines,https://ph-mpl.com/s10,ONIC,,,True,https://ph-mpl.com/s10
-10,rsg_philippines,RSG Philippines,https://ph-mpl.com/s10,RSG,,,True,https://ph-mpl.com/s10
-10,smart_omega,Smart Omega,https://ph-mpl.com/s10,OMG,,,True,https://ph-mpl.com/s10
-10,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s10,TNC,,,True,https://ph-mpl.com/s10
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
+10,blacklist_international,Blacklist International,https://ph-mpl.com/s10,BLCK,Blacklist International,,,True,https://ph-mpl.com/s10
+10,bren_esports,Bren Esports,https://ph-mpl.com/s10,BREN,Bren Esports,,,True,https://ph-mpl.com/s10
+10,echo,ECHO,https://ph-mpl.com/s10,ECHO,ECHO,,,True,https://ph-mpl.com/s10
+10,nexplay_evos,Nexplay EVOS,https://ph-mpl.com/s10,NXPE,Nexplay EVOS,,,True,https://ph-mpl.com/s10
+10,onic_philippines,ONIC Philippines,https://ph-mpl.com/s10,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s10
+10,rsg_philippines,RSG Philippines,https://ph-mpl.com/s10,RSG,RSG Philippines,,,True,https://ph-mpl.com/s10
+10,smart_omega,Smart Omega,https://ph-mpl.com/s10,OMG,Smart Omega,,,True,https://ph-mpl.com/s10
+10,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s10,TNC,TNC Pro Team,,,True,https://ph-mpl.com/s10

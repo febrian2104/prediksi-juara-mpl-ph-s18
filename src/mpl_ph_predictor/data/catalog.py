@@ -69,11 +69,14 @@ def team_table(matches: pd.DataFrame) -> pd.DataFrame:
             if id_column in matches
             else part.apply(lambda row: f"ph_s{int(row.season):02}_{row.team_code.lower()}", axis=1)
         )
+        part["appearance_date"] = matches["date"]
         parts.append(part)
-    result = (
-        pd.concat(parts)
-        .groupby(["season", "team_id", "team_code", "team_name"], as_index=False)["source"]
-        .agg(lambda values: " | ".join(sorted(set(values))))
+    result = pd.concat(parts).sort_values("appearance_date").groupby(
+        ["season", "team_id", "team_code"], as_index=False
+    ).agg(
+        team_name=("team_name", "last"),
+        historical_names=("team_name", lambda values: " | ".join(dict.fromkeys(values))),
+        source=("source", lambda values: " | ".join(sorted(set(values)))),
     )
     result["organization_id"] = pd.NA
     result["franchise_slot_id"] = pd.NA
@@ -195,6 +198,7 @@ def official_player_stats(players: pd.DataFrame) -> pd.DataFrame:
             "source": record["url"],
             "source_snapshot_path": str(path.relative_to(ROOT)),
             "feature_eligible_for_s18": False,
+            "feature_eligible_for_training": False,
             "player_id": ids.get(key, pd.NA),
             "matched_roster_player": names.get(key, pd.NA),
             "player_identity_status": "normalized_ign_match"
@@ -218,6 +222,17 @@ def export_reference_layout(
     historical_rosters = pd.read_csv(ROOT / "data/raw/historical_roster_observations.csv")
     s18_players = player_table(rosters)
     stats = official_player_stats(s18_players)
+    historical_stat_path = ROOT / "data/raw/historical_player_season_stats.csv"
+    historical_stats = (
+        conform_table(pd.read_csv(historical_stat_path), "player_season_stats")
+        if historical_stat_path.exists()
+        else conform_table(pd.DataFrame(), "player_season_stats")
+    )
+    reconciliation_path = ROOT / "reports/season_reconciliation.json"
+    reconciliation = (
+        {row["season"]: row["status"] for row in json.loads(reconciliation_path.read_text())}
+        if reconciliation_path.exists() else {}
+    )
     details = {}
     for table in ("games", "drafts"):
         path = ROOT / f"data/raw/official_{table}.csv"
@@ -251,7 +266,7 @@ def export_reference_layout(
             "drafts": details["drafts"].loc[details["drafts"]["season"].eq(season)],
             "player_season_stats": stats
             if season == 18
-            else conform_table(pd.DataFrame(), "player_season_stats"),
+            else historical_stats.loc[historical_stats["season"].eq(season)],
         }
         for name, frame in tables.items():
             frame.to_csv(folder / f"mpl_ph_season_{season:02}_{name}.csv", index=False)
@@ -284,6 +299,7 @@ def export_reference_layout(
             "collected_match_rows": len(season_matches),
             "model_eligible_rows": len(source),
             "coverage_status": "partial" if season <= 5 else "available_archive_loaded",
+            "regular_wl_reconciliation": reconciliation.get(season, "not_checked"),
             "regular_season_rows": int(season_matches["stage"].eq("regular_season").sum()),
             "playoff_rows": int(season_matches["stage"].isin(["playoffs", "grand_final"]).sum()),
             "player_rows": len(season_players),
@@ -296,7 +312,8 @@ def export_reference_layout(
                 if season <= 5
                 else "Seluruh kartu arsip tersedia dimuat; kelengkapan independen, "
                 "detail game/draft dan roster bertanggal belum lengkap. Statistik S18 adalah "
-                "observasi pascamusim dan tidak digunakan sebagai fitur S18."
+                "observasi pascamusim; statistik arsip belum terverifikasi scope/penetapan tim. "
+                "Observasi statistik ini tidak digunakan sebagai fitur S18."
             ),
         }
         (folder / "coverage.json").write_text(json.dumps(row, indent=2, ensure_ascii=False))

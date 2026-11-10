@@ -6,4 +6,5 @@ __pycache__/
 .coverage
 .cache/
 .streamlit/
-
+docs/*
+PROJECT_STATUS.md

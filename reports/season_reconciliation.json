@@ -1,0 +1,890 @@
+[
+  {
+    "season": 1,
+    "source": "https://ph-mpl.com/s1/data",
+    "player_stat_rows": 0,
+    "source_http_status": 500,
+    "source_retrieved_at": "2026-11-10T02:03:03.091496+00:00",
+    "source_snapshot_path": null,
+    "status": "failed",
+    "reason": "Sumber belum tersedia."
+  },
+  {
+    "season": 2,
+    "source": "https://ph-mpl.com/s2/data",
+    "player_stat_rows": 0,
+    "source_http_status": 500,
+    "source_retrieved_at": "2026-11-10T02:03:03.093553+00:00",
+    "source_snapshot_path": null,
+    "status": "failed",
+    "reason": "Sumber belum tersedia."
+  },
+  {
+    "season": 3,
+    "source": "https://ph-mpl.com/s3/data",
+    "player_stat_rows": 0,
+    "source_http_status": 500,
+    "source_retrieved_at": "2026-11-10T02:03:03.095525+00:00",
+    "source_snapshot_path": null,
+    "status": "failed",
+    "reason": "Sumber belum tersedia."
+  },
+  {
+    "season": 4,
+    "source": "https://ph-mpl.com/s4/data",
+    "player_stat_rows": 0,
+    "source_http_status": 500,
+    "source_retrieved_at": "2026-11-10T02:03:03.096912+00:00",
+    "source_snapshot_path": null,
+    "status": "failed",
+    "reason": "Sumber belum tersedia."
+  },
+  {
+    "season": 5,
+    "source": "https://ph-mpl.com/s5/data",
+    "player_stat_rows": 59,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:25.587775+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/90907a2f7a25af4a9ba7760701f82b2974cdc0e4dbfc67cd4791b7fd211a1924.html",
+    "status": "canonical_regular_matches_missing",
+    "canonical_regular_rows": 0,
+    "standings_team_rows": 10,
+    "difference_count": 10,
+    "match_wl_totals_reconciled": false,
+    "game_wl_totals_reconciled": false,
+    "differences": [
+      {
+        "team_code": "BLCK",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "BREN",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "BSB",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "EXE",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "GEEK",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "ONIC",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "SGD",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "SS",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "STI",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      },
+      {
+        "team_code": "ULVL",
+        "field": "team_presence",
+        "canonical": false,
+        "archive": true
+      }
+    ],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 6,
+    "source": "https://ph-mpl.com/s6/data",
+    "player_stat_rows": 59,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:25.588718+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/57e405ec111d487bab1c0a8f5019df5ab8b28fbd380e031eddf3a71f39ff7b56.html",
+    "status": "source_conflict_or_scope_mismatch",
+    "canonical_regular_rows": 65,
+    "standings_team_rows": 10,
+    "difference_count": 34,
+    "match_wl_totals_reconciled": false,
+    "game_wl_totals_reconciled": false,
+    "differences": [
+      {
+        "team_code": "AURA",
+        "field": "match_wins",
+        "canonical": 10,
+        "archive": 6
+      },
+      {
+        "team_code": "AURA",
+        "field": "match_losses",
+        "canonical": 3,
+        "archive": 1
+      },
+      {
+        "team_code": "AURA",
+        "field": "game_wins",
+        "canonical": 20,
+        "archive": 12
+      },
+      {
+        "team_code": "AURA",
+        "field": "game_losses",
+        "canonical": 12,
+        "archive": 6
+      },
+      {
+        "team_code": "BLCK",
+        "field": "match_wins",
+        "canonical": 7,
+        "archive": 3
+      },
+      {
+        "team_code": "BLCK",
+        "field": "match_losses",
+        "canonical": 6,
+        "archive": 2
+      },
+      {
+        "team_code": "BLCK",
+        "field": "game_wins",
+        "canonical": 17,
+        "archive": 8
+      },
+      {
+        "team_code": "BLCK",
+        "field": "game_losses",
+        "canonical": 14,
+        "archive": 5
+      },
+      {
+        "team_code": "BNK",
+        "field": "game_wins",
+        "canonical": 2,
+        "archive": 1
+      },
+      {
+        "team_code": "BNK",
+        "field": "game_losses",
+        "canonical": 26,
+        "archive": 12
+      },
+      {
+        "team_code": "BREN",
+        "field": "game_wins",
+        "canonical": 24,
+        "archive": 12
+      },
+      {
+        "team_code": "BREN",
+        "field": "game_losses",
+        "canonical": 4,
+        "archive": 1
+      },
+      {
+        "team_code": "BSB",
+        "field": "game_wins",
+        "canonical": 5,
+        "archive": 3
+      },
+      {
+        "team_code": "BSB",
+        "field": "game_losses",
+        "canonical": 24,
+        "archive": 12
+      },
+      {
+        "team_code": "CIG",
+        "field": "match_wins",
+        "canonical": 4,
+        "archive": 2
+      },
+      {
+        "team_code": "CIG",
+        "field": "match_losses",
+        "canonical": 9,
+        "archive": 4
+      },
+      {
+        "team_code": "CIG",
+        "field": "game_wins",
+        "canonical": 12,
+        "archive": 5
+      },
+      {
+        "team_code": "CIG",
+        "field": "game_losses",
+        "canonical": 19,
+        "archive": 9
+      },
+      {
+        "team_code": "EXE",
+        "field": "match_wins",
+        "canonical": 7,
+        "archive": 3
+      },
+      {
+        "team_code": "EXE",
+        "field": "match_losses",
+        "canonical": 6,
+        "archive": 3
+      },
+      {
+        "team_code": "EXE",
+        "field": "game_wins",
+        "canonical": 18,
+        "archive": 8
+      },
+      {
+        "team_code": "EXE",
+        "field": "game_losses",
+        "canonical": 13,
+        "archive": 7
+      },
+      {
+        "team_code": "NXP",
+        "field": "match_wins",
+        "canonical": 6,
+        "archive": 2
+      },
+      {
+        "team_code": "NXP",
+        "field": "match_losses",
+        "canonical": 7,
+        "archive": 3
+      },
+      {
+        "team_code": "NXP",
+        "field": "game_wins",
+        "canonical": 14,
+        "archive": 5
+      },
+      {
+        "team_code": "NXP",
+        "field": "game_losses",
+        "canonical": 16,
+        "archive": 6
+      },
+      {
+        "team_code": "OMG",
+        "field": "match_wins",
+        "canonical": 9,
+        "archive": 3
+      },
+      {
+        "team_code": "OMG",
+        "field": "match_losses",
+        "canonical": 4,
+        "archive": 3
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_wins",
+        "canonical": 20,
+        "archive": 8
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_losses",
+        "canonical": 10,
+        "archive": 7
+      },
+      {
+        "team_code": "ONIC",
+        "field": "match_wins",
+        "canonical": 9,
+        "archive": 4
+      },
+      {
+        "team_code": "ONIC",
+        "field": "match_losses",
+        "canonical": 4,
+        "archive": 1
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_wins",
+        "canonical": 19,
+        "archive": 9
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_losses",
+        "canonical": 13,
+        "archive": 6
+      }
+    ],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 7,
+    "source": "https://ph-mpl.com/s7/data",
+    "player_stat_rows": 62,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:25.591658+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/3f8f5465f0ccd55788d32c764bb7252331c5762c0ddbae841648979e41400d7a.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 65,
+    "standings_team_rows": 10,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 8,
+    "source": "https://ph-mpl.com/s8/data",
+    "player_stat_rows": 72,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:25.594283+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/24dfcdbdd83deb9da50f0b86a8590d1ce4023719907c030cd435b0cc99d80fae.html",
+    "status": "source_conflict_or_scope_mismatch",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 11,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": false,
+    "differences": [
+      {
+        "team_code": "BLCK",
+        "field": "game_wins",
+        "canonical": 26,
+        "archive": 38
+      },
+      {
+        "team_code": "BLCK",
+        "field": "game_losses",
+        "canonical": 7,
+        "archive": 12
+      },
+      {
+        "team_code": "ECHO",
+        "field": "game_wins",
+        "canonical": 15,
+        "archive": 16
+      },
+      {
+        "team_code": "ECHO",
+        "field": "game_losses",
+        "canonical": 18,
+        "archive": 21
+      },
+      {
+        "team_code": "NXPE",
+        "field": "game_wins",
+        "canonical": 18,
+        "archive": 21
+      },
+      {
+        "team_code": "NXPE",
+        "field": "game_losses",
+        "canonical": 16,
+        "archive": 22
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_wins",
+        "canonical": 15,
+        "archive": 22
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_losses",
+        "canonical": 18,
+        "archive": 26
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_wins",
+        "canonical": 21,
+        "archive": 28
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_losses",
+        "canonical": 13,
+        "archive": 17
+      },
+      {
+        "team_code": "RSG",
+        "field": "game_losses",
+        "canonical": 19,
+        "archive": 22
+      }
+    ],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 9,
+    "source": "https://ph-mpl.com/s9/data",
+    "player_stat_rows": 70,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:30.278969+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/68a624f8f770e663332a42e5302d80d826adb02b5c9142e7ea1d956da75df357.html",
+    "status": "source_conflict_or_scope_mismatch",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 13,
+    "match_wl_totals_reconciled": false,
+    "game_wl_totals_reconciled": false,
+    "differences": [
+      {
+        "team_code": "ECHO",
+        "field": "game_wins",
+        "canonical": 19,
+        "archive": 17
+      },
+      {
+        "team_code": "ECHO",
+        "field": "game_losses",
+        "canonical": 13,
+        "archive": 16
+      },
+      {
+        "team_code": "NXPE",
+        "field": "match_losses",
+        "canonical": 8,
+        "archive": 9
+      },
+      {
+        "team_code": "NXPE",
+        "field": "game_wins",
+        "canonical": 15,
+        "archive": 18
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_wins",
+        "canonical": 16,
+        "archive": 27
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_losses",
+        "canonical": 20,
+        "archive": 27
+      },
+      {
+        "team_code": "ONIC",
+        "field": "match_wins",
+        "canonical": 8,
+        "archive": 9
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_wins",
+        "canonical": 18,
+        "archive": 20
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_losses",
+        "canonical": 19,
+        "archive": 28
+      },
+      {
+        "team_code": "RSG",
+        "field": "game_wins",
+        "canonical": 23,
+        "archive": 33
+      },
+      {
+        "team_code": "RSG",
+        "field": "game_losses",
+        "canonical": 9,
+        "archive": 10
+      },
+      {
+        "team_code": "TNC",
+        "field": "game_wins",
+        "canonical": 21,
+        "archive": 24
+      },
+      {
+        "team_code": "TNC",
+        "field": "game_losses",
+        "canonical": 13,
+        "archive": 20
+      }
+    ],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 10,
+    "source": "https://ph-mpl.com/s10/data",
+    "player_stat_rows": 70,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:30.297461+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/158096647c266cfc4b7fe3e35104e06517b3153c1077f3fd1b672b7eb140ec1e.html",
+    "status": "source_conflict_or_scope_mismatch",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 20,
+    "match_wl_totals_reconciled": false,
+    "game_wl_totals_reconciled": false,
+    "differences": [
+      {
+        "team_code": "BLCK",
+        "field": "match_wins",
+        "canonical": 9,
+        "archive": 12
+      },
+      {
+        "team_code": "BLCK",
+        "field": "game_wins",
+        "canonical": 22,
+        "archive": 32
+      },
+      {
+        "team_code": "BLCK",
+        "field": "game_losses",
+        "canonical": 12,
+        "archive": 16
+      },
+      {
+        "team_code": "BREN",
+        "field": "match_wins",
+        "canonical": 9,
+        "archive": 10
+      },
+      {
+        "team_code": "BREN",
+        "field": "match_losses",
+        "canonical": 5,
+        "archive": 7
+      },
+      {
+        "team_code": "BREN",
+        "field": "game_wins",
+        "canonical": 20,
+        "archive": 27
+      },
+      {
+        "team_code": "BREN",
+        "field": "game_losses",
+        "canonical": 16,
+        "archive": 24
+      },
+      {
+        "team_code": "ECHO",
+        "field": "match_wins",
+        "canonical": 10,
+        "archive": 12
+      },
+      {
+        "team_code": "ECHO",
+        "field": "match_losses",
+        "canonical": 4,
+        "archive": 6
+      },
+      {
+        "team_code": "ECHO",
+        "field": "game_wins",
+        "canonical": 22,
+        "archive": 30
+      },
+      {
+        "team_code": "ECHO",
+        "field": "game_losses",
+        "canonical": 13,
+        "archive": 22
+      },
+      {
+        "team_code": "OMG",
+        "field": "match_losses",
+        "canonical": 6,
+        "archive": 7
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_wins",
+        "canonical": 18,
+        "archive": 20
+      },
+      {
+        "team_code": "OMG",
+        "field": "game_losses",
+        "canonical": 16,
+        "archive": 19
+      },
+      {
+        "team_code": "ONIC",
+        "field": "match_losses",
+        "canonical": 7,
+        "archive": 8
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_losses",
+        "canonical": 17,
+        "archive": 20
+      },
+      {
+        "team_code": "RSG",
+        "field": "match_wins",
+        "canonical": 9,
+        "archive": 11
+      },
+      {
+        "team_code": "RSG",
+        "field": "match_losses",
+        "canonical": 5,
+        "archive": 7
+      },
+      {
+        "team_code": "RSG",
+        "field": "game_wins",
+        "canonical": 20,
+        "archive": 28
+      },
+      {
+        "team_code": "RSG",
+        "field": "game_losses",
+        "canonical": 14,
+        "archive": 22
+      }
+    ],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 11,
+    "source": "https://ph-mpl.com/s11/data",
+    "player_stat_rows": 56,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:30.389130+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/80a1af0a4808530cdeef0b147c31eded48d418572bd6a1783db2571005fa90a5.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 12,
+    "source": "https://ph-mpl.com/s12/data",
+    "player_stat_rows": 63,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:30.489755+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/98470d04fb799085b798f5d788c56c232e1df050cccc5993f5676c94afc5f48f.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 3,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 13,
+    "source": "https://ph-mpl.com/s13/data",
+    "player_stat_rows": 61,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:31.688375+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/5a42c62080ed2b80f95f5a7ecf77fa8216b1ada9f5886fb5487d361f0810d715.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 14,
+    "source": "https://ph-mpl.com/s14/data",
+    "player_stat_rows": 53,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:31.709633+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/1d54188ea472e5481ceaa30500f9c8da236a208a0844d7e7b585f5ae4ea4fb10.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 15,
+    "source": "https://ph-mpl.com/s15/data",
+    "player_stat_rows": 51,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:35.791273+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/f3f1819949499fa9c3a953d277792c301d769d4fae634349a6e15c9baf277c76.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 16,
+    "source": "https://ph-mpl.com/s16/data",
+    "player_stat_rows": 49,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:35.801137+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/cbce22fcc05629bcd7c21a2cd3346cf19130c089d8972105d819d6e70513641d.html",
+    "status": "source_conflict_or_scope_mismatch",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 6,
+    "match_wl_totals_reconciled": false,
+    "game_wl_totals_reconciled": false,
+    "differences": [
+      {
+        "team_code": "ONIC",
+        "field": "match_wins",
+        "canonical": 9,
+        "archive": 8
+      },
+      {
+        "team_code": "ONIC",
+        "field": "match_losses",
+        "canonical": 5,
+        "archive": 6
+      },
+      {
+        "team_code": "ONIC",
+        "field": "game_wins",
+        "canonical": 22,
+        "archive": 20
+      },
+      {
+        "team_code": "TNC",
+        "field": "match_wins",
+        "canonical": 5,
+        "archive": 6
+      },
+      {
+        "team_code": "TNC",
+        "field": "match_losses",
+        "canonical": 9,
+        "archive": 8
+      },
+      {
+        "team_code": "TNC",
+        "field": "game_losses",
+        "canonical": 21,
+        "archive": 19
+      }
+    ],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 17,
+    "source": "https://ph-mpl.com/s17/data",
+    "player_stat_rows": 48,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:35.807757+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/f690eaca2dcf4297b29d533b9c08157241b151dc1dcaf45f0af056a172a23d1f.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis.",
+    "invalid_optional_metric_rows": 0,
+    "statistics_status": "observed_scope_unverified"
+  },
+  {
+    "season": 18,
+    "source": "https://ph-mpl.com/data",
+    "player_stat_rows": 0,
+    "source_http_status": 200,
+    "source_retrieved_at": "2026-11-10T01:55:35.815561+00:00",
+    "source_snapshot_path": "data/raw/source_snapshots/0a587f3ea944dbf6399ccef3a3733ca385b16980a6b97ab1c9e7b472d8009e6c.html",
+    "status": "regular_wl_totals_reconciled",
+    "canonical_regular_rows": 56,
+    "standings_team_rows": 8,
+    "difference_count": 0,
+    "match_wl_totals_reconciled": true,
+    "game_wl_totals_reconciled": true,
+    "differences": [],
+    "conflicting_duplicate_team_rows": false,
+    "scope": "regular_season_wl_totals_only_not_individual_matches_or_playoffs",
+    "note": "Jadwal/playoff belum terbukti lengkap; konflik tidak memperbaiki skor otomatis."
+  }
+]

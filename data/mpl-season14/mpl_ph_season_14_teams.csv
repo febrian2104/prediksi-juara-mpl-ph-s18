@@ -1,9 +1,9 @@
-season,team_id,team_name,source,team_code,organization_id,franchise_slot_id,identity_review_required,source_url
-14,ap_bren,AP BREN,https://ph-mpl.com/s14,APBR,,,True,https://ph-mpl.com/s14
-14,aurora_gaming_ph,Aurora Gaming PH,https://ph-mpl.com/s14,RORA,,,True,https://ph-mpl.com/s14
-14,blacklist_international,Blacklist International,https://ph-mpl.com/s14,BLCK,,,True,https://ph-mpl.com/s14
-14,onic_philippines,ONIC Philippines,https://ph-mpl.com/s14,ONIC,,,True,https://ph-mpl.com/s14
-14,rsg_philippines,RSG Philippines,https://ph-mpl.com/s14,RSG,,,True,https://ph-mpl.com/s14
-14,smart_omega,Smart Omega,https://ph-mpl.com/s14,OMG,,,True,https://ph-mpl.com/s14
-14,team_liquid_ph,Team Liquid PH,https://ph-mpl.com/s14,TLPH,,,True,https://ph-mpl.com/s14
-14,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s14,TNC,,,True,https://ph-mpl.com/s14
+season,team_id,team_name,source,team_code,historical_names,organization_id,franchise_slot_id,identity_review_required,source_url
+14,ap_bren,AP BREN,https://ph-mpl.com/s14,APBR,AP BREN,,,True,https://ph-mpl.com/s14
+14,aurora_gaming_ph,Aurora Gaming PH,https://ph-mpl.com/s14,RORA,Aurora Gaming PH,,,True,https://ph-mpl.com/s14
+14,blacklist_international,Blacklist International,https://ph-mpl.com/s14,BLCK,Blacklist International,,,True,https://ph-mpl.com/s14
+14,onic_philippines,ONIC Philippines,https://ph-mpl.com/s14,ONIC,ONIC Philippines,,,True,https://ph-mpl.com/s14
+14,rsg_philippines,RSG Philippines,https://ph-mpl.com/s14,RSG,RSG Philippines,,,True,https://ph-mpl.com/s14
+14,smart_omega,Smart Omega,https://ph-mpl.com/s14,OMG,Smart Omega,,,True,https://ph-mpl.com/s14
+14,team_liquid_ph,Team Liquid PH,https://ph-mpl.com/s14,TLPH,Team Liquid PH,,,True,https://ph-mpl.com/s14
+14,tnc_pro_team,TNC Pro Team,https://ph-mpl.com/s14,TNC,TNC Pro Team,,,True,https://ph-mpl.com/s14

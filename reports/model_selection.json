@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-11-10T01:38:20.249836+00:00",
+  "trained_at": "2026-11-10T02:08:58.235439+00:00",
   "training_latest_match_at": "2026-05-31 09:00:00+00:00",
   "training_data_observed_at": "2026-11-09T08:08:42.496740+00:00",
   "model_name": "logistic_regression",

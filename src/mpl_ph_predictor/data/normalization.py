@@ -7,6 +7,8 @@ from typing import Any
 
 import pandas as pd
 
+from mpl_ph_predictor.data.identity import apply_team_name_history
+
 ROOT = Path(__file__).resolve().parents[3]
 
 
@@ -54,6 +56,7 @@ def build_canonical_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, di
         code = f"team_{side}_code"
         matches[f"team_{side}_id"] = matches[code].map(lookup_id)
         matches[f"team_{side}_name"] = matches[code].map(lookup_name).fillna(matches[code])
+    matches = apply_team_name_history(matches)
     matches["winner_side"] = matches.apply(
         lambda row: "team_a" if row.team_a_score > row.team_b_score else "team_b", axis=1
     )
@@ -92,7 +95,7 @@ def build_canonical_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, di
             ],
             ignore_index=True,
         )
-        .drop_duplicates()
+        .drop_duplicates(subset=["season", "team_code", "team_id"], keep="last")
         .sort_values(["season", "team_code"])
         .reset_index(drop=True)
     )
