@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-11-13T03:21:12.321826+00:00",
+  "status": "pass",
+  "feature_eligible": false,
+  "series": [
+    {
+      "match_id": "S08-RE-onic-tlph-20210827",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/onic-ph-dominates-echo-to-open-mpl-ph-8/217841",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/725b3fd60f41dd01a7442fdec8d8785f357eb12f5e4f73d0f777828c2676bc5b.html",
+          "sha256": "725b3fd60f41dd01a7442fdec8d8785f357eb12f5e4f73d0f777828c2676bc5b",
+          "retrieved_at": "2026-11-13T01:01:07.375752+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "scoreboard": {
+        "url": "https://ph-mpl.com/s8/data/match/onic-tlph-20210827",
+        "status": "checksum_verified",
+        "snapshot_path": "data/raw/source_snapshots/245babf8294c322c94b5fcbe5df22b982e8d3d135c48d028bc1301f50b96f4d7.html",
+        "sha256": "245babf8294c322c94b5fcbe5df22b982e8d3d135c48d028bc1301f50b96f4d7",
+        "retrieved_at": "2026-11-10T01:34:41.360775+00:00"
+      },
+      "games": 2,
+      "reason": null
+    },
+    {
+      "match_id": "S08-RE-omg-tlph-20210829",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/kurtzy-echo-stave-off-late-omega-rally-take-solo-lead-in-mpl-ph",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/4d72d4d15745182fdc47e64ac3eaa885cf8e334749e05b805fd08563500f1014.html",
+          "sha256": "4d72d4d15745182fdc47e64ac3eaa885cf8e334749e05b805fd08563500f1014",
+          "retrieved_at": "2026-11-13T01:01:07.389527+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "scoreboard": {
+        "url": "https://ph-mpl.com/s8/data/match/omg-tlph-20210829",
+        "status": "checksum_verified",
+        "snapshot_path": "data/raw/source_snapshots/5eeb28208ac0dbae8c892f01887d1ea79e733e88b1940cdd0c33a812cc2876f6.html",
+        "sha256": "5eeb28208ac0dbae8c892f01887d1ea79e733e88b1940cdd0c33a812cc2876f6",
+        "retrieved_at": "2026-11-10T01:34:46.404412+00:00"
+      },
+      "games": 2,
+      "reason": null
+    },
+    {
+      "match_id": "S08-RE-tlph-omg-20211002",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/raizen-steps-up-for-kielvj-as-omega-sweeps-echo-keeps-mpl-playoff-hopes-alive/221002",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/5a02dae09947b385d84f159030d63573353b43a39c83205f3b62db2eb20d2f41.html",
+          "sha256": "5a02dae09947b385d84f159030d63573353b43a39c83205f3b62db2eb20d2f41",
+          "retrieved_at": "2026-11-13T01:01:07.439153+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "scoreboard": {
+        "url": "https://ph-mpl.com/s8/data/match/tlph-omg-20211002",
+        "status": "checksum_verified",
+        "snapshot_path": "data/raw/source_snapshots/0fd6ef7db619f206d78a07980f5f1c8e5c972dd7189b0871ea5387bb9c5bac86.html",
+        "sha256": "0fd6ef7db619f206d78a07980f5f1c8e5c972dd7189b0871ea5387bb9c5bac86",
+        "retrieved_at": "2026-11-10T01:34:59.153756+00:00"
+      },
+      "games": 2,
+      "reason": null
+    },
+    {
+      "match_id": "S08-PL-omg-tlph-20211021",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/omega-boots-out-echo-sets-up-showdown-with-blacklist-in-mpl-ph-round-two",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/37eb7ae810e2e8204553419ca8fc4bb87499679d8d30d8bda8238430ac968cf5.html",
+          "sha256": "37eb7ae810e2e8204553419ca8fc4bb87499679d8d30d8bda8238430ac968cf5",
+          "retrieved_at": "2026-11-13T03:14:18.825842+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "scoreboard": {
+        "url": "https://ph-mpl.com/s8/data/match/omg-tlph-20211021",
+        "status": "checksum_verified",
+        "snapshot_path": "data/raw/source_snapshots/e3e87b8607340bd7341bf3225d5dfaf0ceadb239456e541279da7bfd008a87a5.html",
+        "sha256": "e3e87b8607340bd7341bf3225d5dfaf0ceadb239456e541279da7bfd008a87a5",
+        "retrieved_at": "2026-11-10T01:35:05.227637+00:00"
+      },
+      "games": 4,
+      "reason": null
+    }
+  ],
+  "scope": "reviewed_existing_scoreboards_not_complete_history_or_prematch_features",
+  "information_cutoff": "2026-11-09",
+  "reviewed_on": "2026-11-13",
+  "registry_sha256": "60adb33f8f73022e187c68e568050f0ff4f6956450f490a2a5e104fa7060ebed",
+  "verified_game_winners": 10,
+  "verified_exact_durations": 7,
+  "limitation": "Bukan bukti seluruh durasi, waktu publikasi hasil atau draft lengkap. Tidak mengubah training, prediksi historis atau tiebreak S18."
+}

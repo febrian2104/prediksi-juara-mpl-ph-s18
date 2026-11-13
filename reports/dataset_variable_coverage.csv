@@ -573,8 +573,8 @@ season,table,variable,rows,non_null_rows,availability
 8,games,date,147,147,complete_for_collected_rows
 8,games,team_a,147,147,complete_for_collected_rows
 8,games,team_b,147,147,complete_for_collected_rows
-8,games,winner,147,0,unavailable
-8,games,duration_minutes,147,0,unavailable
+8,games,winner,147,10,partial
+8,games,duration_minutes,147,7,partial
 8,games,source,147,147,complete_for_collected_rows
 8,drafts,season,1470,1470,complete_for_collected_rows
 8,drafts,match_id,1470,1470,complete_for_collected_rows

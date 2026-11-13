@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "information_cutoff": "2026-11-09",
+  "reviewed_on": "2026-11-13",
+  "feature_eligible": false,
+  "scope": "Retrospective game outcomes and exact reported durations only; no ratio-derived durations or inferred game winners.",
+  "series": [
+    {
+      "season": 8,
+      "match_id": "S08-RE-onic-tlph-20210827",
+      "match_date": "2021-08-27",
+      "team_a_code": "ONIC",
+      "team_b_code": "ECHO",
+      "team_a_score": 2,
+      "team_b_score": 0,
+      "scoreboard_sha256": "245babf8294c322c94b5fcbe5df22b982e8d3d135c48d028bc1301f50b96f4d7",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/onic-ph-dominates-echo-to-open-mpl-ph-8/217841",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-08-27",
+          "reviewed_snapshot_sha256": "725b3fd60f41dd01a7442fdec8d8785f357eb12f5e4f73d0f777828c2676bc5b",
+          "required_terms": ["August 27, 2021", "Game One", "Game Two", "ONIC PH"]
+        }
+      ],
+      "games": [
+        {"game_number": 1, "winner_code": "ONIC", "duration_clock": "18:51", "duration_evidence": "18 minutes and 51 seconds", "evidence_terms": ["12-9 Game One win", "18 minutes and 51 seconds"]},
+        {"game_number": 2, "winner_code": "ONIC", "duration_clock": "11:31", "duration_evidence": "11:31-minute Game Two", "evidence_terms": ["8-2 win", "11:31-minute Game Two"]}
+      ]
+    },
+    {
+      "season": 8,
+      "match_id": "S08-RE-omg-tlph-20210829",
+      "match_date": "2021-08-29",
+      "team_a_code": "OMG",
+      "team_b_code": "ECHO",
+      "team_a_score": 0,
+      "team_b_score": 2,
+      "scoreboard_sha256": "5eeb28208ac0dbae8c892f01887d1ea79e733e88b1940cdd0c33a812cc2876f6",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/kurtzy-echo-stave-off-late-omega-rally-take-solo-lead-in-mpl-ph",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-08-29",
+          "reviewed_snapshot_sha256": "4d72d4d15745182fdc47e64ac3eaa885cf8e334749e05b805fd08563500f1014",
+          "required_terms": ["August 29, 2021", "ECHO", "Omega Esports"]
+        }
+      ],
+      "games": [
+        {"game_number": 1, "winner_code": "ECHO", "duration_clock": "13:09", "duration_evidence": "13 minutes and nine seconds", "evidence_terms": ["13-9 Game One", "13 minutes and nine seconds"]},
+        {"game_number": 2, "winner_code": "ECHO", "duration_clock": "12:17", "duration_evidence": "12 minutes and 17 seconds", "evidence_terms": ["20-7 domination", "12 minutes and 17 seconds"]}
+      ]
+    },
+    {
+      "season": 8,
+      "match_id": "S08-RE-tlph-omg-20211002",
+      "match_date": "2021-10-02",
+      "team_a_code": "ECHO",
+      "team_b_code": "OMG",
+      "team_a_score": 0,
+      "team_b_score": 2,
+      "scoreboard_sha256": "0fd6ef7db619f206d78a07980f5f1c8e5c972dd7189b0871ea5387bb9c5bac86",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/raizen-steps-up-for-kielvj-as-omega-sweeps-echo-keeps-mpl-playoff-hopes-alive/221002",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-10-02",
+          "reviewed_snapshot_sha256": "5a02dae09947b385d84f159030d63573353b43a39c83205f3b62db2eb20d2f41",
+          "required_terms": ["October 2, 2021", "Omega Esports", "ECHO"]
+        }
+      ],
+      "games": [
+        {"game_number": 1, "winner_code": "OMG", "duration_clock": "12:41", "duration_evidence": "12:41-minute match", "evidence_terms": ["steal Game One", "12:41-minute match"]},
+        {"game_number": 2, "winner_code": "OMG", "duration_clock": "19:02", "duration_evidence": "19 minutes and two seconds", "evidence_terms": ["Game Two", "14-14 victory", "19 minutes and two seconds"]}
+      ]
+    },
+    {
+      "season": 8,
+      "match_id": "S08-PL-omg-tlph-20211021",
+      "match_date": "2021-10-21",
+      "team_a_code": "OMG",
+      "team_b_code": "ECHO",
+      "team_a_score": 3,
+      "team_b_score": 1,
+      "scoreboard_sha256": "e3e87b8607340bd7341bf3225d5dfaf0ceadb239456e541279da7bfd008a87a5",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/omega-boots-out-echo-sets-up-showdown-with-blacklist-in-mpl-ph-round-two",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-10-21",
+          "reviewed_snapshot_sha256": "37eb7ae810e2e8204553419ca8fc4bb87499679d8d30d8bda8238430ac968cf5",
+          "required_terms": ["October 21, 2021", "Omega Esports", "ECHO", "3-1"]
+        }
+      ],
+      "games": [
+        {"game_number": 1, "winner_code": "OMG", "duration_clock": null, "evidence_terms": ["Omega Esports dominated in the opening match", "Game One win"]},
+        {"game_number": 2, "winner_code": "ECHO", "duration_clock": "21:41", "duration_evidence": "21 minutes and 41 seconds", "evidence_terms": ["ECHO fought back in Game Two", "21 minutes and 41 seconds"]},
+        {"game_number": 3, "winner_code": "OMG", "duration_clock": null, "evidence_terms": ["Game Three as Omega Esports took a 2-1 advantage"]},
+        {"game_number": 4, "winner_code": "OMG", "duration_clock": null, "evidence_terms": ["Game Four became the closer", "quick Game Four win"]}
+      ]
+    }
+  ]
+}

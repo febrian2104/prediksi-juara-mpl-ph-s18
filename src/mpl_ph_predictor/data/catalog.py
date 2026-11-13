@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 from mpl_ph_predictor.archive import sha256
 from mpl_ph_predictor.data.contracts import conform_table, load_dataset_schema, variable_coverage
 from mpl_ph_predictor.data.finals import annotate_reviewed_finals
+from mpl_ph_predictor.data.game_results import annotate_game_results
 from mpl_ph_predictor.data.league_history import annotate_match_participants, participant_id
 from mpl_ph_predictor.data.normalization import slug
 from mpl_ph_predictor.data.player_aliases import annotate_player_aliases
@@ -313,6 +314,11 @@ def export_reference_layout(
             else conform_table(pd.DataFrame(), table)
         )
         details[table] = details[table].loc[details[table]["match_id"].isin(matches["match_id"])]
+    details["games"], game_results_audit = annotate_game_results(details["games"], matches)
+    publish_text(
+        json.dumps(game_results_audit, indent=2, ensure_ascii=False, allow_nan=False),
+        ROOT / "reports/game_results_audit.json",
+    )
     summary_audit_path = ROOT / "reports/game_summary_audit.csv"
     if summary_audit_path.is_file():
         quality_flags = pd.read_csv(summary_audit_path)

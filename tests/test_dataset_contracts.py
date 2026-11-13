@@ -73,9 +73,12 @@ def test_variable_coverage_reports_unavailable_optional_data_honestly() -> None:
     assert set(coverage["season"]) == set(range(1, 19))
     games = coverage.loc[coverage["table"].eq("games")]
     assert games.query("season == 18 and variable == 'game_number'")["non_null_rows"].sum() > 0
-    assert games.loc[games["variable"].isin(["winner", "duration_minutes"])][
+    assert games.loc[games.season.eq(18) & games["variable"].isin(["winner", "duration_minutes"])][
         "availability"
     ].eq("unavailable").all()
+    historical = games.query("season == 8").set_index("variable")
+    assert historical.loc["winner", "non_null_rows"] == 10
+    assert historical.loc["duration_minutes", "non_null_rows"] == 7
     stats = coverage.query("season == 18 and table == 'player_season_stats'")
     assert stats.set_index("variable").loc["total_kills", "non_null_rows"] > 0
     assert stats.set_index("variable").loc["games_played", "availability"] == "unavailable"
