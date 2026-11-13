@@ -10,6 +10,7 @@ import pandas as pd
 from bs4 import BeautifulSoup, Tag
 
 from mpl_ph_predictor.archive import sha256, utc_now
+from mpl_ph_predictor.storage import publish_table, publish_text
 
 ROOT = Path(__file__).resolve().parents[3]
 METRICS = {
@@ -100,23 +101,29 @@ def audit_game_summaries(*, root: Path = ROOT) -> dict:
     games, players, manifest = (pd.read_csv(path) for path in required)
     matches = pd.read_csv(root / "data/clean/matches.csv").set_index("match_id")
     records = manifest.loc[manifest["retrieval_status"].eq("ok")].drop_duplicates(
-        "url", keep="last"
+        ["url", "snapshot_path"], keep="last"
     )
-    sources = records.set_index("url").to_dict(orient="index")
+    sources = records.set_index(["url", "snapshot_path"]).to_dict(orient="index")
     documents, game_rows, counter_rows = {}, [], []
     for row in games.to_dict(orient="records"):
         shared = {column: row[column] for column in ("season", "match_id", "game_number", "source")}
         result = {**shared, "summary_checked_counters": 0, "summary_difference_count": 0}
         try:
             url = row["source"]
-            record = sources[url]
-            if url not in documents:
+            # Audit the exact snapshot used for these observations, never a later
+            # website revision with possibly different rows or team assignments.
+            key = (url, row["source_snapshot_path"])
+            record = sources[key]
+            if key not in documents:
                 documents.clear()  # Keep one parsed HTML document, not the entire archive in RAM.
-                content = (root / record["snapshot_path"]).read_bytes()
+                path = (root / key[1]).resolve()
+                if not path.is_relative_to(root.resolve()):
+                    raise ValueError("Snapshot di luar direktori proyek ditolak.")
+                content = path.read_bytes()
                 if sha256(content) != record["sha256"]:
                     raise ValueError("Checksum snapshot sumber tidak cocok.")
-                documents[url] = BeautifulSoup(content, "html.parser")
-            pane = documents[url].select_one(f"#game{int(row['game_number'])}")
+                documents[key] = BeautifulSoup(content, "html.parser")
+            pane = documents[key].select_one(f"#game{int(row['game_number'])}")
             if pane is None:
                 raise ValueError("Game tidak ditemukan dalam snapshot sumber.")
             match = matches.loc[row["match_id"]]
@@ -134,7 +141,7 @@ def audit_game_summaries(*, root: Path = ROOT) -> dict:
                 {
                     **shared,
                     **check,
-                    "source_snapshot_path": record["snapshot_path"],
+                    "source_snapshot_path": key[1],
                     "source_retrieved_at": record["retrieved_at"],
                 }
                 for check in checks
@@ -186,8 +193,8 @@ def audit_game_summaries(*, root: Path = ROOT) -> dict:
     )
     folder = root / "reports"
     folder.mkdir(parents=True, exist_ok=True)
-    audits.to_csv(folder / "game_summary_audit.csv", index=False)
-    checks.to_csv(folder / "game_summary_checks.csv", index=False)
+    publish_table(audits, folder / "game_summary_audit.csv")
+    publish_table(checks, folder / "game_summary_checks.csv")
     differences = checks.loc[checks["status"].eq("difference_requires_review")]
     summary = {
         "generated_at": utc_now(),
@@ -203,8 +210,8 @@ def audit_game_summaries(*, root: Path = ROOT) -> dict:
         "berbeda definisi/waktu observasi; tidak menentukan nilai mana yang benar, memverifikasi "
         "winner/durasi, atau memperbaiki skor/penempatan pemain. Detail tetap non-training.",
     }
-    (folder / "game_summary_audit.json").write_text(
+    publish_text(
         json.dumps(summary, indent=2, ensure_ascii=False, allow_nan=False),
-        encoding="utf-8",
+        folder / "game_summary_audit.json",
     )
     return summary

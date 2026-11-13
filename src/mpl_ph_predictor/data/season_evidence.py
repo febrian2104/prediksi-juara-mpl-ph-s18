@@ -368,6 +368,11 @@ def collect_season_evidence(
         for final in json.loads(finals_path.read_text())["finals"]:
             for source in final["sources"]:
                 urls[source["url"]] = final["season"]
+    assignments_path = root / "config/reviewed_scoreboard_assignments.json"
+    if assignments_path.is_file():
+        for series in json.loads(assignments_path.read_text())["series"]:
+            for source in series["sources"]:
+                urls[source["url"]] = series["season"]
     manifest_path = root / "data/raw/season_evidence_source_manifest.csv"
     previous = pd.read_csv(manifest_path) if manifest_path.exists() else pd.DataFrame()
     cache, last_attempts = {}, {}

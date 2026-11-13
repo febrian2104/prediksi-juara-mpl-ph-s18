@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "information_cutoff": "2026-11-09",
+  "reviewed_on": "2026-11-13",
+  "feature_eligible": false,
+  "scope": "Retrospective, series-specific row grouping only; not an effective-dated roster or permission to change statistics.",
+  "series": [
+    {
+      "season": 8,
+      "match_id": "S08-RE-onic-tlph-20210827",
+      "match_date": "2021-08-27",
+      "team_a_code": "ONIC",
+      "team_b_code": "ECHO",
+      "team_a_score": 2,
+      "team_b_score": 0,
+      "scoreboard_sha256": "245babf8294c322c94b5fcbe5df22b982e8d3d135c48d028bc1301f50b96f4d7",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/onic-ph-dominates-echo-to-open-mpl-ph-8/217841",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-08-27",
+          "reviewed_snapshot_sha256": "725b3fd60f41dd01a7442fdec8d8785f357eb12f5e4f73d0f777828c2676bc5b",
+          "required_terms": ["August 27, 2021", "ONIC PH", "Baloyskie", "Lylia", "Game One"]
+        }
+      ],
+      "assignments": [
+        {"player": "Baloyskie", "from_raw_team_code": "TLPH", "from_team_code": "ECHO", "to_team_code": "ONIC", "game_numbers": [1, 2]}
+      ]
+    },
+    {
+      "season": 8,
+      "match_id": "S08-RE-omg-tlph-20210829",
+      "match_date": "2021-08-29",
+      "team_a_code": "OMG",
+      "team_b_code": "ECHO",
+      "team_a_score": 0,
+      "team_b_score": 2,
+      "scoreboard_sha256": "5eeb28208ac0dbae8c892f01887d1ea79e733e88b1940cdd0c33a812cc2876f6",
+      "sources": [
+        {
+          "url": "https://www.dugout.ph/2021/08/echo-ends-mpl-ph-week-1-with-2-0-win-vs.html",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-08-29",
+          "reviewed_snapshot_sha256": "38d5a2c148158682e7cb3ea7886372eed1e744a1342800e98bc54f3b5b1a488c",
+          "required_terms": ["August 29, 2021", "Omega", "Renzio's Uranus", "Kielvj", "20-7"]
+        },
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/kurtzy-echo-stave-off-late-omega-rally-take-solo-lead-in-mpl-ph",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-08-29",
+          "reviewed_snapshot_sha256": "4d72d4d15745182fdc47e64ac3eaa885cf8e334749e05b805fd08563500f1014",
+          "required_terms": ["August 29, 2021", "Omega Esports", "Kielvj", "Hernandez"]
+        }
+      ],
+      "assignments": [
+        {"player": "Kielvj", "from_raw_team_code": "TLPH", "from_team_code": "ECHO", "to_team_code": "OMG", "game_numbers": [1, 2]},
+        {"player": "Renzio", "from_raw_team_code": "TLPH", "from_team_code": "ECHO", "to_team_code": "OMG", "game_numbers": [1, 2]}
+      ]
+    },
+    {
+      "season": 8,
+      "match_id": "S08-RE-tlph-omg-20211002",
+      "match_date": "2021-10-02",
+      "team_a_code": "ECHO",
+      "team_b_code": "OMG",
+      "team_a_score": 0,
+      "team_b_score": 2,
+      "scoreboard_sha256": "0fd6ef7db619f206d78a07980f5f1c8e5c972dd7189b0871ea5387bb9c5bac86",
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/raizen-steps-up-for-kielvj-as-omega-sweeps-echo-keeps-mpl-playoff-hopes-alive/221002",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-10-02",
+          "reviewed_snapshot_sha256": "5a02dae09947b385d84f159030d63573353b43a39c83205f3b62db2eb20d2f41",
+          "required_terms": ["October 2, 2021", "Omega Esports", "Renzio", "Phoveus", "Game Two"]
+        }
+      ],
+      "assignments": [
+        {"player": "Renzio", "from_raw_team_code": "TLPH", "from_team_code": "ECHO", "to_team_code": "OMG", "game_numbers": [1, 2]}
+      ]
+    },
+    {
+      "season": 8,
+      "match_id": "S08-PL-omg-tlph-20211021",
+      "match_date": "2021-10-21",
+      "team_a_code": "OMG",
+      "team_b_code": "ECHO",
+      "team_a_score": 3,
+      "team_b_score": 1,
+      "scoreboard_sha256": "e3e87b8607340bd7341bf3225d5dfaf0ceadb239456e541279da7bfd008a87a5",
+      "sources": [
+        {
+          "url": "https://www.dugout.ph/2021/10/omega-esports-took-down-echo-in-four-to.html",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2021-10-21",
+          "reviewed_snapshot_sha256": "d0e8c791d378f80676662f9b58e07b65f9045b06544bc1c255743843ebb884dd",
+          "required_terms": ["October 21, 2021", "Omega", "Renzio", "Game 4", "3-1"]
+        }
+      ],
+      "assignments": [
+        {"player": "Renzio", "from_raw_team_code": "TLPH", "from_team_code": "ECHO", "to_team_code": "OMG", "game_numbers": [1, 2, 3, 4]}
+      ]
+    }
+  ]
+}

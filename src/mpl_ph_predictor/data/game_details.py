@@ -17,6 +17,13 @@ from bs4 import BeautifulSoup
 
 from mpl_ph_predictor.archive import sha256, utc_now
 from mpl_ph_predictor.data.contracts import conform_table
+from mpl_ph_predictor.data.scoreboard_assignments import (
+    ASSIGNMENT_COLUMNS,
+    apply_reviewed_assignments,
+    load_reviewed_assignments,
+    verify_review_scope,
+)
+from mpl_ph_predictor.storage import publish_table, publish_text
 
 ROOT = Path(__file__).resolve().parents[3]
 PLAYER_COLUMNS = [
@@ -43,7 +50,7 @@ PLAYER_COLUMNS = [
     "feature_eligible_for_s18",
     "identity_verification",
     "feature_eligible_for_training",
-]
+] + ASSIGNMENT_COLUMNS
 
 
 def _number(value: str) -> int | float | None:
@@ -57,7 +64,11 @@ def _number(value: str) -> int | float | None:
 
 
 def parse_game_detail(
-    content: bytes, match: dict[str, Any], provenance: dict[str, Any]
+    content: bytes,
+    match: dict[str, Any],
+    provenance: dict[str, Any],
+    *,
+    review: dict | None = None,
 ) -> tuple[list[dict], list[dict], list[dict]]:
     """Only publish a series when game counts and both five-player tables agree.
 
@@ -65,6 +76,8 @@ def parse_game_detail(
     duration is reconstructed from rounded gold/minute or damage/minute values.
     Game winners are not inferred from gold, kills, towers or the series score.
     """
+    if review is not None:
+        verify_review_scope(content, match, review)
     soup = BeautifulSoup(content, "html.parser")
     panes = soup.find_all("div", id=re.compile(r"^game\d+$"))
     expected = int(match["team_a_score"] + match["team_b_score"])
@@ -126,7 +139,7 @@ def parse_game_detail(
             if headers != required:
                 raise ValueError(f"Game {number}: skema scoreboard berubah.")
             rows = table.select("tbody tr")
-            if len(rows) != 5:
+            if review is None and len(rows) != 5:
                 raise ValueError(f"Game {number}: scoreboard tidak berisi lima pemain.")
             for tr in rows:
                 cells = [td.get_text(" ", strip=True) for td in tr.find_all("td", recursive=False)]
@@ -136,6 +149,9 @@ def parse_game_detail(
                     **game_shared,
                     "team": names[code],
                     "team_code": code,
+                    "source_team_code": raw_code,
+                    "source_canonical_team_code": code,
+                    "team_assignment_status": "official_scoreboard_table_unreviewed_assignment",
                     "player": cells[0],
                     "hero": cells[1],
                     "identity_verification": "observed_ign_only_not_linked_to_roster",
@@ -154,6 +170,11 @@ def parse_game_detail(
                 game_players.append(row)
         if set(seen_codes) != set(names) or len(set(seen_codes)) != 2:
             raise ValueError(f"Game {number}: dua tim berbeda yang dijadwalkan tidak ditemukan.")
+        if review is not None:
+            apply_reviewed_assignments(game_players, number, names, review)
+        counts = pd.Series([row["team_code"] for row in game_players]).value_counts().to_dict()
+        if counts != dict.fromkeys(names, 5):
+            raise ValueError(f"Game {number}: scoreboard tidak berisi lima pemain per tim.")
         if pd.DataFrame(game_players).duplicated(["team_code", "player"]).any():
             raise ValueError(f"Game {number}: pemain duplikat dalam tim.")
         for row in game_players:
@@ -167,6 +188,7 @@ def parse_game_detail(
                     "hero": row["hero"],
                     "scope": "observed_game_lineup_not_draft_sequence",
                     "player": row["player"],
+                    **{column: row.get(column) for column in ASSIGNMENT_COLUMNS},
                 }
             )
         players.extend(game_players)
@@ -178,6 +200,10 @@ def parse_game_detail(
                 "winner": None,
                 "duration_minutes": None,
                 "coverage_status": "scoreboard_available_winner_and_duration_unverified",
+                "reviewed_assignment_rows": sum(
+                    row["team_assignment_status"] == "reviewed_contemporary_report_assignment"
+                    for row in game_players
+                ),
             }
         )
     return games, drafts, players
@@ -196,6 +222,7 @@ def collect_game_details(
     matches = pd.read_csv(root / "data/clean/matches.csv")
     config = json.loads((root / "config/competition.json").read_text())
     cutoff = config["data_cutoff"]
+    reviews = load_reviewed_assignments(root, cutoff)
     date_limit = pd.Timestamp(cutoff, tz=config["timezone"]) + pd.Timedelta(days=1)
     matches = matches.loc[pd.to_datetime(matches["scheduled_at"], utc=True).lt(date_limit)]
     if seasons is not None:
@@ -266,9 +293,8 @@ def collect_game_details(
         fetched = list(pool.map(retrieve, records))
     attempts = [record for record, _, fresh in fetched if fresh]
     if attempts:
-        pd.concat([previous, pd.DataFrame(attempts)], ignore_index=True).to_csv(
-            manifest_path,
-            index=False,
+        publish_table(
+            pd.concat([previous, pd.DataFrame(attempts)], ignore_index=True), manifest_path
         )
     games, drafts, players, audit = [], [], [], []
     for match, (record, content, _) in zip(records, fetched, strict=True):
@@ -282,11 +308,18 @@ def collect_game_details(
         try:
             if content is None:
                 raise ValueError(str(record["retrieval_status"]))
-            parsed_games, parsed_drafts, parsed_players = parse_game_detail(content, match, record)
+            parsed_games, parsed_drafts, parsed_players = parse_game_detail(
+                content, match, record, review=reviews.get(match["match_id"])
+            )
             games.extend(parsed_games)
             drafts.extend(parsed_drafts)
             players.extend(parsed_players)
-            row.update(status="pass", parsed_games=len(parsed_games), reason=None)
+            row.update(
+                status="pass",
+                parsed_games=len(parsed_games),
+                reviewed_assignment_rows=sum(g["reviewed_assignment_rows"] for g in parsed_games),
+                reason=None,
+            )
         except (ValueError, KeyError, TypeError) as error:
             row.update(status="unavailable_or_failed_audit", reason=str(error))
         audit.append(row)
@@ -324,8 +357,12 @@ def collect_game_details(
                 ~old["match_id"].isin(attempted_ids) | old["match_id"].isin(unavailable_ids)
             ]
             if not retained.empty:
-                frame = pd.concat([retained, frame], ignore_index=True)
-        frame.to_csv(path, index=False)
+                frame = (
+                    retained.copy()
+                    if frame.empty
+                    else pd.concat([retained, frame], ignore_index=True)
+                )
+        publish_table(frame, path)
     audit_path = root / "reports/game_detail_audit.csv"
     audit_frame = pd.DataFrame(
         audit,
@@ -338,6 +375,7 @@ def collect_game_details(
             "status",
             "reason",
             "retained_previous_games",
+            "reviewed_assignment_rows",
         ],
     )
     if audit_path.exists():
@@ -345,7 +383,7 @@ def collect_game_details(
         retained = old.loc[~old["match_id"].isin(attempted_ids)]
         if not retained.empty:
             audit_frame = pd.concat([retained, audit_frame], ignore_index=True)
-    audit_frame.to_csv(audit_path, index=False)
+    publish_table(audit_frame, audit_path)
     summary = {
         "information_cutoff": cutoff,
         "generated_at": utc_now(),
@@ -354,13 +392,26 @@ def collect_game_details(
         "series_unavailable_or_failed": int(audit_frame["status"].ne("pass").sum()),
         "games": len(pd.read_csv(game_path)),
         "retained_previous_games": int(audit_frame["retained_previous_games"].fillna(0).sum()),
+        "reviewed_assignment_rows": int(audit_frame["reviewed_assignment_rows"].fillna(0).sum()),
+        "assignment_reviews": [
+            {
+                "match_id": review["match_id"],
+                "reviewed_on": review["reviewed_on"],
+                "registry_sha256": review["registry_sha256"],
+                "scoreboard_sha256": review["scoreboard_sha256"],
+                "evidence_verified": review["verified"],
+                "sources": review["evidence"],
+                "feature_eligible": False,
+            }
+            for review in reviews.values()
+        ],
         "limitation": "Tidak membuktikan arsip lengkap. Winner, durasi, ban dan urutan pick "
         "belum terverifikasi. IGN bukan identitas pemain lintas musim. Data observasi "
         "pascamusim ini tidak digunakan sebagai fitur S18.",
     }
-    (root / "reports/game_detail_audit.json").write_text(
+    publish_text(
         json.dumps(summary, indent=2, ensure_ascii=False),
-        encoding="utf-8",
+        root / "reports/game_detail_audit.json",
     )
     from mpl_ph_predictor.data.game_audit import audit_game_summaries
 

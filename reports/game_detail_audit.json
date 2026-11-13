@@ -1,10 +1,93 @@
 {
   "information_cutoff": "2026-11-09",
-  "generated_at": "2026-11-10T02:55:30.249768+00:00",
+  "generated_at": "2026-11-13T01:07:07.503016+00:00",
   "detail_links_attempted": 128,
-  "series_passed": 119,
-  "series_unavailable_or_failed": 9,
-  "games": 309,
+  "series_passed": 123,
+  "series_unavailable_or_failed": 5,
+  "games": 319,
   "retained_previous_games": 0,
+  "reviewed_assignment_rows": 12,
+  "assignment_reviews": [
+    {
+      "match_id": "S08-RE-onic-tlph-20210827",
+      "reviewed_on": "2026-11-13",
+      "registry_sha256": "9a7880fd7e9ea31129ff9255860626fae8a86bd8a322602bba044b05d9b0795c",
+      "scoreboard_sha256": "245babf8294c322c94b5fcbe5df22b982e8d3d135c48d028bc1301f50b96f4d7",
+      "evidence_verified": true,
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/onic-ph-dominates-echo-to-open-mpl-ph-8/217841",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/725b3fd60f41dd01a7442fdec8d8785f357eb12f5e4f73d0f777828c2676bc5b.html",
+          "sha256": "725b3fd60f41dd01a7442fdec8d8785f357eb12f5e4f73d0f777828c2676bc5b",
+          "retrieved_at": "2026-11-13T01:01:07.375752+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "feature_eligible": false
+    },
+    {
+      "match_id": "S08-RE-omg-tlph-20210829",
+      "reviewed_on": "2026-11-13",
+      "registry_sha256": "9a7880fd7e9ea31129ff9255860626fae8a86bd8a322602bba044b05d9b0795c",
+      "scoreboard_sha256": "5eeb28208ac0dbae8c892f01887d1ea79e733e88b1940cdd0c33a812cc2876f6",
+      "evidence_verified": true,
+      "sources": [
+        {
+          "url": "https://www.dugout.ph/2021/08/echo-ends-mpl-ph-week-1-with-2-0-win-vs.html",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/38d5a2c148158682e7cb3ea7886372eed1e744a1342800e98bc54f3b5b1a488c.html",
+          "sha256": "38d5a2c148158682e7cb3ea7886372eed1e744a1342800e98bc54f3b5b1a488c",
+          "retrieved_at": "2026-11-13T01:01:07.377407+00:00",
+          "kind": "secondary_contemporary_report"
+        },
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/kurtzy-echo-stave-off-late-omega-rally-take-solo-lead-in-mpl-ph",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/4d72d4d15745182fdc47e64ac3eaa885cf8e334749e05b805fd08563500f1014.html",
+          "sha256": "4d72d4d15745182fdc47e64ac3eaa885cf8e334749e05b805fd08563500f1014",
+          "retrieved_at": "2026-11-13T01:01:07.389527+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "feature_eligible": false
+    },
+    {
+      "match_id": "S08-RE-tlph-omg-20211002",
+      "reviewed_on": "2026-11-13",
+      "registry_sha256": "9a7880fd7e9ea31129ff9255860626fae8a86bd8a322602bba044b05d9b0795c",
+      "scoreboard_sha256": "0fd6ef7db619f206d78a07980f5f1c8e5c972dd7189b0871ea5387bb9c5bac86",
+      "evidence_verified": true,
+      "sources": [
+        {
+          "url": "https://tiebreakertimes.com.ph/tbt/raizen-steps-up-for-kielvj-as-omega-sweeps-echo-keeps-mpl-playoff-hopes-alive/221002",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/5a02dae09947b385d84f159030d63573353b43a39c83205f3b62db2eb20d2f41.html",
+          "sha256": "5a02dae09947b385d84f159030d63573353b43a39c83205f3b62db2eb20d2f41",
+          "retrieved_at": "2026-11-13T01:01:07.439153+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "feature_eligible": false
+    },
+    {
+      "match_id": "S08-PL-omg-tlph-20211021",
+      "reviewed_on": "2026-11-13",
+      "registry_sha256": "9a7880fd7e9ea31129ff9255860626fae8a86bd8a322602bba044b05d9b0795c",
+      "scoreboard_sha256": "e3e87b8607340bd7341bf3225d5dfaf0ceadb239456e541279da7bfd008a87a5",
+      "evidence_verified": true,
+      "sources": [
+        {
+          "url": "https://www.dugout.ph/2021/10/omega-esports-took-down-echo-in-four-to.html",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/d0e8c791d378f80676662f9b58e07b65f9045b06544bc1c255743843ebb884dd.html",
+          "sha256": "d0e8c791d378f80676662f9b58e07b65f9045b06544bc1c255743843ebb884dd",
+          "retrieved_at": "2026-11-13T01:01:07.577072+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "feature_eligible": false
+    }
+  ],
   "limitation": "Tidak membuktikan arsip lengkap. Winner, durasi, ban dan urutan pick belum terverifikasi. IGN bukan identitas pemain lintas musim. Data observasi pascamusim ini tidak digunakan sebagai fitur S18."
 }
