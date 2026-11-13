@@ -81,9 +81,13 @@ def test_variable_coverage_reports_unavailable_optional_data_honestly() -> None:
     assert stats.set_index("variable").loc["games_played", "availability"] == "unavailable"
 
 
-def test_unverified_player_aliases_are_not_forced_into_roster_ids() -> None:
+def test_only_reviewed_aliases_receive_roster_links() -> None:
     stats = pd.read_csv(ROOT / "data/raw/official_s18_player_season_stats.csv")
+    reviewed = stats.loc[stats["player_identity_status"].eq("reviewed_season_team_alias")]
+    assert set(reviewed["player"]) == {"JMPINKMAN", "Vinnn", "Domeng", "Sensu1"}
+    assert reviewed["player_id"].notna().all() and reviewed["role"].notna().all()
+    assert reviewed["player_alias_registry_sha256"].str.len().eq(64).all()
+    assert not reviewed["feature_eligible_for_training"].any()
     unresolved = stats.loc[stats["player_identity_status"].eq("unresolved_ign_alias")]
-    assert set(unresolved["player"]) == {"JMPINKMAN", "Vinnn", "Domeng", "Sensu1"}
     assert unresolved["player_id"].isna().all()
     assert unresolved["role"].isna().all()

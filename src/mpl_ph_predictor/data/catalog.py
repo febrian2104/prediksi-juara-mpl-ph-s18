@@ -3,16 +3,19 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 from bs4 import BeautifulSoup
 
+from mpl_ph_predictor.archive import sha256
 from mpl_ph_predictor.data.contracts import conform_table, load_dataset_schema, variable_coverage
 from mpl_ph_predictor.data.finals import annotate_reviewed_finals
 from mpl_ph_predictor.data.league_history import annotate_match_participants, participant_id
 from mpl_ph_predictor.data.normalization import slug
+from mpl_ph_predictor.data.player_aliases import annotate_player_aliases
 from mpl_ph_predictor.storage import publish_table, publish_text
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -174,23 +177,31 @@ def championship_table(matches: pd.DataFrame, teams: pd.DataFrame) -> pd.DataFra
     return conform_table(result, "championships")
 
 
-def official_player_stats(players: pd.DataFrame) -> pd.DataFrame:
-    manifest = pd.read_csv(ROOT / "data/raw/source_manifest.csv")
+def official_player_stats(players: pd.DataFrame, *, root: Path = ROOT) -> pd.DataFrame:
+    manifest = pd.read_csv(root / "data/raw/source_manifest.csv")
     record = manifest.loc[manifest["url"].eq("https://ph-mpl.com/data")].iloc[0]
-    path = ROOT / str(record.get("snapshot_path", "missing"))
+    path = (root / str(record.get("snapshot_path", "missing"))).resolve()
+    if not path.is_relative_to(root.resolve()):
+        raise ValueError("Snapshot statistik berada di luar proyek.")
     if not path.is_file():
-        return conform_table(pd.DataFrame(), "player_season_stats")
-    soup = BeautifulSoup(path.read_bytes(), "html.parser")
-    table = next(
-        (
-            table
-            for table in soup.select("table")
-            if "Total Kills" in table.get_text() and "Kill Participation" in table.get_text()
-        ),
-        None,
-    )
-    if table is None:
-        return conform_table(pd.DataFrame(), "player_season_stats")
+        raise ValueError("Snapshot statistik pemain hilang; ekspor dibatalkan.")
+    content = path.read_bytes()
+    if sha256(content) != record["sha256"]:
+        raise ValueError("Checksum snapshot statistik pemain tidak cocok.")
+    soup = BeautifulSoup(content, "html.parser")
+    tables = [
+        table for table in soup.select("table")
+        if "Total Kills" in table.get_text() and "Kill Participation" in table.get_text()
+    ]
+    if len(tables) != 1:
+        raise ValueError("Tabel statistik pemain hilang/ganda; ekspor dibatalkan.")
+    table = tables[0]
+    headers = [th.get_text(" ", strip=True) for th in table.select("thead th")]
+    if headers != [
+        "Player", "Team", "Total Kills", "AVG Kills", "Total Deaths", "AVG Deaths",
+        "Total Assists", "AVG Assists", "KDA Ratio", "Kill Participation",
+    ]:
+        raise ValueError("Skema header statistik pemain berubah; audit diperlukan.")
     # Normalize only presentation differences; spelling/digit aliases require review.
     lookup = players.copy()
     lookup["normalized_key"] = lookup["player_key"].str.replace("_", "", regex=False)
@@ -231,7 +242,8 @@ def official_player_stats(players: pd.DataFrame) -> pd.DataFrame:
             "snapshot_date": record["accessed_at"],
             "coverage_status": "partial_numeric_aggregate_stage_unverified",
             "source": record["url"],
-            "source_snapshot_path": str(path.relative_to(ROOT)),
+            "source_snapshot_path": str(path.relative_to(root)),
+            "source_snapshot_sha256": record["sha256"],
             "feature_eligible_for_s18": False,
             "feature_eligible_for_training": False,
             "player_id": ids.get(key, pd.NA),
@@ -241,13 +253,25 @@ def official_player_stats(players: pd.DataFrame) -> pd.DataFrame:
             else "unresolved_ign_alias",
         }
         for column, value in zip(numeric_columns, cells[2:], strict=True):
-            row[column] = (
+            number = (
                 pd.NA
                 if value in ("-", "", "N/A")
                 else float(value.replace("%", "").replace(",", ""))
             )
+            if number is not pd.NA and (
+                not math.isfinite(number)
+                or number < 0
+                or (column == "kill_participation_pct" and number > 100)
+            ):
+                raise ValueError("Statistik pemain nonfinite/negatif atau persentase tidak valid.")
+            row[column] = number
         rows.append(row)
-    return conform_table(pd.DataFrame(rows), "player_season_stats")
+    stats, audit = annotate_player_aliases(pd.DataFrame(rows), players, root=root)
+    publish_text(
+        json.dumps(audit, indent=2, ensure_ascii=False, allow_nan=False),
+        root / "reports/player_alias_audit.json",
+    )
+    return conform_table(stats, "player_season_stats")
 
 
 def export_reference_layout(

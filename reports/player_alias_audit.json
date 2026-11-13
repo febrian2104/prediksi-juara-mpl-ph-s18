@@ -1,0 +1,133 @@
+{
+  "generated_at": "2026-11-13T02:05:39.643394+00:00",
+  "status": "pass",
+  "scope": "season_team_observation_not_global_person_or_effective_roster",
+  "feature_eligible": false,
+  "aliases": [
+    {
+      "season": 18,
+      "team_code": "APBR",
+      "statistics_ign": "JMPINKMAN",
+      "roster_ign": "JIMPINKMAN",
+      "basis": "reviewed_official_roster_asset_alias",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://ph-mpl.com/data",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7.html",
+          "sha256": "ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00"
+        },
+        {
+          "url": "https://ph-mpl.com/team/apbr",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/7b8b89dc9f23ba8c31ff059a7ab138ab7f90ef20038bb806f8e0b856e215255e.html",
+          "sha256": "7b8b89dc9f23ba8c31ff059a7ab138ab7f90ef20038bb806f8e0b856e215255e",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+          "kind": "official_roster_entry_metadata"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "season": 18,
+      "team_code": "RORA",
+      "statistics_ign": "Domeng",
+      "roster_ign": "Domengkite",
+      "basis": "reviewed_official_roster_asset_alias",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://ph-mpl.com/data",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7.html",
+          "sha256": "ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00"
+        },
+        {
+          "url": "https://ph-mpl.com/team/rora",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/16c80c3bb48988cee7026e861cf86cc88825bacf19011bb20a5860595e233024.html",
+          "sha256": "16c80c3bb48988cee7026e861cf86cc88825bacf19011bb20a5860595e233024",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+          "kind": "official_roster_entry_metadata"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "season": 18,
+      "team_code": "TWIS",
+      "statistics_ign": "Sensu1",
+      "roster_ign": "Sensui",
+      "basis": "reviewed_official_roster_asset_alias",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://ph-mpl.com/data",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7.html",
+          "sha256": "ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00"
+        },
+        {
+          "url": "https://ph-mpl.com/team/twis",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/48242801711aa2cb6badc6944e170106f096060cba11f5b3e55ae6c027329ad5.html",
+          "sha256": "48242801711aa2cb6badc6944e170106f096060cba11f5b3e55ae6c027329ad5",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+          "kind": "official_roster_entry_metadata"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "season": 18,
+      "team_code": "TNC",
+      "statistics_ign": "Vinnn",
+      "roster_ign": "Vin",
+      "basis": "reviewed_contemporary_reports_same_full_name",
+      "status": "verified",
+      "sources": [
+        {
+          "url": "https://ph-mpl.com/data",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7.html",
+          "sha256": "ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00"
+        },
+        {
+          "url": "https://ph-mpl.com/team/tnc",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/8350884e0b2e1542c24dba43869838c840f43e97a18f2d70b8f624bcaa154473.html",
+          "sha256": "8350884e0b2e1542c24dba43869838c840f43e97a18f2d70b8f624bcaa154473",
+          "retrieved_at": "2026-11-09T08:08:42.496740+00:00",
+          "kind": "official_roster_entry_metadata"
+        },
+        {
+          "url": "https://thegame.ph/e-sports/mobile-legends/coach-hito-tnc-rebuild-mpl-ph-season-18/",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/df7dedde467cace7986a782859dce0a2b68427c994b3f5710a6eb42ea8204a90.html",
+          "sha256": "df7dedde467cace7986a782859dce0a2b68427c994b3f5710a6eb42ea8204a90",
+          "retrieved_at": "2026-11-13T01:59:20.816465+00:00",
+          "kind": "secondary_contemporary_report"
+        },
+        {
+          "url": "https://thegame.ph/e-sports/mobile-legends/tnc-needs-to-double-their-effort-for-the-playoffs-says-zaida/",
+          "status": "checksum_verified",
+          "snapshot_path": "data/raw/source_snapshots/608238693608f8e79ecdab4c6d2c70bc2c4221265cb85938727cfd3a979b6ed8.html",
+          "sha256": "608238693608f8e79ecdab4c6d2c70bc2c4221265cb85938727cfd3a979b6ed8",
+          "retrieved_at": "2026-11-13T01:59:20.818883+00:00",
+          "kind": "secondary_contemporary_report"
+        }
+      ],
+      "reason": null
+    }
+  ],
+  "reviewed_on": "2026-11-13",
+  "information_cutoff": "2026-11-09",
+  "registry_sha256": "e00580207872f3786ce4237a1ac2fbd8488ceae352aac9735bd75fa8accffb51",
+  "resolved_aliases": 4,
+  "unresolved_ign_rows": 0
+}

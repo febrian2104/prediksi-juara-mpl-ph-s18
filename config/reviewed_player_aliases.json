@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "information_cutoff": "2026-11-09",
+  "reviewed_on": "2026-11-13",
+  "feature_eligible": false,
+  "scope": "S18 team-scoped links between observed statistics and roster IGN only; not global person identities or effective roster dates.",
+  "statistics_source": {
+    "url": "https://ph-mpl.com/data",
+    "reviewed_snapshot_sha256": "ea4bd1a77347a0048828e340cc16c241ac3eab32ec891ff6e06caef6ef41c7c7"
+  },
+  "aliases": [
+    {
+      "season": 18,
+      "team_code": "APBR",
+      "statistics_ign": "JMPINKMAN",
+      "roster_ign": "JIMPINKMAN",
+      "basis": "reviewed_official_roster_asset_alias",
+      "roster_source": {
+        "url": "https://ph-mpl.com/team/apbr",
+        "reviewed_snapshot_sha256": "7b8b89dc9f23ba8c31ff059a7ab138ab7f90ef20038bb806f8e0b856e215255e",
+        "asset_path": "/season18/player/APBR/Jmpinkman.png"
+      },
+      "supporting_sources": []
+    },
+    {
+      "season": 18,
+      "team_code": "RORA",
+      "statistics_ign": "Domeng",
+      "roster_ign": "Domengkite",
+      "basis": "reviewed_official_roster_asset_alias",
+      "roster_source": {
+        "url": "https://ph-mpl.com/team/rora",
+        "reviewed_snapshot_sha256": "16c80c3bb48988cee7026e861cf86cc88825bacf19011bb20a5860595e233024",
+        "asset_path": "/season18/player/RORA/Domeng.png"
+      },
+      "supporting_sources": []
+    },
+    {
+      "season": 18,
+      "team_code": "TWIS",
+      "statistics_ign": "Sensu1",
+      "roster_ign": "Sensui",
+      "basis": "reviewed_official_roster_asset_alias",
+      "roster_source": {
+        "url": "https://ph-mpl.com/team/twis",
+        "reviewed_snapshot_sha256": "48242801711aa2cb6badc6944e170106f096060cba11f5b3e55ae6c027329ad5",
+        "asset_path": "/season18/player/TWIS/Sensu1.png"
+      },
+      "supporting_sources": []
+    },
+    {
+      "season": 18,
+      "team_code": "TNC",
+      "statistics_ign": "Vinnn",
+      "roster_ign": "Vin",
+      "basis": "reviewed_contemporary_reports_same_full_name",
+      "roster_source": {
+        "url": "https://ph-mpl.com/team/tnc",
+        "reviewed_snapshot_sha256": "8350884e0b2e1542c24dba43869838c840f43e97a18f2d70b8f624bcaa154473",
+        "asset_path": "/season18/player/TNC/Vin.png"
+      },
+      "supporting_sources": [
+        {
+          "url": "https://thegame.ph/e-sports/mobile-legends/coach-hito-tnc-rebuild-mpl-ph-season-18/",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2026-08-19",
+          "reviewed_snapshot_sha256": "df7dedde467cace7986a782859dce0a2b68427c994b3f5710a6eb42ea8204a90",
+          "required_terms": ["Ervin “Vin” Franco", "TNC", "Season 18"]
+        },
+        {
+          "url": "https://thegame.ph/e-sports/mobile-legends/tnc-needs-to-double-their-effort-for-the-playoffs-says-zaida/",
+          "kind": "secondary_contemporary_report",
+          "published_on": "2026-10-16",
+          "reviewed_snapshot_sha256": "608238693608f8e79ecdab4c6d2c70bc2c4221265cb85938727cfd3a979b6ed8",
+          "required_terms": ["Ervin “Vinnn” Franco", "TNC", "Season 18"]
+        }
+      ]
+    }
+  ]
+}

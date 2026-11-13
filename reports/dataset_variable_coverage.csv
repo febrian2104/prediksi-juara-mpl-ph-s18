@@ -1362,7 +1362,7 @@ season,table,variable,rows,non_null_rows,availability
 18,player_season_stats,season,49,49,complete_for_collected_rows
 18,player_season_stats,team,49,49,complete_for_collected_rows
 18,player_season_stats,player,49,49,complete_for_collected_rows
-18,player_season_stats,role,49,45,partial
+18,player_season_stats,role,49,49,complete_for_collected_rows
 18,player_season_stats,stat_scope,49,49,complete_for_collected_rows
 18,player_season_stats,snapshot_label,49,49,complete_for_collected_rows
 18,player_season_stats,snapshot_date,49,49,complete_for_collected_rows
